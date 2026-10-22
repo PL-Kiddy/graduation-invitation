@@ -24,17 +24,20 @@ interface BookProps {
 
 const pageVariants: Variants = {
   enter: (dir: number) => ({
-    opacity: 0.85,
-    rotateY: dir > 0 ? 45 : -45,
+    opacity: dir > 0 ? 0.9 : 0.8,
+    rotateY: dir > 0 ? 35 : -35,
+    scale: 0.98,
   }),
   center: {
     opacity: 1,
     rotateY: 0,
+    scale: 1,
     transition: transitions.pageSpring,
   },
   exit: (dir: number) => ({
     opacity: 0,
-    rotateY: dir > 0 ? -85 : 85,
+    rotateY: dir > 0 ? -95 : 95,
+    scale: 0.97,
     transition: transitions.pageSpring,
   }),
 };
@@ -98,21 +101,28 @@ export const Book: React.FC<BookProps> = ({ onRestart }) => {
   };
 
   // Calculate live drag rotation & bend illusion
-  const liveRotateY = isDragging ? Math.max(-75, Math.min(30, dragProgress * 90)) : 0;
+  const liveRotateY = isDragging ? Math.max(-80, Math.min(35, dragProgress * 95)) : 0;
   const shadowIntensity = isDragging ? Math.abs(dragProgress) : 0;
 
   return (
     <div className="relative w-full h-full flex flex-col items-center justify-between overflow-hidden select-none">
       {/* 3D Perspective Flipbook Stage */}
       <div className="relative w-full flex-1 flex items-center justify-center p-2 md:p-6 perspective-container">
-        {/* Book Container with physical shadow */}
+        {/* Book Container with physical shadow & 3D Volume */}
         <div
           {...gestureProps}
-          className="relative w-full h-full max-w-[440px] max-h-[820px] rounded-[6px] preserve-3d cursor-grab active:cursor-grabbing touch-pan-y"
+          className="relative w-full h-full max-w-[440px] max-h-[820px] rounded-[7px] preserve-3d cursor-grab active:cursor-grabbing touch-pan-y"
           style={{
-            boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.65)',
+            boxShadow: `
+              0 25px 60px -15px rgba(70, 50, 30, 0.25),
+              0 6px 18px rgba(70, 50, 30, 0.08)
+            `,
           }}
         >
+          {/* 3D Physical Paper Stack Edges */}
+          <div className="book-edge-stack-right" />
+          <div className="book-edge-stack-bottom" />
+
           {/* Underneath page preview during drag forward (Next Page) */}
           {isDragging && dragProgress < 0 && canGoNext && (
             <div
@@ -152,7 +162,7 @@ export const Book: React.FC<BookProps> = ({ onRestart }) => {
                 <div
                   className="absolute inset-0 pointer-events-none z-30 transition-opacity"
                   style={{
-                    background: `linear-gradient(to right, rgba(20, 16, 12, ${shadowIntensity * 0.4}) 0%, rgba(20, 16, 12, ${shadowIntensity * 0.1}) 50%, transparent 100%)`,
+                    background: `linear-gradient(to right, rgba(50, 35, 20, ${shadowIntensity * 0.3}) 0%, rgba(255, 255, 255, ${shadowIntensity * 0.15}) 40%, transparent 100%)`,
                   }}
                 />
               )}
@@ -162,13 +172,13 @@ export const Book: React.FC<BookProps> = ({ onRestart }) => {
           </AnimatePresence>
 
           {/* Left / Right Subtle Tap Zones Indicator for Desktop Assist */}
-          <div className="absolute inset-y-0 left-0 w-[15%] pointer-events-none opacity-0 hover:opacity-10 transition-opacity bg-gradient-to-r from-black/20 to-transparent rounded-l-[6px]" />
-          <div className="absolute inset-y-0 right-0 w-[15%] pointer-events-none opacity-0 hover:opacity-10 transition-opacity bg-gradient-to-l from-black/20 to-transparent rounded-r-[6px]" />
+          <div className="absolute inset-y-0 left-0 w-[15%] pointer-events-none opacity-0 hover:opacity-100 transition-opacity bg-gradient-to-r from-[#C59B27]/10 to-transparent rounded-l-[6px]" />
+          <div className="absolute inset-y-0 right-0 w-[15%] pointer-events-none opacity-0 hover:opacity-100 transition-opacity bg-gradient-to-l from-[#C59B27]/10 to-transparent rounded-r-[6px]" />
         </div>
       </div>
 
-      {/* Bottom Floating Page Indicator (Safe Area Aware) */}
-      <div className="w-full pb-safe pt-2 flex justify-center z-40 bg-gradient-to-t from-[#0c0c0e]/80 via-[#0c0c0e]/30 to-transparent pointer-events-none">
+      {/* Bottom Floating Page Indicator (Safe Area Aware & Bright Luxury theme) */}
+      <div className="w-full pb-safe pt-2 flex justify-center z-40 bg-gradient-to-t from-[#F8F5EE]/95 via-[#F8F5EE]/60 to-transparent pointer-events-none">
         <PageIndicator
           currentPage={currentPage}
           onSelectPage={goToPage}

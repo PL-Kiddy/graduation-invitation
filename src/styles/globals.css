@@ -2,26 +2,34 @@
 
 @layer base {
   :root {
-    --color-paper: #F5F1E8;
-    --color-paper-tint: #FAF7F0;
-    --color-paper-dark: #E9E2D2;
-    --color-paper-shadow: rgba(22, 19, 16, 0.08);
+    /* Bright Luxury Paper & Stationery Palette */
+    --color-paper: #FAF7F2;
+    --color-paper-tint: #FFFFFF;
+    --color-paper-dark: #EDE5D8;
+    --color-paper-border: #E5DC CE;
+    --color-paper-shadow: rgba(60, 45, 30, 0.08);
 
-    --color-ink: #151515;
-    --color-ink-secondary: #403A34;
-    --color-ink-muted: #736B63;
-    --color-ink-subtle: #A39B91;
+    /* Rich Warm Ink Typography */
+    --color-ink: #1F1C18;
+    --color-ink-secondary: #4A4238;
+    --color-ink-muted: #7A7065;
+    --color-ink-subtle: #A39788;
 
+    /* FPT University Brand Accents */
     --color-fpt-orange: #F27024;
     --color-fpt-blue: #005A9E;
     --color-fpt-green: #2E8B57;
 
-    --color-foil-gold: #C9A86A;
-    --color-foil-gold-light: #EED7A1;
-    --color-foil-gold-dark: #8E713A;
+    /* High-end Metallic Gold Foil */
+    --color-foil-gold: #C59B27;
+    --color-foil-gold-light: #F7E5B5;
+    --color-foil-gold-dark: #8E6B15;
 
-    --color-book-cover: #1C1917;
-    --color-book-spine: #141210;
+    /* Cover & Binding in Light Luxury Linen / Ivory */
+    --color-book-cover: #FBF8F1;
+    --color-book-cover-accent: #EFE7D8;
+    --color-book-spine: #E5DBCA;
+    --color-ribbon: #F27024;
   }
 
   html, body {
@@ -31,9 +39,9 @@
     height: 100%;
     height: 100dvh;
     overflow: hidden;
-    background-color: #0c0c0e;
+    background-color: #F8F5EE;
     color: var(--color-ink);
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Be Vietnam Pro', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overscroll-behavior: none;
@@ -53,22 +61,22 @@
   }
 }
 
-/* Font helpers */
+/* Vietnamese Editorial & Modern Typography Helpers */
 .font-serif-editorial {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
 }
 
 .font-display-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', 'Cinzel', serif;
 }
 
 .font-sans-modern {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Be Vietnam Pro', 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
 /* 3D Transform Utilities for Physical Book Flip */
 .perspective-container {
-  perspective: 2000px;
+  perspective: 2400px;
   perspective-origin: center center;
 }
 
@@ -90,33 +98,74 @@
   transform-origin: right center;
 }
 
-/* Paper and book texture styling */
+/* Bright Paper and Luxury Book Textures */
 .paper-surface {
   background-color: var(--color-paper);
   background-image: 
-    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.45) 0%, transparent 60%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 3%, rgba(0, 0, 0, 0) 97%, rgba(0, 0, 0, 0.04) 100%);
-  box-shadow: inset 0 0 100px rgba(180, 160, 130, 0.12);
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.85) 0%, transparent 70%),
+    linear-gradient(90deg, rgba(80, 60, 40, 0.04) 0%, rgba(255, 255, 255, 0.2) 3%, transparent 10%, transparent 90%, rgba(80, 60, 40, 0.03) 100%);
+  box-shadow: 
+    inset 0 0 80px rgba(210, 195, 175, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
-.cover-leather-surface {
+.cover-ivory-surface {
   background-color: var(--color-book-cover);
   background-image:
-    radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.07) 0%, transparent 60%),
-    linear-gradient(135deg, rgba(35, 30, 27, 0.9) 0%, rgba(18, 16, 14, 0.98) 100%);
+    radial-gradient(ellipse at 40% 25%, rgba(255, 255, 255, 0.95) 0%, transparent 65%),
+    linear-gradient(135deg, #FBF8F1 0%, #F5EEDF 50%, #ECE2D0 100%);
 }
 
 /* Foil stamping metallic reflection */
 .foil-gold-text {
-  background: linear-gradient(135deg, #ECC880 0%, #FAF0D7 25%, #C29B53 50%, #FAF0D7 75%, #B38636 100%);
+  background: linear-gradient(135deg, #8E6B15 0%, #C59B27 25%, #F7E5B5 45%, #C59B27 70%, #7D5D10 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.6));
 }
 
 .foil-gold-border {
-  border-color: rgba(201, 168, 106, 0.35);
-  box-shadow: 0 0 0 1px rgba(238, 215, 161, 0.15) inset;
+  border-color: rgba(197, 155, 39, 0.45);
+  box-shadow: 0 0 0 1px rgba(247, 229, 181, 0.3) inset;
+}
+
+/* Physical Book Edge Pages Stack (3D paper thickness) */
+.book-edge-stack-right {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  right: -8px;
+  width: 8px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #F3EDE2 0px,
+    #F3EDE2 2px,
+    #DDD4C5 2px,
+    #DDD4C5 3px
+  );
+  border-radius: 0 2px 2px 0;
+  box-shadow: 2px 0 5px rgba(60, 45, 30, 0.15);
+  transform: rotateY(90deg);
+  transform-origin: left center;
+}
+
+.book-edge-stack-bottom {
+  position: absolute;
+  left: 6px;
+  right: 2px;
+  bottom: -6px;
+  height: 6px;
+  background: repeating-linear-gradient(
+    to right,
+    #F3EDE2 0px,
+    #F3EDE2 2px,
+    #DDD4C5 2px,
+    #DDD4C5 3px
+  );
+  border-radius: 0 0 2px 2px;
+  box-shadow: 0 3px 6px rgba(60, 45, 30, 0.12);
+  transform: rotateX(-90deg);
+  transform-origin: center top;
 }
 
 /* Safe Area Insets for Mobile */

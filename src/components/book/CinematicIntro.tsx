@@ -28,34 +28,37 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = ({ onComplete }) =>
   return (
     <motion.div
       onClick={onComplete}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-between p-8 bg-[#0c0c0e] text-[#FAF7F0] cursor-pointer select-none overflow-hidden"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-between p-8 bg-gradient-to-b from-[#FCFAF6] via-[#F7EFE4] to-[#EDE3D3] text-[#1F1C18] cursor-pointer select-none overflow-hidden"
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } }}
+      exit={{ opacity: 0, scale: 1.02, filter: 'blur(8px)', transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } }}
     >
-      {/* Subtle background ambient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-[#C5A059]/10 rounded-full blur-[100px] pointer-events-none" />
+      {/* Warm champagne & golden sunbeam ambient bloom */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] bg-gradient-to-br from-[#F7E5B5]/60 via-[#F27024]/10 to-transparent rounded-full blur-[100px] pointer-events-none" />
 
-      {/* Top Header Placeholder */}
-      <div className="w-full flex justify-between items-center text-[10px] font-mono tracking-[0.25em] text-[#736B63] opacity-60">
-        <span>FPT UNIVERSITY</span>
-        <span>2026</span>
+      {/* Top Header */}
+      <div className="w-full flex justify-between items-center text-[10px] font-mono tracking-[0.25em] text-[#8C7E70]">
+        <span className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#F27024]" />
+          TRƯỜNG ĐẠI HỌC FPT
+        </span>
+        <span className="font-semibold text-[#B88A22]">2026</span>
       </div>
 
       {/* Center Cinematic Stage */}
-      <div className="my-auto text-center space-y-6 max-w-sm">
+      <div className="my-auto text-center space-y-6 max-w-sm relative z-10">
         {/* Step 1: 07 · 11 · 2026 */}
         <AnimatePresence>
           {step >= 1 && (
             <motion.div
-              className="flex items-center justify-center gap-2 font-mono text-xs md:text-sm tracking-[0.35em] text-[#C5A059]"
+              className="flex items-center justify-center gap-2.5 font-mono text-xs md:text-sm tracking-[0.35em] text-[#B88A22] font-semibold"
               initial={{ opacity: 0, y: 15, filter: 'blur(6px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               <span>07</span>
-              <span>·</span>
+              <span className="text-[#F27024]">·</span>
               <span>11</span>
-              <span>·</span>
+              <span className="text-[#F27024]">·</span>
               <span>2026</span>
             </motion.div>
           )}
@@ -65,13 +68,13 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = ({ onComplete }) =>
         <AnimatePresence>
           {step >= 2 && (
             <motion.div
-              className="space-y-1 font-serif-editorial text-xl md:text-2xl text-[#E8E2D4] leading-relaxed"
-              initial={{ opacity: 0, y: 15, filter: 'blur(8px)' }}
+              className="space-y-1.5 font-serif-editorial text-2xl md:text-3xl text-[#2B241E] leading-relaxed"
+              initial={{ opacity: 0, y: 18, filter: 'blur(8px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             >
-              <p>Có một cái hẹn</p>
-              <p className="italic text-[#FAF7F0]">mình muốn bạn có mặt.</p>
+              <p className="font-normal text-[#4A4036]">Có một cái hẹn</p>
+              <p className="italic font-bold text-[#1F1C18]">mình muốn bạn có mặt.</p>
             </motion.div>
           )}
         </AnimatePresence>
@@ -81,12 +84,12 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = ({ onComplete }) =>
           {step >= 3 && (
             <motion.div
               className="pt-2 space-y-3"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
             >
               <motion.h1
-                className="font-serif-editorial font-bold text-sm md:text-base text-[#FAF0D7]"
+                className="font-serif-editorial font-bold text-base md:text-lg text-[#1F1C18] tracking-[0.2em] uppercase"
                 initial={{ letterSpacing: '0.35em', opacity: 0 }}
                 animate={{ letterSpacing: '0.22em', opacity: 1 }}
                 transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
@@ -94,9 +97,9 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = ({ onComplete }) =>
                 {graduation.formalName}
               </motion.h1>
 
-              {/* Thin accent line drawing */}
+              {/* Gold foil accent line */}
               <motion.div
-                className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#C5A059] to-transparent mx-auto"
+                className="w-20 h-[1.5px] bg-gradient-to-r from-transparent via-[#C59B27] to-transparent mx-auto"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -106,14 +109,14 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = ({ onComplete }) =>
         </AnimatePresence>
       </div>
 
-      {/* Bottom Skip Prompt */}
+      {/* Bottom Skip Prompt with subtle golden pill */}
       <motion.div
-        className="text-[10px] font-mono tracking-widest text-[#736B63] opacity-75"
+        className="px-3.5 py-1.5 rounded-full bg-[#FFFFFF]/80 border border-[#E5DC CE] text-[10px] font-mono tracking-widest text-[#7A6E60] shadow-xs backdrop-blur-xs"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.75 }}
+        animate={{ opacity: 0.9 }}
         transition={{ delay: 0.8, duration: 0.5 }}
       >
-        Chạm bất kỳ đâu để mở thiệp ✕
+        Chạm bất kỳ đâu để vào thiệp ✕
       </motion.div>
     </motion.div>
   );

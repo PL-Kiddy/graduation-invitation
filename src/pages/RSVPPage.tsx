@@ -24,32 +24,32 @@ export const RSVPPage: React.FC = () => {
 
   return (
     <PageSurface className="p-6 md:p-8 flex flex-col justify-between">
-      <div className="flex items-center justify-between border-b border-[#35302B]/15 pb-3">
-        <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#736B63]">
+      <div className="flex items-center justify-between border-b border-[#E5DC CE] pb-3">
+        <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#7A7065] font-semibold">
           XÁC NHẬN • CHƯƠNG IX
         </span>
-        <span className="text-[11px] font-mono tracking-widest text-[#736B63]">
+        <span className="text-[11px] font-mono tracking-widest text-[#B88A22] font-semibold">
           10 / 11
         </span>
       </div>
 
       <div className="my-auto py-2 space-y-4 text-left">
         <div className="space-y-1">
-          <p className="text-[10px] uppercase font-mono tracking-[0.25em] text-[#C5A059]">
+          <p className="text-[10px] uppercase font-mono tracking-[0.25em] text-[#B88A22] font-bold">
             PHẢN HỒI THAM DỰ
           </p>
-          <h2 className="text-xl md:text-2xl font-serif-editorial font-bold text-[#181614] leading-snug">
+          <h2 className="text-xl md:text-2xl font-serif-editorial font-bold text-[#1F1C18] leading-snug">
             HÔM ĐÓ BẠN ĐẾN CHỨ?
           </h2>
         </div>
 
         {isSubmitted ? (
-          <div className="p-4 rounded-[4px] bg-[#FAF7F0] border border-[#C5A059]/40 space-y-2 text-center animate-fade-in">
-            <span className="text-2xl">🎓</span>
-            <p className="text-sm font-serif-editorial font-bold text-[#181614]">
+          <div className="p-5 rounded-[6px] bg-[#FFFFFF] border border-[#C59B27]/40 space-y-2.5 text-center shadow-md animate-fade-in">
+            <span className="text-3xl">🎓</span>
+            <p className="text-base font-serif-editorial font-bold text-[#1F1C18]">
               Cảm ơn {name || 'bạn'}!
             </p>
-            <p className="text-xs text-[#554E45] leading-relaxed">
+            <p className="text-xs text-[#5A5045] leading-relaxed">
               {currentOption?.message}
             </p>
             <div className="pt-2">
@@ -58,7 +58,7 @@ export const RSVPPage: React.FC = () => {
                 variant="ghost"
                 onClick={() => setIsSubmitted(false)}
               >
-                Thay đổi lựa chọn
+                Thay đổi lựa chọn ↺
               </Button>
             </div>
           </div>
@@ -75,21 +75,21 @@ export const RSVPPage: React.FC = () => {
                   key={opt.id}
                   type="button"
                   onClick={() => setSelectedOption(opt.id)}
-                  className={`w-full text-left px-3.5 py-2.5 rounded-[4px] text-xs font-medium transition-all flex items-center justify-between border ${
+                  className={`w-full text-left px-4 py-2.5 rounded-[6px] text-xs font-semibold transition-all flex items-center justify-between border cursor-pointer ${
                     selectedOption === opt.id
-                      ? 'bg-[#181614] text-[#FAF7F0] border-[#181614] shadow-xs'
-                      : 'bg-[#FAF7F0] text-[#35302B] border-[#D5CDBD] hover:bg-[#EFE9DD]'
+                      ? 'bg-gradient-to-r from-[#F27024] to-[#E05C10] text-white border-[#D9530A] shadow-md'
+                      : 'bg-[#FFFFFF] text-[#2C241C] border-[#E5DC CE] hover:bg-[#FAF6EE] shadow-xs'
                   }`}
                 >
                   <span>{opt.label}</span>
-                  {selectedOption === opt.id && <span className="text-xs">✓</span>}
+                  {selectedOption === opt.id && <span className="text-xs font-bold">✓</span>}
                 </button>
               ))}
             </div>
 
             {/* Name Input */}
             <div className="space-y-1 pt-1">
-              <label htmlFor="rsvp-name" className="text-[10px] uppercase font-mono tracking-wider text-[#736B63] block">
+              <label htmlFor="rsvp-name" className="text-[10px] uppercase font-mono tracking-wider text-[#7A7065] font-semibold block">
                 Tên của bạn
               </label>
               <input
@@ -98,7 +98,7 @@ export const RSVPPage: React.FC = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Nhập tên ở đây..."
-                className="w-full px-3 py-2 rounded-[4px] text-xs bg-[#FAF7F0] border border-[#D5CDBD] text-[#181614] placeholder-[#A39B91] focus:outline-none focus:border-[#C5A059]"
+                className="w-full px-3.5 py-2 rounded-[6px] text-xs bg-[#FFFFFF] border border-[#E5DC CE] text-[#1F1C18] placeholder-[#A39788] focus:outline-none focus:border-[#C59B27] shadow-xs"
               />
             </div>
 
@@ -111,14 +111,14 @@ export const RSVPPage: React.FC = () => {
                 className="w-full"
                 disabled={!selectedOption}
               >
-                Gửi phản hồi
+                Gửi phản hồi ✨
               </Button>
             </div>
           </form>
         )}
       </div>
 
-      <div className="text-center text-[10px] font-mono text-[#8C8375]">
+      <div className="text-center text-[10px] font-mono text-[#7A7065]">
         Trang cuối cùng kế tiếp →
       </div>
     </PageSurface>

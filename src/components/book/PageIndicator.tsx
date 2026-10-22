@@ -25,28 +25,28 @@ export const PageIndicator: React.FC<PageIndicatorProps> = ({
     >
       {/* Chapter sub-label */}
       {currentDef?.chapterTitle && (
-        <span className="text-[10px] uppercase tracking-[0.2em] text-[#736B63] font-medium transition-opacity duration-300">
+        <span className="text-[10px] uppercase tracking-[0.2em] text-[#7A7065] font-semibold transition-opacity duration-300">
           {currentDef.chapterTitle}
         </span>
       )}
 
       {/* Numerical indicator: 01 ━━━━━ 11 */}
       <div className="flex items-center gap-3">
-        <span className="text-xs font-mono font-medium tracking-wider text-[#35302B] min-w-[20px] text-right">
+        <span className="text-xs font-mono font-bold tracking-wider text-[#1F1C18] min-w-[20px] text-right">
           {currentFormatted}
         </span>
 
         {/* Progress track */}
-        <div className="relative w-20 md:w-28 h-[2px] bg-[#35302B]/15 rounded-full overflow-hidden">
+        <div className="relative w-20 md:w-28 h-[3px] bg-[#E5DC CE] rounded-full overflow-hidden">
           <motion.div
-            className="absolute top-0 left-0 bottom-0 bg-[#C5A059] rounded-full"
+            className="absolute top-0 left-0 bottom-0 bg-gradient-to-r from-[#F27024] to-[#C59B27] rounded-full"
             initial={false}
             animate={{ width: `${progressRatio * 100}%` }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           />
         </div>
 
-        <span className="text-xs font-mono font-medium tracking-wider text-[#8A8177] min-w-[20px]">
+        <span className="text-xs font-mono font-medium tracking-wider text-[#A39788] min-w-[20px]">
           {totalFormatted}
         </span>
       </div>
