@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { graduation } from '@/data/graduation';
 import { PageSurface } from '@/components/book/PageSurface';
+import { CapIcon, SparklesIcon, CalendarIcon, MapPinIcon } from '@/components/ui/Icons';
 
 interface CoverPageProps {
   onNext?: () => void;
@@ -82,9 +83,9 @@ export const CoverPage: React.FC<CoverPageProps> = ({ onNext }) => {
           className="relative w-32 h-32 md:w-36 md:h-36 my-2"
         >
           <div className="w-full h-full rounded-full gold-halo-ring bg-gradient-to-br from-[#FFFDF9] via-[#FAF5EB] to-[#EDE2D0] p-1.5 shadow-xl flex flex-col items-center justify-center overflow-hidden relative">
-            {/* Graduate Cap Silhouette & Avatar */}
+            {/* Graduate Cap Vector Icon & Avatar */}
             <div className="w-full h-full rounded-full bg-gradient-to-b from-[#FDFBF7] to-[#EBE2D2] flex flex-col items-center justify-center shadow-inner">
-              <span className="text-4xl md:text-5xl">🎓</span>
+              <CapIcon size={42} className="text-[#C59B27] filter drop-shadow-xs" />
               <span className="text-[9px] font-mono font-bold text-[#8C6D1F] tracking-wider mt-1 uppercase">
                 TÂN KHOA IT
               </span>
@@ -92,8 +93,8 @@ export const CoverPage: React.FC<CoverPageProps> = ({ onNext }) => {
           </div>
 
           {/* 3D Paper Flower & Leaf Accent at base of circle (Reference Image 1) */}
-          <div className="absolute -bottom-1 -right-1 w-9 h-9 rounded-full bg-white border border-[#D4AF37]/60 shadow-md flex items-center justify-center text-base">
-            🌸
+          <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-white border border-[#D4AF37]/60 shadow-md flex items-center justify-center text-[#C59B27]">
+            <SparklesIcon size={16} className="text-[#C59B27]" />
           </div>
         </motion.div>
 
@@ -112,9 +113,15 @@ export const CoverPage: React.FC<CoverPageProps> = ({ onNext }) => {
 
         {/* Convocation Date & Venue Chip */}
         <div className="mt-3 py-1.5 px-4 rounded-full bg-[#FAF3E6] border border-[#C59B27]/40 flex items-center gap-3 text-xs font-mono font-bold text-[#8C6D1F] shadow-xs">
-          <span>📅 {graduation.displayDate}</span>
+          <span className="flex items-center gap-1.5">
+            <CalendarIcon size={14} className="text-[#C59B27]" />
+            <span>{graduation.displayDate}</span>
+          </span>
           <span>•</span>
-          <span>📍 CAMPUS Q9</span>
+          <span className="flex items-center gap-1.5">
+            <MapPinIcon size={14} className="text-[#C59B27]" />
+            <span>CAMPUS Q9</span>
+          </span>
         </div>
       </div>
 

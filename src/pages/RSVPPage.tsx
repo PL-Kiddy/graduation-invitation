@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { APP_CONFIG } from '@/lib/constants';
+import { CapIcon, ClockIcon, XCircleIcon, CheckIcon, RefreshIcon, ArrowRightIcon, ExternalLinkIcon } from '@/components/ui/Icons';
 
 export const RSVPPage: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -11,24 +12,27 @@ export const RSVPPage: React.FC = () => {
   const options = [
     {
       id: 'yes',
-      label: 'Chắc chắn có mặt! 🎓',
+      label: 'Chắc chắn có mặt!',
       desc: 'Sẵn sàng check-in & chụp hình cùng Long',
       badge: 'ATTENDING',
-      message: 'Tuyệt vời quá! Long giữ chỗ và chuẩn bị đón bạn nhé! 🤝',
+      icon: CapIcon,
+      message: 'Tuyệt vời quá! Long giữ chỗ và chuẩn bị đón bạn nhé!',
     },
     {
       id: 'maybe',
-      label: 'Để mình sắp xếp nhé 👀',
+      label: 'Để mình sắp xếp nhé',
       desc: 'Cố gắng thu xếp công việc ghé qua',
       badge: 'MAYBE',
-      message: 'Cố gắng ghé nha, Long giữ sẵn một vị trí trong lòng trước nè 😌',
+      icon: ClockIcon,
+      message: 'Cố gắng ghé nha, Long giữ sẵn một vị trí trong lòng trước nè!',
     },
     {
       id: 'no',
-      label: 'Tiếc là không kịp đến 🥲',
+      label: 'Tiếc là không kịp đến',
       desc: 'Gửi lời chúc mừng tốt nghiệp từ xa',
       badge: 'UNABLE',
-      message: 'Không sao đâu nè, cảm ơn bạn rất nhiều! Hẹn bạn ở dịp gặp gần nhất nhé! ✨',
+      icon: XCircleIcon,
+      message: 'Không sao đâu nè, cảm ơn bạn rất nhiều! Hẹn bạn ở dịp gặp gần nhất nhé!',
     },
   ];
 
@@ -85,7 +89,7 @@ export const RSVPPage: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EB] to-white pointer-events-none" />
 
             <div className="relative z-10 w-12 h-12 rounded-full gold-halo-ring bg-gradient-to-tr from-[#D4AF37] to-[#F7E7A9] flex items-center justify-center text-xl text-white mx-auto shadow-md">
-              ✓
+              <CheckIcon size={22} className="text-white" />
             </div>
             <div className="relative z-10">
               <p className="font-grotesk-bold text-lg font-bold text-[#1E1A16]">
@@ -97,9 +101,10 @@ export const RSVPPage: React.FC = () => {
             </div>
             <button
               onClick={() => setIsSubmitted(false)}
-              className="relative z-10 text-[10px] font-mono tracking-wider text-[#C59B27] hover:underline cursor-pointer uppercase font-bold pt-1 block mx-auto"
+              className="relative z-10 text-[10px] font-mono tracking-wider text-[#C59B27] hover:underline cursor-pointer uppercase font-bold pt-1 flex items-center justify-center gap-1 mx-auto"
             >
-              Thay đổi phản hồi ↺
+              <RefreshIcon size={11} className="text-[#C59B27]" />
+              <span>Thay đổi phản hồi</span>
             </button>
           </motion.div>
         ) : (
@@ -125,6 +130,10 @@ export const RSVPPage: React.FC = () => {
                   >
                     <div className="space-y-0.5">
                       <div className="flex items-center gap-2">
+                        <opt.icon
+                          size={15}
+                          className={isSelected ? 'text-[#C59B27]' : 'text-[#8C6D1F]'}
+                        />
                         <span className="font-grotesk-bold font-bold text-xs text-[#1E1A16]">
                           {opt.label}
                         </span>
@@ -150,7 +159,7 @@ export const RSVPPage: React.FC = () => {
                           : 'border-[#C59B27]/40 bg-white'
                       }`}
                     >
-                      {isSelected && <span className="text-[10px] font-bold">✓</span>}
+                      {isSelected && <CheckIcon size={10} className="text-white" />}
                     </div>
                   </motion.div>
                 );
@@ -177,13 +186,14 @@ export const RSVPPage: React.FC = () => {
               whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={!selectedOption}
-              className={`w-full py-2.5 rounded-[4px] text-xs font-grotesk-bold font-bold tracking-wider uppercase transition-all shadow-md ${
+              className={`w-full py-2.5 rounded-[4px] text-xs font-grotesk-bold font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-1.5 ${
                 selectedOption
                   ? 'bg-gradient-to-r from-[#D4AF37] via-[#C59B27] to-[#997316] text-white hover:brightness-105 cursor-pointer shadow-[#C59B27]/25'
                   : 'bg-[#EAE4D9] text-[#8C7D6F] cursor-not-allowed'
               }`}
             >
-              Gửi phản hồi cho Long ↗
+              <span>Gửi phản hồi cho Long</span>
+              <ExternalLinkIcon size={12} className="text-white" />
             </motion.button>
           </form>
         )}
@@ -192,7 +202,10 @@ export const RSVPPage: React.FC = () => {
       {/* BOTTOM HINT */}
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
         <span>GUEST PROTOCOL</span>
-        <span className="font-semibold text-[#8C6D1F]">Lời kết & Liên hệ →</span>
+        <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
+          <span>Lời kết & Liên hệ</span>
+          <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
+        </span>
       </div>
     </PageSurface>
   );

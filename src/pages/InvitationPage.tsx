@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { graduation } from '@/data/graduation';
 import { APP_CONFIG } from '@/lib/constants';
+import { CalendarIcon, MapPinIcon, ArrowRightIcon } from '@/components/ui/Icons';
 
 export const InvitationPage: React.FC = () => {
   return (
@@ -95,8 +96,8 @@ export const InvitationPage: React.FC = () => {
             }}
             className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full bg-gradient-to-r from-[#FAF3E6] via-[#FFFDF8] to-[#FAF3E6] border border-[#C59B27] text-[#8C6D1F] text-xs font-grotesk-bold font-bold tracking-wider shadow-xs hover:shadow-md transition-all cursor-pointer"
           >
+            <CalendarIcon size={14} className="text-[#8C6D1F]" />
             <span>Thêm vào lịch</span>
-            <span>📅</span>
           </motion.button>
 
           <motion.button
@@ -104,8 +105,8 @@ export const InvitationPage: React.FC = () => {
             onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(graduation.campus)}`, '_blank')}
             className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full bg-gradient-to-r from-[#C59B27] to-[#B8860B] text-white text-xs font-grotesk-bold font-bold tracking-wider shadow-sm hover:shadow-md transition-all cursor-pointer"
           >
+            <MapPinIcon size={14} className="text-white" />
             <span>Xem địa điểm</span>
-            <span>📍</span>
           </motion.button>
         </div>
       </div>
@@ -113,7 +114,10 @@ export const InvitationPage: React.FC = () => {
       {/* BOTTOM HINT */}
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
         <span>QUÁCH HÙNG PHÚC LONG</span>
-        <span className="font-semibold text-[#8C6D1F]">Vuốt để đếm ngược →</span>
+        <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
+          <span>Vuốt để đếm ngược</span>
+          <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
+        </span>
       </div>
     </PageSurface>
   );

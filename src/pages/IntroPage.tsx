@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageSurface } from '@/components/book/PageSurface';
+import { CapIcon, SparklesIcon, ArrowRightIcon } from '@/components/ui/Icons';
 
 interface IntroPageProps {
   onNext?: () => void;
@@ -40,8 +41,9 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onNext }) => {
           <h1 className="text-3xl md:text-4xl font-grotesk-bold font-black tracking-tight text-[#1E1A16] leading-none uppercase">
             CUỐI CÙNG THÌ...
           </h1>
-          <p className="text-xl md:text-2xl font-display-title font-bold foil-gold-text tracking-wide pt-1">
-            TÔI TỐT NGHIỆP RỒI! 🎓
+          <p className="text-xl md:text-2xl font-display-title font-bold foil-gold-text tracking-wide pt-1 flex items-center gap-2">
+            <span>TÔI TỐT NGHIỆP RỒI!</span>
+            <CapIcon size={24} className="text-[#C59B27]" />
           </p>
         </div>
 
@@ -53,15 +55,15 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onNext }) => {
 
           <div className="space-y-1.5 font-sans-modern text-xs text-[#4A4036]">
             <div className="flex items-start gap-2">
-              <span className="text-[#C59B27] font-bold mt-0.5">✦</span>
+              <SparklesIcon size={12} className="text-[#C59B27] shrink-0 mt-0.5" />
               <span>Những buổi sáng chạy deadline cuống cuồng kịp điểm danh</span>
             </div>
             <div className="flex items-start gap-2">
-              <span className="text-[#F27024] font-bold mt-0.5">✦</span>
+              <SparklesIcon size={12} className="text-[#F27024] shrink-0 mt-0.5" />
               <span>Những đêm thức trắng cùng đồng bọn cày đồ án Capstone</span>
             </div>
             <div className="flex items-start gap-2">
-              <span className="text-[#2E8B57] font-bold mt-0.5">✦</span>
+              <SparklesIcon size={12} className="text-[#2E8B57] shrink-0 mt-0.5" />
               <span>Và vô số lần fix bug tưởng chừng không bao giờ có hồi kết...</span>
             </div>
           </div>
@@ -86,8 +88,8 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onNext }) => {
         >
           <span className="font-mono text-[10px] text-[#8C7D6F]">02 → 03</span>
           <span className="tracking-widest">XEM HÀNH TRÌNH TIẾP THEO</span>
-          <span className="font-bold transform group-hover:translate-x-1 transition-transform text-[#C59B27]">
-            →
+          <span className="transform group-hover:translate-x-1 transition-transform">
+            <ArrowRightIcon size={15} className="text-[#C59B27]" />
           </span>
         </button>
       </div>

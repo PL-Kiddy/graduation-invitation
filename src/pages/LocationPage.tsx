@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { graduation } from '@/data/graduation';
 import { APP_CONFIG } from '@/lib/constants';
+import { MapPinIcon, ExternalLinkIcon, CopyIcon, CheckIcon, ArrowRightIcon } from '@/components/ui/Icons';
 
 export const LocationPage: React.FC = () => {
   const [copied, setCopied] = useState(false);
@@ -57,7 +58,7 @@ export const LocationPage: React.FC = () => {
           <div className="relative z-10 flex items-start gap-3">
             <div className="relative">
               <div className="w-8 h-8 rounded-full gold-halo-ring bg-white text-[#C59B27] flex items-center justify-center font-bold text-xs shadow-md">
-                📍
+                <MapPinIcon size={16} className="text-[#C59B27]" />
               </div>
               <span className="absolute inset-0 rounded-full bg-[#C59B27] animate-ping opacity-30" />
             </div>
@@ -95,7 +96,7 @@ export const LocationPage: React.FC = () => {
             className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full bg-gradient-to-r from-[#C59B27] to-[#B8860B] text-white text-[11px] font-grotesk-bold font-bold tracking-wider shadow-sm hover:shadow-md transition-all cursor-pointer"
           >
             <span>Xem đường đi</span>
-            <span>↗</span>
+            <ExternalLinkIcon size={12} className="text-white" />
           </motion.button>
 
           <motion.button
@@ -103,8 +104,17 @@ export const LocationPage: React.FC = () => {
             onClick={handleCopy}
             className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full bg-gradient-to-r from-[#FAF3E6] via-[#FFFDF8] to-[#FAF3E6] border border-[#C59B27]/60 text-[#8C6D1F] text-[11px] font-grotesk-bold font-bold tracking-wider shadow-xs hover:shadow-md transition-all cursor-pointer"
           >
-            <span>{copied ? 'Đã sao chép ✓' : 'Sao chép địa chỉ'}</span>
-            <span>📋</span>
+            {copied ? (
+              <>
+                <CheckIcon size={13} className="text-[#2E8B57]" />
+                <span>Đã sao chép</span>
+              </>
+            ) : (
+              <>
+                <CopyIcon size={13} className="text-[#8C6D1F]" />
+                <span>Sao chép địa chỉ</span>
+              </>
+            )}
           </motion.button>
         </div>
       </div>
@@ -112,7 +122,10 @@ export const LocationPage: React.FC = () => {
       {/* BOTTOM HINT */}
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
         <span>CAMPUS GUIDE</span>
-        <span className="font-semibold text-[#8C6D1F]">Khung hình kỷ niệm →</span>
+        <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
+          <span>Khung hình kỷ niệm</span>
+          <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
+        </span>
       </div>
     </PageSurface>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { graduation } from '@/data/graduation';
+import { CapIcon, CheckIcon, UniversityIcon, ClockIcon, LightningIcon, AwardIcon } from '@/components/ui/Icons';
 
 export const JourneyPage: React.FC = () => {
   const milestones = [
@@ -10,6 +11,7 @@ export const JourneyPage: React.FC = () => {
       title: 'NGÀY ĐẦU TIÊN',
       desc: 'Bước chân vào Campus Q9, ngỡ ngàng và háo hức',
       color: '#C59B27',
+      icon: UniversityIcon,
       rot: '-1deg',
     },
     {
@@ -17,6 +19,7 @@ export const JourneyPage: React.FC = () => {
       title: 'DEADLINE & CÀ PHÊ',
       desc: 'Những đêm thâu nộp bài lúc 23:59',
       color: '#F27024',
+      icon: ClockIcon,
       rot: '1.5deg',
     },
     {
@@ -24,6 +27,7 @@ export const JourneyPage: React.FC = () => {
       title: 'ĐỒ ÁN CAPSTONE',
       desc: '“Ủa sao code chạy trên máy tao mà demo lại lỗi?”',
       color: '#2E8B57',
+      icon: LightningIcon,
       rot: '-1.5deg',
     },
     {
@@ -31,6 +35,7 @@ export const JourneyPage: React.FC = () => {
       title: 'ĐỒNG BỌN ĐỒNG HÀNH',
       desc: 'Những người bạn cùng cày điểm, chia nhau từng ổ bánh mì',
       color: '#C59B27',
+      icon: AwardIcon,
       rot: '1deg',
     },
   ];
@@ -79,12 +84,12 @@ export const JourneyPage: React.FC = () => {
             style={{ transform: `rotate(${item.rot})` }}
             className="relative p-2.5 rounded-[5px] bg-white border border-[#C59B27]/25 shadow-xs flex items-start gap-3 hover:border-[#C59B27]/60 hover:shadow-md transition-all"
           >
-            {/* Number badge */}
+            {/* Icon + Number badge */}
             <div
-              className="w-7 h-7 rounded-[4px] text-white flex items-center justify-center font-mono font-bold text-xs shrink-0 shadow-xs"
+              className="w-8 h-8 rounded-[4px] text-white flex items-center justify-center shrink-0 shadow-xs"
               style={{ backgroundColor: item.color }}
             >
-              {item.num}
+              <item.icon size={16} className="text-white" />
             </div>
 
             <div className="flex-1 min-w-0">
@@ -92,8 +97,9 @@ export const JourneyPage: React.FC = () => {
                 <span className="text-[11px] font-grotesk-bold font-bold text-[#1E1A16] tracking-wider">
                   {item.title}
                 </span>
-                <span className="text-[8px] font-mono text-[#2E8B57] font-bold uppercase">
-                  PASS ✓
+                <span className="text-[8px] font-mono text-[#2E8B57] font-bold uppercase flex items-center gap-1">
+                  <span>PASS</span>
+                  <CheckIcon size={10} className="text-[#2E8B57]" />
                 </span>
               </div>
               <p className="text-[10px] text-[#52473D] leading-snug mt-0.5">
@@ -121,8 +127,9 @@ export const JourneyPage: React.FC = () => {
               </span>
             </div>
           </div>
-          <span className="px-2.5 py-1 rounded-full bg-[#FAF3E6] border border-[#C59B27]/40 text-[9px] font-mono font-bold text-[#8C6D1F]">
-            LỄ TỐT NGHIỆP 🎓
+          <span className="px-2.5 py-1 rounded-full bg-[#FAF3E6] border border-[#C59B27]/40 text-[9px] font-mono font-bold text-[#8C6D1F] flex items-center gap-1.5">
+            <span>LỄ TỐT NGHIỆP</span>
+            <CapIcon size={13} className="text-[#8C6D1F]" />
           </span>
         </motion.div>
       </div>

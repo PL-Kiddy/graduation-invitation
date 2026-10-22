@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { graduation } from '@/data/graduation';
+import { ClockIcon, ArrowRightIcon } from '@/components/ui/Icons';
 
 export const CountdownPage: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -49,7 +50,7 @@ export const CountdownPage: React.FC = () => {
       {/* TOP HEADER */}
       <div className="relative z-20 flex items-center justify-between border-b border-[#C59B27]/20 pb-2.5 mx-2">
         <div className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-[#C59B27] animate-ping" />
+          <ClockIcon size={13} className="text-[#C59B27]" />
           <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#8C6D1F] font-bold">
             COUNTDOWN // THỜI KHẮC
           </span>
@@ -118,7 +119,10 @@ export const CountdownPage: React.FC = () => {
       {/* BOTTOM HINT */}
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
         <span>TICKING FORWARD</span>
-        <span className="font-semibold text-[#8C6D1F]">Khám phá Campus 360° →</span>
+        <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
+          <span>Khám phá Campus 360°</span>
+          <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
+        </span>
       </div>
     </PageSurface>
   );

@@ -3,6 +3,18 @@ import { motion } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { graduation } from '@/data/graduation';
 import { APP_CONFIG } from '@/lib/constants';
+import {
+  CapIcon,
+  SparklesIcon,
+  CalendarIcon,
+  MapPinIcon,
+  RefreshIcon,
+  FacebookIcon,
+  ZaloIcon,
+  TikTokIcon,
+  InstagramIcon,
+  PhoneIcon,
+} from '@/components/ui/Icons';
 
 interface FinalPageProps {
   onRestart?: () => void;
@@ -55,7 +67,7 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
           className="relative w-28 h-28 md:w-32 md:h-32 my-1"
         >
           <div className="w-full h-full rounded-full gold-halo-ring bg-gradient-to-br from-[#FFFDF9] via-[#FAF5EB] to-[#EDE2D0] p-1.5 shadow-xl flex flex-col items-center justify-center overflow-hidden relative">
-            <span className="text-3xl filter drop-shadow-sm">🎓</span>
+            <CapIcon size={36} className="text-[#C59B27] filter drop-shadow-xs" />
             <span className="font-grotesk-bold text-base font-bold text-[#8C6D1F] tracking-wider mt-1">
               PHÚC LONG
             </span>
@@ -131,15 +143,26 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
           className="w-full max-w-[300px] bg-gradient-to-r from-[#A67C1E] via-[#C59B27] to-[#8C6514] text-white py-1.5 px-3 rounded-full shadow-md flex items-center justify-between text-xs font-mono font-bold"
         >
           <div className="flex items-center gap-1.5">
-            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-[10px]">f</span>
-            <span className="px-1.5 py-0.5 rounded-full bg-white/20 text-[8px]">Zalo</span>
-            <span className="text-[10px] tracking-wider pl-1">07.11.2026</span>
+            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
+              <FacebookIcon size={12} className="text-white" />
+            </span>
+            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
+              <ZaloIcon size={12} className="text-white" />
+            </span>
+            <span className="text-[10px] tracking-wider pl-1 flex items-center gap-1">
+              <PhoneIcon size={10} className="text-white/80" />
+              <span>07.11.2026</span>
+            </span>
           </div>
           <div className="h-3 w-px bg-white/30" />
           <div className="flex items-center gap-1.5">
             <span className="text-[9px] tracking-wide text-white/90">@phuclong</span>
-            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-[9px]">🎵</span>
-            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-[9px]">📷</span>
+            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
+              <TikTokIcon size={11} className="text-white" />
+            </span>
+            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
+              <InstagramIcon size={11} className="text-white" />
+            </span>
           </div>
         </motion.div>
 
@@ -152,7 +175,7 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
               className="w-full flex items-center justify-center gap-2 py-2 rounded-[4px] bg-white text-[#8C6D1F] border border-[#C59B27]/50 text-xs font-grotesk-bold font-bold tracking-wider hover:bg-[#FAF3E6] transition-colors cursor-pointer shadow-sm"
             >
               <span>Xem lại thiệp</span>
-              <span className="font-mono text-sm">↻</span>
+              <RefreshIcon size={13} className="text-[#8C6D1F]" />
             </motion.button>
           )}
 
@@ -160,9 +183,10 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
             <motion.button
               whileTap={{ scale: 0.97 }}
               onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(graduation.campus)}`, '_blank')}
-              className="py-1.5 rounded-[4px] bg-[#FAF5EB] hover:bg-[#F3E8D3] text-[#8C6D1F] border border-[#C59B27]/30 text-[10px] font-mono font-bold tracking-wider transition-colors cursor-pointer"
+              className="flex items-center justify-center gap-1.5 py-1.5 rounded-[4px] bg-[#FAF5EB] hover:bg-[#F3E8D3] text-[#8C6D1F] border border-[#C59B27]/30 text-[10px] font-mono font-bold tracking-wider transition-colors cursor-pointer"
             >
-              Bản đồ 📍
+              <MapPinIcon size={12} className="text-[#8C6D1F]" />
+              <span>Bản đồ</span>
             </motion.button>
 
             <motion.button
@@ -171,17 +195,19 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
                 const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Lễ Tốt Nghiệp — Quách Hùng Phúc Long')}&dates=20261107T010000Z/20261107T050000Z&details=${encodeURIComponent('Lễ tốt nghiệp của Quách Hùng Phúc Long tại Trường Đại học FPT TP.HCM')}&location=${encodeURIComponent(graduation.campus)}`;
                 window.open(url, '_blank');
               }}
-              className="py-1.5 rounded-[4px] bg-[#FAF5EB] hover:bg-[#F3E8D3] text-[#8C6D1F] border border-[#C59B27]/30 text-[10px] font-mono font-bold tracking-wider transition-colors cursor-pointer"
+              className="flex items-center justify-center gap-1.5 py-1.5 rounded-[4px] bg-[#FAF5EB] hover:bg-[#F3E8D3] text-[#8C6D1F] border border-[#C59B27]/30 text-[10px] font-mono font-bold tracking-wider transition-colors cursor-pointer"
             >
-              Lịch hẹn 📅
+              <CalendarIcon size={12} className="text-[#8C6D1F]" />
+              <span>Lịch hẹn</span>
             </motion.button>
           </div>
         </div>
       </div>
 
       {/* BOTTOM HINT */}
-      <div className="relative z-20 text-center text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
-        Trân trọng cảm ơn sự hiện diện và đồng hành của bạn ✨
+      <div className="relative z-20 text-center text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2 flex items-center justify-center gap-1.5">
+        <span>Trân trọng cảm ơn sự hiện diện và đồng hành của bạn</span>
+        <SparklesIcon size={12} className="text-[#C59B27]" />
       </div>
     </PageSurface>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { graduation } from '@/data/graduation';
+import { ArrowRightIcon } from '@/components/ui/Icons';
 
 export const MessagePage: React.FC = () => {
   return (
@@ -112,7 +113,10 @@ export const MessagePage: React.FC = () => {
       {/* BOTTOM HINT */}
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/25 mx-2">
         <span>A PERSONAL NOTE</span>
-        <span className="font-semibold text-[#8C6D1F]">Gửi phản hồi cho Long →</span>
+        <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
+          <span>Gửi phản hồi cho Long</span>
+          <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
+        </span>
       </div>
     </PageSurface>
   );

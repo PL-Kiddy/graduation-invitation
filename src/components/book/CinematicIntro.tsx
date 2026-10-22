@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { graduation } from '@/data/graduation';
 import { APP_CONFIG } from '@/lib/constants';
+import { CapIcon } from '@/components/ui/Icons';
 
 interface CinematicIntroProps {
   onComplete: () => void;
@@ -107,8 +108,9 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = ({ onComplete }) =>
                 <span className="px-2.5 py-0.5 rounded-full bg-[#FAF3E6] border border-[#C59B27]/40 text-[#8C6D1F] text-[10px] font-mono font-bold uppercase tracking-wider">
                   TÂN KHOA CỬ NHÂN
                 </span>
-                <span className="text-[10px] font-mono text-[#2E8B57] font-semibold">
-                  STATUS: GRADUATED 🎓
+                <span className="text-[10px] font-mono text-[#2E8B57] font-semibold flex items-center gap-1.5">
+                  <span>STATUS: GRADUATED</span>
+                  <CapIcon size={12} className="text-[#2E8B57]" />
                 </span>
               </div>
 

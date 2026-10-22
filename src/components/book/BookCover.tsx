@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { graduation } from '@/data/graduation';
 import { APP_CONFIG } from '@/lib/constants';
+import { CapIcon, SparklesIcon, CalendarIcon, MapPinIcon } from '@/components/ui/Icons';
 
 interface BookCoverProps {
   isOpening: boolean;
@@ -227,15 +228,15 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
               {/* Glowing Golden Medallion Portrait Ring (from Image 1 & 2) */}
               <div className="relative w-24 h-24 md:w-28 md:h-28 mx-auto my-1">
                 <div className="w-full h-full rounded-full gold-halo-ring bg-gradient-to-br from-[#FAF5EB] to-[#EBE2D2] flex flex-col items-center justify-center shadow-lg overflow-hidden relative">
-                  {/* Graduate Cap & Icon representation */}
-                  <span className="text-3xl md:text-4xl">🎓</span>
+                  {/* Graduate Cap Vector Icon */}
+                  <CapIcon size={34} className="text-[#C59B27] filter drop-shadow-xs" />
                   <span className="text-[8px] font-mono font-bold text-[#8C6D1F] tracking-wider mt-1">
                     CỬ NHÂN IT
                   </span>
                 </div>
                 {/* 3D Floral cluster badge on bottom-right of medallion (as in Image 1) */}
-                <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-white shadow-md border border-[#D4AF37]/50 flex items-center justify-center text-sm">
-                  🌸
+                <div className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-white shadow-md border border-[#D4AF37]/50 flex items-center justify-center text-[#C59B27]">
+                  <SparklesIcon size={14} className="text-[#C59B27]" />
                 </div>
               </div>
 
@@ -255,10 +256,16 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
 
             {/* Bottom details & Tactile Touch CTA */}
             <div className="w-full space-y-3.5 pb-1">
-              <div className="flex items-center justify-center gap-2 text-xs font-mono font-bold text-[#8C6D1F]">
-                <span>📅 {graduation.displayDate}</span>
+              <div className="flex items-center justify-center gap-3 text-xs font-mono font-bold text-[#8C6D1F]">
+                <span className="flex items-center gap-1.5">
+                  <CalendarIcon size={14} className="text-[#C59B27]" />
+                  <span>{graduation.displayDate}</span>
+                </span>
                 <span>•</span>
-                <span>📍 CAMPUS Q9</span>
+                <span className="flex items-center gap-1.5">
+                  <MapPinIcon size={14} className="text-[#C59B27]" />
+                  <span>CAMPUS Q9</span>
+                </span>
               </div>
 
               {/* Touch to open button with luminous gold ring */}

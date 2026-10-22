@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { APP_CONFIG } from '@/lib/constants';
+import { UniversityIcon, LightningIcon, SparklesIcon, CapIcon, ArrowRightIcon } from '@/components/ui/Icons';
 
 export const MemoriesPage: React.FC = () => {
   return (
@@ -54,7 +55,7 @@ export const MemoriesPage: React.FC = () => {
           <div className="w-full aspect-[4/3] rounded-[3px] bg-gradient-to-tr from-[#FFFDF9] via-[#FAF3E6] to-[#F3E8D3] border border-[#C59B27]/25 flex flex-col justify-between p-2.5 text-[#1E1A16]">
             <span className="text-[8px] font-mono text-[#8C6D1F] font-bold">ARCHIVE #01</span>
             <div className="text-center py-1">
-              <span className="text-2xl">🏫</span>
+              <UniversityIcon size={24} className="text-[#8C6D1F] mx-auto" />
               <p className="text-[10px] font-mono font-bold text-[#52473D] mt-1">FPT Q9 CAMPUS</p>
             </div>
             <span className="text-[8px] font-mono text-[#2E8B57] font-bold">KHÓA 2022 — 2026</span>
@@ -79,10 +80,13 @@ export const MemoriesPage: React.FC = () => {
           <div className="w-full aspect-[4/3] rounded-[3px] bg-gradient-to-tr from-[#FAF5EB] to-[#FFF8EC] flex flex-col justify-between p-2.5 border border-[#C59B27]/30">
             <span className="text-[8px] font-mono text-[#F27024] font-bold">SPRINT // 03:00 AM</span>
             <div className="text-center py-1">
-              <span className="text-2xl">⚡</span>
+              <LightningIcon size={24} className="text-[#F27024] mx-auto" />
               <p className="text-[10px] font-mono font-bold text-[#8C6D1F] mt-1">ĐỒ ÁN TỐT NGHIỆP</p>
             </div>
-            <span className="text-[8px] font-mono text-[#2E8B57] font-bold">STATUS: PASSED 🌟</span>
+            <span className="text-[8px] font-mono text-[#2E8B57] font-bold flex items-center justify-center gap-1">
+              <span>STATUS: PASSED</span>
+              <SparklesIcon size={10} className="text-[#2E8B57]" />
+            </span>
           </div>
           <p className="font-editorial-serif italic text-xs text-[#52473D] mt-2 text-center font-medium">
             “Những đêm thức cày đồ án cùng đồng đội.”
@@ -97,7 +101,7 @@ export const MemoriesPage: React.FC = () => {
           className="absolute bottom-2 left-4 w-52 md:w-56 bg-white p-2.5 rounded-[5px] shadow-xl border border-[#C59B27]/40 z-30 flex items-center gap-2.5"
         >
           <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#D4AF37] to-[#F7E7A9] flex items-center justify-center text-white shrink-0 shadow-md">
-            <span className="text-xl">🎓</span>
+            <CapIcon size={22} className="text-white" />
           </div>
           <div>
             <span className="text-[8px] font-mono tracking-wider text-[#C59B27] uppercase font-bold block">
@@ -113,7 +117,10 @@ export const MemoriesPage: React.FC = () => {
       {/* BOTTOM HINT */}
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
         <span>MEMORIES // STORED</span>
-        <span className="font-semibold text-[#8C6D1F]">Thông điệp gửi bạn →</span>
+        <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
+          <span>Thông điệp gửi bạn</span>
+          <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
+        </span>
       </div>
     </PageSurface>
   );

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { APP_CONFIG } from '@/lib/constants';
+import { GlobeIcon, SearchIcon, ExternalLinkIcon, ArrowRightIcon } from '@/components/ui/Icons';
 
 export const CampusPage: React.FC = () => {
   const [is360Active, setIs360Active] = useState(false);
@@ -68,7 +69,11 @@ export const CampusPage: React.FC = () => {
                 transition={{ duration: 0.5 }}
                 className="w-16 h-16 rounded-full gold-halo-ring bg-white flex items-center justify-center mx-auto shadow-md group-hover:scale-105 transition-transform"
               >
-                <span className="text-2xl">{is360Active ? '🔍' : '🌐'}</span>
+                {is360Active ? (
+                  <SearchIcon size={26} className="text-[#C59B27]" />
+                ) : (
+                  <GlobeIcon size={26} className="text-[#C59B27]" />
+                )}
               </motion.div>
 
               <div>
@@ -84,7 +89,10 @@ export const CampusPage: React.FC = () => {
             {/* Bottom Tech HUD */}
             <div className="relative z-10 flex justify-between items-center text-[9px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/25">
               <span>FPTU SAIGON CAMPUS</span>
-              <span className="text-[#C59B27] font-bold">CHẠM ĐỂ XEM ↗</span>
+              <span className="text-[#C59B27] font-bold flex items-center gap-1">
+                <span>CHẠM ĐỂ XEM</span>
+                <ExternalLinkIcon size={11} className="text-[#C59B27]" />
+              </span>
             </div>
           </div>
 
@@ -128,7 +136,7 @@ export const CampusPage: React.FC = () => {
               {is360Active ? 'CLOSE' : 'OPEN'}
             </span>
             <span>{is360Active ? 'ĐÓNG GÓC NHÌN ✕' : 'TRẢI NGHIỆM CAMPUS 360°'}</span>
-            <span className="font-mono">↗</span>
+            <ExternalLinkIcon size={13} className="text-[#8C6D1F]" />
           </button>
         </div>
       </div>
@@ -136,7 +144,10 @@ export const CampusPage: React.FC = () => {
       {/* BOTTOM HINT */}
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
         <span>CAMPUS ARCHITECTURE</span>
-        <span className="font-semibold text-[#8C6D1F]">Xem bản đồ đường đi →</span>
+        <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
+          <span>Xem bản đồ đường đi</span>
+          <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
+        </span>
       </div>
     </PageSurface>
   );
