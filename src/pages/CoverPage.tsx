@@ -2,9 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { graduation } from '@/data/graduation';
 import { PageSurface } from '@/components/book/PageSurface';
-import { TextReveal } from '@/components/motion/TextReveal';
-import { FadeIn } from '@/components/motion/FadeIn';
-import { MaskReveal } from '@/components/motion/MaskReveal';
 
 interface CoverPageProps {
   onNext?: () => void;
@@ -12,115 +9,132 @@ interface CoverPageProps {
 
 export const CoverPage: React.FC<CoverPageProps> = ({ onNext }) => {
   return (
-    <PageSurface className="p-6 md:p-8 flex flex-col justify-between">
-      {/* Top Header: Editorial Accent & Institution */}
-      <div className="flex items-center justify-between border-b border-[#35302B]/15 pb-3">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#F27024]" />
-          <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#554E45]">
-            THƯ MỜI CHÍNH THỨC
+    <PageSurface variant="light" className="p-5 md:p-6 flex flex-col justify-between overflow-hidden relative">
+      {/* Double Gold Foil Border Frame (as in Reference Image 1) */}
+      <div className="absolute inset-3 rounded-[6px] border border-[#C59B27]/40 pointer-events-none shadow-[inset_0_0_0_1px_rgba(255,255,255,0.9)]" />
+      <div className="absolute inset-4.5 rounded-[4px] border border-[#C59B27]/25 pointer-events-none" />
+
+      {/* Ornate Gold Filigree Corners */}
+      <div className="absolute top-5 left-5 w-3.5 h-3.5 border-t-2 border-l-2 border-[#C59B27]/70 pointer-events-none" />
+      <div className="absolute top-5 right-5 w-3.5 h-3.5 border-t-2 border-r-2 border-[#C59B27]/70 pointer-events-none" />
+      <div className="absolute bottom-5 left-5 w-3.5 h-3.5 border-b-2 border-l-2 border-[#C59B27]/70 pointer-events-none" />
+      <div className="absolute bottom-5 right-5 w-3.5 h-3.5 border-b-2 border-r-2 border-[#C59B27]/70 pointer-events-none" />
+
+      {/* 3D Paper Floral & Gold Leaf Accents (from Reference Image 1) */}
+      <div className="absolute top-2 left-2 pointer-events-none floral-accent-shadow z-15">
+        <svg width="58" height="58" viewBox="0 0 100 100" fill="none">
+          <path d="M15 15 C30 5, 55 15, 65 35 C45 40, 25 30, 15 15 Z" fill="#D4AF37" opacity="0.8" />
+          <path d="M15 15 C10 35, 20 60, 40 68 C45 50, 35 30, 15 15 Z" fill="#D4AF37" opacity="0.8" />
+          <circle cx="30" cy="30" r="13" fill="#FFFFFF" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.08))" />
+          <circle cx="27" cy="27" r="7" fill="#F8F6F0" />
+          <circle cx="30" cy="30" r="3.5" fill="#D4AF37" />
+        </svg>
+      </div>
+
+      <div className="absolute bottom-2 right-2 pointer-events-none floral-accent-shadow z-15 rotate-180">
+        <svg width="58" height="58" viewBox="0 0 100 100" fill="none">
+          <path d="M15 15 C30 5, 55 15, 65 35 C45 40, 25 30, 15 15 Z" fill="#D4AF37" opacity="0.8" />
+          <path d="M15 15 C10 35, 20 60, 40 68 C45 50, 35 30, 15 15 Z" fill="#D4AF37" opacity="0.8" />
+          <circle cx="30" cy="30" r="13" fill="#FFFFFF" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.08))" />
+          <circle cx="27" cy="27" r="7" fill="#F8F6F0" />
+          <circle cx="30" cy="30" r="3.5" fill="#D4AF37" />
+        </svg>
+      </div>
+
+      {/* TOP HEADER: Brand & Page Index */}
+      <div className="relative z-20 flex items-center justify-between border-b border-[#C59B27]/20 pb-2.5 mx-2">
+        <div className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-[#C59B27]" />
+          <span className="text-[10px] font-mono tracking-[0.2em] text-[#8C6D1F] font-bold uppercase">
+            FPT UNIVERSITY // 2026
           </span>
         </div>
-        <span className="text-[11px] font-mono tracking-widest text-[#736B63]">
-          01 / 11
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="px-2 py-0.5 rounded-full bg-[#FAF3E6] border border-[#C59B27]/40 text-[#8C6D1F] text-[9px] font-mono font-bold">
+            TÂN KHOA
+          </span>
+          <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
+            01 / 11
+          </span>
+        </div>
       </div>
 
-      {/* Main Center Body: Editorial Typography & Graduate Portrait Frame */}
-      <div className="my-auto py-2 flex flex-col items-center text-center">
-        {/* Subtle Decorative Capsule */}
-        <FadeIn delay={0.15}>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#C59B27]/40 bg-[#FFFFFF]/90 text-[#8C6D1F] text-[10px] uppercase tracking-[0.25em] font-semibold mb-2 shadow-xs">
-            <span>{graduation.classYear}</span>
-            <span className="text-[#F27024]">•</span>
-            <span>FPT UNIVERSITY</span>
-          </div>
-        </FadeIn>
-
-        {/* Major Title: GRADUATION 2026 */}
-        <div className="space-y-0.5">
-          <h1 className="text-3xl md:text-4xl font-display-title font-bold tracking-[0.16em] text-[#1F1C18]">
-            <TextReveal mode="character" delay={0.25} stagger={0.035}>
-              GRADUATION
-            </TextReveal>
+      {/* MAIN CENTER: Glowing Circular Portrait Medallion & Calligraphy Title */}
+      <div className="relative z-20 my-auto py-2 flex flex-col items-center text-center w-full">
+        {/* Calligraphy and Gold Foil Title */}
+        <div className="space-y-0.5 mb-2">
+          <p className="font-editorial-serif italic text-base md:text-lg text-[#8C6D1F] font-semibold">
+            Lễ tốt nghiệp
+          </p>
+          <h1 className="text-3xl md:text-4xl font-display-title font-black tracking-wider foil-gold-text leading-none uppercase">
+            GRADUATION
           </h1>
-          <p className="text-sm font-mono tracking-[0.35em] text-[#B88A22] font-bold">
-            <TextReveal mode="character" delay={0.55}>
-              2026
-            </TextReveal>
+          <p className="text-lg md:text-xl font-mono tracking-[0.25em] text-[#C59B27] font-bold">
+            2026
           </p>
         </div>
 
-        {/* Central Monogram / Portrait Visual 3D Frame */}
-        <MaskReveal delay={0.45} duration={0.8} className="my-3">
-          <div className="relative w-38 h-46 md:w-42 md:h-50 rounded-[6px] overflow-hidden border border-[#C59B27]/40 bg-gradient-to-b from-[#FAF7F2] to-[#EFE6D8] flex flex-col items-center justify-center p-4 shadow-md group hover:shadow-lg transition-shadow">
-            {/* Corner Gold Filigrees */}
-            <div className="absolute top-2 left-2 w-2.5 h-2.5 border-t-2 border-l-2 border-[#C59B27]/60" />
-            <div className="absolute top-2 right-2 w-2.5 h-2.5 border-t-2 border-r-2 border-[#C59B27]/60" />
-            <div className="absolute bottom-2 left-2 w-2.5 h-2.5 border-b-2 border-l-2 border-[#C59B27]/60" />
-            <div className="absolute bottom-2 right-2 w-2.5 h-2.5 border-b-2 border-r-2 border-[#C59B27]/60" />
-
-            {/* Stylized Graduate Cap & Gold Medallion */}
-            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#FFFFFF] to-[#EAE0D0] border border-[#C59B27]/50 flex items-center justify-center text-[#B88A22] mb-2 shadow-sm">
-              <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                <path d="M6 12v5c3 3 9 3 12 0v-5" />
-              </svg>
-            </div>
-            <span className="font-serif-editorial text-sm font-bold tracking-wider text-[#1F1C18]">
-              QUÁCH HÙNG PHÚC LONG
-            </span>
-            <span className="text-[9px] font-mono tracking-widest text-[#7A7065] font-medium mt-0.5">
-              KHOÁ 2022 - 2026
-            </span>
-          </div>
-        </MaskReveal>
-
-        {/* Intentional Line Break Name */}
-        <div className="space-y-0.5 mt-1">
-          <p className="text-[10px] uppercase font-mono tracking-[0.25em] text-[#7A7065] font-semibold">
-            TÂN KHOA
-          </p>
-          <h2 className="text-xl md:text-2xl font-serif-editorial font-bold tracking-wider text-[#1F1C18] leading-tight">
-            QUÁCH HÙNG<br />PHÚC LONG
-          </h2>
-        </div>
-
-        {/* Restrained Accent Separator Line */}
+        {/* Glowing Circular Golden Medallion Frame for Graduate (Matching Reference Image 1 & 2) */}
         <motion.div
-          className="w-14 h-[1.5px] bg-[#C59B27] my-2.5"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.6, delay: 0.85, ease: [0.16, 1, 0.3, 1] }}
-        />
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="relative w-32 h-32 md:w-36 md:h-36 my-2"
+        >
+          <div className="w-full h-full rounded-full gold-halo-ring bg-gradient-to-br from-[#FFFDF9] via-[#FAF5EB] to-[#EDE2D0] p-1.5 shadow-xl flex flex-col items-center justify-center overflow-hidden relative">
+            {/* Graduate Cap Silhouette & Avatar */}
+            <div className="w-full h-full rounded-full bg-gradient-to-b from-[#FDFBF7] to-[#EBE2D2] flex flex-col items-center justify-center shadow-inner">
+              <span className="text-4xl md:text-5xl">🎓</span>
+              <span className="text-[9px] font-mono font-bold text-[#8C6D1F] tracking-wider mt-1 uppercase">
+                TÂN KHOA IT
+              </span>
+            </div>
+          </div>
 
-        {/* University & Date Info */}
-        <FadeIn delay={0.9} className="space-y-1">
-          <p className="text-xs font-semibold text-[#3D352D] tracking-wide">
+          {/* 3D Paper Flower & Leaf Accent at base of circle (Reference Image 1) */}
+          <div className="absolute -bottom-1 -right-1 w-9 h-9 rounded-full bg-white border border-[#D4AF37]/60 shadow-md flex items-center justify-center text-base">
+            🌸
+          </div>
+        </motion.div>
+
+        {/* Graduate Formal Name & Department */}
+        <div className="space-y-1 mt-1">
+          <span className="text-[9px] uppercase font-mono tracking-[0.25em] text-[#8C7D6F] font-semibold">
+            CỬ NHÂN KHOÁ 2022 - 2026
+          </span>
+          <h2 className="text-2xl md:text-3xl font-grotesk-bold font-bold tracking-tight text-[#1E1A16] leading-tight">
+            QUÁCH HÙNG PHÚC LONG
+          </h2>
+          <p className="text-xs text-[#6A5E50] font-sans-modern font-medium">
             {graduation.university}
           </p>
-          <p className="text-xs font-mono font-bold tracking-widest text-[#B88A22]">
-            {graduation.displayDate}
-          </p>
-        </FadeIn>
+        </div>
+
+        {/* Convocation Date & Venue Chip */}
+        <div className="mt-3 py-1.5 px-4 rounded-full bg-[#FAF3E6] border border-[#C59B27]/40 flex items-center gap-3 text-xs font-mono font-bold text-[#8C6D1F] shadow-xs">
+          <span>📅 {graduation.displayDate}</span>
+          <span>•</span>
+          <span>📍 CAMPUS Q9</span>
+        </div>
       </div>
 
-      {/* Bottom CTA / Gesture Prompt */}
-      <FadeIn delay={1.1} className="pt-2">
+      {/* BOTTOM CTA: Vuốt để bắt đầu */}
+      <div className="relative z-20 pt-1 mx-2">
         <button
           onClick={onNext}
-          className="w-full flex items-center justify-center gap-2 py-2 text-xs font-medium tracking-wider text-[#6A5E50] hover:text-[#1F1C18] transition-colors group cursor-pointer"
+          className="w-full flex items-center justify-between px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FAF3E6] via-[#FFFFFF] to-[#FAF3E6] border border-[#C59B27]/50 text-[#8C6D1F] text-xs font-grotesk-bold font-bold tracking-wider hover:shadow-md transition-all cursor-pointer group shadow-xs"
         >
-          <span>Vuốt để bắt đầu</span>
+          <span className="font-mono text-[10px] text-[#8C7D6F]">01 → 02</span>
+          <span className="tracking-widest">VUỐT ĐỂ BẮT ĐẦU</span>
           <motion.span
-            animate={{ x: [0, 5, 0] }}
+            animate={{ x: [0, 4, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            className="text-[#F27024] font-bold"
+            className="text-[#C59B27] font-bold text-sm"
           >
             →
           </motion.span>
         </button>
-      </FadeIn>
+      </div>
     </PageSurface>
   );
 };

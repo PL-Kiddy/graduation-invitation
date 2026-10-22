@@ -11,10 +11,9 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = ({ onComplete }) =>
   const [step, setStep] = useState<number>(0);
 
   useEffect(() => {
-    // Sequenced progression
-    const t1 = setTimeout(() => setStep(1), 400); // 07 · 11 · 2026
-    const t2 = setTimeout(() => setStep(2), 1200); // "Có một cái hẹn..."
-    const t3 = setTimeout(() => setStep(3), 2000); // Graduate Name
+    const t1 = setTimeout(() => setStep(1), 300);
+    const t2 = setTimeout(() => setStep(2), 1000);
+    const t3 = setTimeout(() => setStep(3), 1800);
     const t4 = setTimeout(() => onComplete(), APP_CONFIG.TIMING.INTRO_AUTOSKIP_DELAY);
 
     return () => {
@@ -28,53 +27,69 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = ({ onComplete }) =>
   return (
     <motion.div
       onClick={onComplete}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-between p-8 bg-gradient-to-b from-[#FCFAF6] via-[#F7EFE4] to-[#EDE3D3] text-[#1F1C18] cursor-pointer select-none overflow-hidden"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-between p-6 md:p-10 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6EE] to-[#F3ECE0] text-[#1E1A16] cursor-pointer select-none overflow-hidden"
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, scale: 1.02, filter: 'blur(8px)', transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } }}
+      exit={{ opacity: 0, scale: 1.03, filter: 'blur(8px)', transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }}
     >
-      {/* Warm champagne & golden sunbeam ambient bloom */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] bg-gradient-to-br from-[#F7E5B5]/60 via-[#F27024]/10 to-transparent rounded-full blur-[100px] pointer-events-none" />
+      {/* Background Soft Golden Hall Light Bloom */}
+      <div 
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[70vw] h-[50vh] opacity-35 blur-[100px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, #F7E7A9 0%, #D4AF37 50%, transparent 80%)',
+        }}
+      />
 
-      {/* Top Header */}
-      <div className="w-full flex justify-between items-center text-[10px] font-mono tracking-[0.25em] text-[#8C7E70]">
-        <span className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#F27024]" />
-          TRƯỜNG ĐẠI HỌC FPT
+      {/* Background Giant Warm Watermark Numbers */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.05] overflow-hidden select-none">
+        <span className="font-grotesk-bold text-[38vw] md:text-[28vw] leading-none text-[#C59B27] tracking-tighter">
+          07.11
         </span>
-        <span className="font-semibold text-[#B88A22]">2026</span>
       </div>
 
-      {/* Center Cinematic Stage */}
-      <div className="my-auto text-center space-y-6 max-w-sm relative z-10">
-        {/* Step 1: 07 · 11 · 2026 */}
+      {/* Top Header Grid */}
+      <div className="w-full flex justify-between items-center text-[10px] font-mono tracking-[0.2em] text-[#8C7D6F] z-10 border-b border-[#C59B27]/20 pb-3">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-[#C59B27] animate-pulse" />
+          <span className="font-bold text-[#8C6D1F]">FPT UNIVERSITY // GRADUATION</span>
+        </div>
+        <span className="text-[#C59B27] font-bold">[2026]</span>
+      </div>
+
+      {/* Center Cinematic Kinetic Typography Stage */}
+      <div className="my-auto text-left w-full max-w-md space-y-6 relative z-10 px-2">
+        {/* Step 1: Oversized Gold Foil 07 · 11 · 26 */}
         <AnimatePresence>
           {step >= 1 && (
             <motion.div
-              className="flex items-center justify-center gap-2.5 font-mono text-xs md:text-sm tracking-[0.35em] text-[#B88A22] font-semibold"
-              initial={{ opacity: 0, y: 15, filter: 'blur(6px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="flex items-baseline gap-2 font-grotesk-bold tracking-tighter"
+              initial={{ opacity: 0, x: -25 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span>07</span>
-              <span className="text-[#F27024]">·</span>
-              <span>11</span>
-              <span className="text-[#F27024]">·</span>
-              <span>2026</span>
+              <span className="text-5xl md:text-6xl foil-gold-text font-black">07</span>
+              <span className="text-3xl md:text-4xl text-[#C59B27]/60">/</span>
+              <span className="text-5xl md:text-6xl foil-gold-text font-black">11</span>
+              <span className="text-3xl md:text-4xl text-[#C59B27]/60">/</span>
+              <span className="text-5xl md:text-6xl text-[#1E1A16] font-black">2026</span>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Step 2: "Có một cái hẹn..." */}
+        {/* Step 2: "Có một cái hẹn / mình muốn bạn có mặt." */}
         <AnimatePresence>
           {step >= 2 && (
             <motion.div
-              className="space-y-1.5 font-serif-editorial text-2xl md:text-3xl text-[#2B241E] leading-relaxed"
-              initial={{ opacity: 0, y: 18, filter: 'blur(8px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              className="space-y-1"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <p className="font-normal text-[#4A4036]">Có một cái hẹn</p>
-              <p className="italic font-bold text-[#1F1C18]">mình muốn bạn có mặt.</p>
+              <p className="font-grotesk-bold text-2xl md:text-3xl tracking-tight text-[#1E1A16] uppercase">
+                Có một cái hẹn
+              </p>
+              <p className="font-editorial-serif italic text-2xl md:text-3xl foil-gold-text font-bold">
+                mình muốn bạn có mặt.
+              </p>
             </motion.div>
           )}
         </AnimatePresence>
@@ -83,40 +98,52 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = ({ onComplete }) =>
         <AnimatePresence>
           {step >= 3 && (
             <motion.div
-              className="pt-2 space-y-3"
-              initial={{ opacity: 0, scale: 0.95 }}
+              className="pt-2 space-y-2.5"
+              initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
             >
+              <div className="flex items-center gap-2">
+                <span className="px-2.5 py-0.5 rounded-full bg-[#FAF3E6] border border-[#C59B27]/40 text-[#8C6D1F] text-[10px] font-mono font-bold uppercase tracking-wider">
+                  TÂN KHOA CỬ NHÂN
+                </span>
+                <span className="text-[10px] font-mono text-[#2E8B57] font-semibold">
+                  STATUS: GRADUATED 🎓
+                </span>
+              </div>
+
               <motion.h1
-                className="font-serif-editorial font-bold text-base md:text-lg text-[#1F1C18] tracking-[0.2em] uppercase"
-                initial={{ letterSpacing: '0.35em', opacity: 0 }}
-                animate={{ letterSpacing: '0.22em', opacity: 1 }}
-                transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+                className="font-grotesk-bold text-3xl md:text-4xl text-[#1E1A16] tracking-tight uppercase leading-none font-black"
+                initial={{ letterSpacing: '0.08em', opacity: 0 }}
+                animate={{ letterSpacing: '-0.02em', opacity: 1 }}
+                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               >
                 {graduation.formalName}
               </motion.h1>
 
-              {/* Gold foil accent line */}
-              <motion.div
-                className="w-20 h-[1.5px] bg-gradient-to-r from-transparent via-[#C59B27] to-transparent mx-auto"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              />
+              {/* Gold & Orange decorative accent bar */}
+              <div className="flex items-center gap-1.5 pt-1">
+                <div className="w-12 h-1 bg-[#C59B27] rounded-full" />
+                <div className="w-4 h-1 bg-[#F27024] rounded-full" />
+                <div className="w-2 h-1 bg-[#2E8B57] rounded-full" />
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      {/* Bottom Skip Prompt with subtle golden pill */}
+      {/* Bottom Skip Prompt */}
       <motion.div
-        className="px-3.5 py-1.5 rounded-full bg-[#FFFFFF]/80 border border-[#E5DC CE] text-[10px] font-mono tracking-widest text-[#7A6E60] shadow-xs backdrop-blur-xs"
+        className="w-full flex justify-between items-center text-[10px] font-mono text-[#8C7D6F] pt-4 border-t border-[#C59B27]/20 z-10"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.9 }}
-        transition={{ delay: 0.8, duration: 0.5 }}
+        animate={{ opacity: 0.85 }}
+        transition={{ delay: 0.5, duration: 0.5 }}
       >
-        Chạm bất kỳ đâu để vào thiệp ✕
+        <span>CHẠM BẤT KỲ ĐỂ TIẾP TỤC</span>
+        <span className="text-[#C59B27] font-bold flex items-center gap-1">
+          <span>MỞ THIỆP MỜI</span>
+          <span>↗</span>
+        </span>
       </motion.div>
     </motion.div>
   );

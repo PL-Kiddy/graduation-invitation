@@ -2,34 +2,28 @@
 
 @layer base {
   :root {
-    /* Bright Luxury Paper & Stationery Palette */
-    --color-paper: #FAF7F2;
-    --color-paper-tint: #FFFFFF;
-    --color-paper-dark: #EDE5D8;
-    --color-paper-border: #E5DC CE;
-    --color-paper-shadow: rgba(60, 45, 30, 0.08);
+    /* Bright Luxury Ivory & Gold Editorial Palette */
+    --color-paper-light: #FAF8F5;
+    --color-paper-white: #FFFFFF;
+    --color-paper-cream: #F5EFEB;
+    --color-paper-warm: #FFFDF9;
 
-    /* Rich Warm Ink Typography */
-    --color-ink: #1F1C18;
-    --color-ink-secondary: #4A4238;
-    --color-ink-muted: #7A7065;
-    --color-ink-subtle: #A39788;
+    --color-ink-dark: #1E1A16;
+    --color-ink-secondary: #52473D;
+    --color-ink-muted: #8C7D6F;
+    --color-ink-light: #FAF8F5;
 
-    /* FPT University Brand Accents */
-    --color-fpt-orange: #F27024;
-    --color-fpt-blue: #005A9E;
-    --color-fpt-green: #2E8B57;
+    /* Luminous Gold & Warm Accents (as in reference image) */
+    --color-gold-primary: #C59B27;
+    --color-gold-light: #F7E7A9;
+    --color-gold-deep: #997316;
+    --color-gold-amber: #D4AF37;
+    --color-warm-orange: #F27024;
+    --color-soft-green: #2E8B57;
 
-    /* High-end Metallic Gold Foil */
-    --color-foil-gold: #C59B27;
-    --color-foil-gold-light: #F7E5B5;
-    --color-foil-gold-dark: #8E6B15;
-
-    /* Cover & Binding in Light Luxury Linen / Ivory */
-    --color-book-cover: #FBF8F1;
-    --color-book-cover-accent: #EFE7D8;
-    --color-book-spine: #E5DBCA;
-    --color-ribbon: #F27024;
+    /* Cover & Binding in Luxury Bright Ivory & Gold */
+    --color-cover-ivory: #FDFBF7;
+    --color-spine-accent: #C59B27;
   }
 
   html, body {
@@ -39,9 +33,9 @@
     height: 100%;
     height: 100dvh;
     overflow: hidden;
-    background-color: #F8F5EE;
-    color: var(--color-ink);
-    font-family: 'Be Vietnam Pro', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #F6F2E9;
+    color: var(--color-ink-dark);
+    font-family: 'Be Vietnam Pro', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overscroll-behavior: none;
@@ -61,22 +55,35 @@
   }
 }
 
-/* Vietnamese Editorial & Modern Typography Helpers */
-.font-serif-editorial {
-  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+/* Kinetic & Editorial Typography Helpers */
+.font-editorial-serif {
+  font-family: 'Playfair Display', Georgia, serif;
 }
 
-.font-display-title {
-  font-family: 'Playfair Display', 'Cinzel', serif;
+.font-grotesk-bold {
+  font-family: 'Plus Jakarta Sans', 'Be Vietnam Pro', system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em;
 }
 
-.font-sans-modern {
-  font-family: 'Be Vietnam Pro', 'Plus Jakarta Sans', system-ui, sans-serif;
+.font-mono-tech {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* 3D Transform Utilities for Physical Book Flip */
+/* Outline kinetic typography */
+.text-stroke-outline {
+  -webkit-text-stroke: 1.5px currentColor;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-stroke-outline-thick {
+  -webkit-text-stroke: 2.5px currentColor;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 3D Transform Utilities for Physical Art Book */
 .perspective-container {
-  perspective: 2400px;
+  perspective: 2600px;
   perspective-origin: center center;
 }
 
@@ -98,53 +105,106 @@
   transform-origin: right center;
 }
 
-/* Bright Paper and Luxury Book Textures */
-.paper-surface {
-  background-color: var(--color-paper);
+/* 3D Spatial Depth Layers */
+.depth-back {
+  transform: translateZ(-50px);
+}
+.depth-mid {
+  transform: translateZ(0px);
+}
+.depth-front {
+  transform: translateZ(35px);
+}
+.depth-pop {
+  transform: translateZ(65px);
+}
+
+/* Page Surfaces (Bright Luxury Ivory & Gold Art Book) */
+.page-surface-light {
+  background-color: #FAF8F5;
   background-image: 
-    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.85) 0%, transparent 70%),
-    linear-gradient(90deg, rgba(80, 60, 40, 0.04) 0%, rgba(255, 255, 255, 0.2) 3%, transparent 10%, transparent 90%, rgba(80, 60, 40, 0.03) 100%);
-  box-shadow: 
-    inset 0 0 80px rgba(210, 195, 175, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.95) 0%, transparent 70%),
+    linear-gradient(90deg, rgba(197, 155, 39, 0.05) 0%, transparent 5%, transparent 95%, rgba(197, 155, 39, 0.05) 100%);
+  color: var(--color-ink-dark);
 }
 
-.cover-ivory-surface {
-  background-color: var(--color-book-cover);
-  background-image:
-    radial-gradient(ellipse at 40% 25%, rgba(255, 255, 255, 0.95) 0%, transparent 65%),
-    linear-gradient(135deg, #FBF8F1 0%, #F5EEDF 50%, #ECE2D0 100%);
+.page-surface-cream {
+  background-color: #F6F1EA;
+  background-image: 
+    radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.8) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(242, 112, 36, 0.03) 0%, transparent 40%);
+  color: var(--color-ink-dark);
 }
 
-/* Foil stamping metallic reflection */
+.page-surface-gold-glow {
+  background: linear-gradient(145deg, #FFFDF9 0%, #FAF5EB 50%, #F5EFEB 100%);
+  color: var(--color-ink-dark);
+}
+
+/* Luxury Gold Foil Text */
 .foil-gold-text {
-  background: linear-gradient(135deg, #8E6B15 0%, #C59B27 25%, #F7E5B5 45%, #C59B27 70%, #7D5D10 100%);
+  background: linear-gradient(135deg, #997316 0%, #D4AF37 30%, #FFF3B3 50%, #C59B27 75%, #8C6D1F 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.6));
 }
 
-.foil-gold-border {
-  border-color: rgba(197, 155, 39, 0.45);
-  box-shadow: 0 0 0 1px rgba(247, 229, 181, 0.3) inset;
+.foil-gold-text-bright {
+  background: linear-gradient(135deg, #B8860B 0%, #E5A93C 35%, #FFF6CC 55%, #D4AF37 80%, #997316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Physical Book Edge Pages Stack (3D paper thickness) */
+/* Glowing Circular Gold Medallion Halo (from Reference Image 1 & 2) */
+.gold-halo-ring {
+  border: 3px solid #D4AF37;
+  box-shadow: 
+    0 0 0 2px rgba(255, 255, 255, 0.9),
+    0 0 0 4px #C59B27,
+    0 10px 25px rgba(197, 155, 39, 0.35);
+}
+
+/* Double-line Luxury Gold Border Frame (from Reference Image 1) */
+.gold-double-border {
+  border: 1px solid rgba(197, 155, 39, 0.6);
+  box-shadow: inset 0 0 0 3px #FAF8F5, inset 0 0 0 4px rgba(197, 155, 39, 0.3);
+}
+
+/* White 3D Sculpted Flower & Leaf Accents (from Reference Image 1) */
+.floral-accent-shadow {
+  filter: drop-shadow(0 4px 10px rgba(140, 109, 31, 0.22));
+}
+
+/* Cyber Tech Sticker Badge */
+.sticker-tag {
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Physical Book Edge Pages Stack with Orange Rim Accent */
 .book-edge-stack-right {
   position: absolute;
   top: 4px;
   bottom: 4px;
-  right: -8px;
-  width: 8px;
+  right: -9px;
+  width: 9px;
   background: repeating-linear-gradient(
     to bottom,
-    #F3EDE2 0px,
-    #F3EDE2 2px,
-    #DDD4C5 2px,
-    #DDD4C5 3px
+    #E8E5DD 0px,
+    #E8E5DD 2px,
+    #C8C4B8 2px,
+    #C8C4B8 3px
   );
-  border-radius: 0 2px 2px 0;
-  box-shadow: 2px 0 5px rgba(60, 45, 30, 0.15);
+  border-right: 2px solid #FF5500;
+  border-radius: 0 3px 3px 0;
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.35);
   transform: rotateY(90deg);
   transform-origin: left center;
 }
@@ -153,17 +213,18 @@
   position: absolute;
   left: 6px;
   right: 2px;
-  bottom: -6px;
-  height: 6px;
+  bottom: -7px;
+  height: 7px;
   background: repeating-linear-gradient(
     to right,
-    #F3EDE2 0px,
-    #F3EDE2 2px,
-    #DDD4C5 2px,
-    #DDD4C5 3px
+    #E8E5DD 0px,
+    #E8E5DD 2px,
+    #C8C4B8 2px,
+    #C8C4B8 3px
   );
-  border-radius: 0 0 2px 2px;
-  box-shadow: 0 3px 6px rgba(60, 45, 30, 0.12);
+  border-bottom: 2px solid #0066FF;
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transform: rotateX(-90deg);
   transform-origin: center top;
 }

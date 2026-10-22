@@ -177,8 +177,8 @@ export const Book: React.FC<BookProps> = ({ onRestart }) => {
         </div>
       </div>
 
-      {/* Bottom Floating Page Indicator (Safe Area Aware & Bright Luxury theme) */}
-      <div className="w-full pb-safe pt-2 flex justify-center z-40 bg-gradient-to-t from-[#F8F5EE]/95 via-[#F8F5EE]/60 to-transparent pointer-events-none">
+      {/* Bottom Floating Page Indicator (Safe Area Aware & Luxury Ivory Gold theme) */}
+      <div className="w-full pb-safe pt-2 flex justify-center z-40 bg-gradient-to-t from-[#F6F2E9]/95 via-[#F6F2E9]/50 to-transparent pointer-events-none">
         <PageIndicator
           currentPage={currentPage}
           onSelectPage={goToPage}
