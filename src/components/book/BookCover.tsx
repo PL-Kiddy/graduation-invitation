@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { graduation } from '@/data/graduation';
 import { APP_CONFIG } from '@/lib/constants';
-import { CapIcon, SparklesIcon, CalendarIcon, MapPinIcon } from '@/components/ui/Icons';
+import { CapIcon, CalendarIcon, MapPinIcon } from '@/components/ui/Icons';
 
 interface BookCoverProps {
   isOpening: boolean;
@@ -120,15 +120,14 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
           </div>
         </div>
 
-        {/* 3D Turning Front Cover (Luxury Pristine Ivory with Gold Foil & 3D Floral Aesthetics) */}
+        {/* 3D Turning Front Cover (Real Campus Photo Background - Sharp & Clear) */}
         <motion.div
-          className="absolute inset-0 rounded-[8px] bg-gradient-to-br from-[#FFFFFF] via-[#FDFBF7] to-[#F7F2E9] preserve-3d origin-left cursor-pointer overflow-hidden border border-[#DCD5C7]"
+          className="absolute inset-0 rounded-[8px] preserve-3d origin-left cursor-pointer overflow-hidden border border-[#C59B27]/70"
           style={{
             boxShadow: `
-              0 25px 60px -15px rgba(140, 110, 70, 0.28),
-              0 6px 18px rgba(140, 110, 70, 0.12),
-              inset 0 0 0 1px rgba(255, 255, 255, 0.95),
-              inset 0 0 35px rgba(230, 215, 190, 0.3)
+              0 25px 60px -15px rgba(140, 110, 70, 0.35),
+              0 6px 18px rgba(140, 110, 70, 0.15),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.6)
             `,
           }}
           animate={
@@ -145,19 +144,28 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
                 }
           }
         >
+          {/* Campus Background Image (khuonvien.png) - 100% CLEAR, VIVID, NO BLUR */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            <img
+              src="/image/khuonvien.png?v=2"
+              alt="FPT Campus"
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
+
           {/* Spine Binding and Emboss Crease on the left */}
-          <div className="absolute top-0 bottom-0 left-0 w-8 bg-gradient-to-r from-[#E8DEC9] via-[#F5EFEB] to-transparent pointer-events-none z-20 opacity-80" />
-          <div className="absolute top-0 bottom-0 left-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#C59B27]/50 to-transparent pointer-events-none z-20" />
+          <div className="absolute top-0 bottom-0 left-0 w-8 bg-gradient-to-r from-black/20 via-black/5 to-transparent pointer-events-none z-20" />
+          <div className="absolute top-0 bottom-0 left-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#C59B27]/70 to-transparent pointer-events-none z-20" />
 
           {/* Double Layered Gold Foil Perimeter Frames (Matching Reference Image 1) */}
-          <div className="absolute inset-3 rounded-[6px] border border-[#C59B27]/40 pointer-events-none shadow-[inset_0_0_0_1px_rgba(255,255,255,0.9)]" />
-          <div className="absolute inset-4.5 rounded-[4px] border border-[#C59B27]/25 pointer-events-none" />
+          <div className="absolute inset-3 rounded-[6px] border-2 border-[#C59B27]/70 pointer-events-none shadow-[inset_0_0_0_1px_rgba(255,255,255,0.7)]" />
+          <div className="absolute inset-4.5 rounded-[4px] border border-[#C59B27]/40 pointer-events-none" />
 
           {/* Ornate Gold Filigree Corners (Matching Reference Image 1) */}
-          <div className="absolute top-5 left-5 w-4 h-4 border-t-2 border-l-2 border-[#C59B27]/70 pointer-events-none" />
-          <div className="absolute top-5 right-5 w-4 h-4 border-t-2 border-r-2 border-[#C59B27]/70 pointer-events-none" />
-          <div className="absolute bottom-5 left-5 w-4 h-4 border-b-2 border-l-2 border-[#C59B27]/70 pointer-events-none" />
-          <div className="absolute bottom-5 right-5 w-4 h-4 border-b-2 border-r-2 border-[#C59B27]/70 pointer-events-none" />
+          <div className="absolute top-5 left-5 w-4 h-4 border-t-2 border-l-2 border-[#C59B27] pointer-events-none drop-shadow-xs" />
+          <div className="absolute top-5 right-5 w-4 h-4 border-t-2 border-r-2 border-[#C59B27] pointer-events-none drop-shadow-xs" />
+          <div className="absolute bottom-5 left-5 w-4 h-4 border-b-2 border-l-2 border-[#C59B27] pointer-events-none drop-shadow-xs" />
+          <div className="absolute bottom-5 right-5 w-4 h-4 border-b-2 border-r-2 border-[#C59B27] pointer-events-none drop-shadow-xs" />
 
           {/* 3D Paper Floral & Gold Leaves Ornament (Corner Accent as in Reference Image 1) */}
           <div className="absolute top-1 left-1 pointer-events-none z-15 floral-accent-shadow opacity-95">
@@ -166,7 +174,7 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
               <path d="M15 15 C30 5, 55 15, 65 35 C45 40, 25 30, 15 15 Z" fill="url(#goldGrad)" opacity="0.85" />
               <path d="M15 15 C10 35, 20 60, 40 68 C45 50, 35 30, 15 15 Z" fill="url(#goldGrad)" opacity="0.85" />
               {/* White 3D Petals */}
-              <circle cx="32" cy="32" r="14" fill="#FFFFFF" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.1))" />
+              <circle cx="32" cy="32" r="14" fill="#FFFFFF" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.15))" />
               <circle cx="28" cy="28" r="8" fill="#F8F6F0" />
               <circle cx="32" cy="32" r="4" fill="#D4AF37" />
               <defs>
@@ -183,7 +191,7 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
             <svg width="68" height="68" viewBox="0 0 100 100" fill="none">
               <path d="M15 15 C30 5, 55 15, 65 35 C45 40, 25 30, 15 15 Z" fill="url(#goldGrad2)" opacity="0.85" />
               <path d="M15 15 C10 35, 20 60, 40 68 C45 50, 35 30, 15 15 Z" fill="url(#goldGrad2)" opacity="0.85" />
-              <circle cx="32" cy="32" r="14" fill="#FFFFFF" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.1))" />
+              <circle cx="32" cy="32" r="14" fill="#FFFFFF" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.15))" />
               <circle cx="28" cy="28" r="8" fill="#F8F6F0" />
               <circle cx="32" cy="32" r="4" fill="#D4AF37" />
               <defs>
@@ -199,64 +207,59 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
           {/* MAIN COVER CONTENT */}
           <div className="relative z-10 w-full h-full flex flex-col justify-between items-center text-center p-6 md:p-8">
             {/* Top Subtitle */}
-            <div className="space-y-1 pt-1">
-              <div className="flex items-center justify-center gap-2">
+            <div className="pt-1">
+              <div className="inline-flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-white/85 border border-[#C59B27]/40 shadow-xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27]" />
-                <span className="text-[10px] uppercase tracking-[0.35em] text-[#8C6D1F] font-mono font-bold">
+                <span className="text-[10px] uppercase tracking-[0.3em] text-[#8C6D1F] font-mono font-bold">
                   THƯ MỜI CHÍNH THỨC
                 </span>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C59B27]" />
               </div>
-              <div className="w-10 h-[1px] bg-[#C59B27]/40 mx-auto" />
             </div>
 
-            {/* Central Embossed Gold Typography & Graduate Halo (Matching Reference Image 1 & 2) */}
-            <div className="my-auto py-2 space-y-3.5 w-full">
+            {/* Central Embossed Gold Typography & Graduate Halo */}
+            <div className="my-auto py-1 space-y-2.5 w-full">
               {/* Calligraphy Headline */}
               <div className="space-y-0.5">
-                <p className="font-editorial-serif italic text-base md:text-lg text-[#8C6D1F] font-semibold">
+                <p className="font-editorial-serif italic text-base md:text-lg text-[#8C6D1F] font-bold drop-shadow-[0_1px_3px_rgba(255,255,255,0.95)]">
                   Lễ tốt nghiệp
                 </p>
-                <h1 className="text-3xl md:text-4xl font-display-title font-black tracking-wider foil-gold-text leading-none uppercase">
+                <h1 className="text-3xl md:text-4xl font-display-title font-black tracking-wider foil-gold-text leading-none uppercase drop-shadow-[0_2px_8px_rgba(255,255,255,0.9)]">
                   GRADUATION
                 </h1>
-                <p className="text-xl md:text-2xl font-mono tracking-[0.25em] text-[#C59B27] font-bold">
+                <p className="text-xl md:text-2xl font-mono tracking-[0.25em] text-[#8C6D1F] font-bold drop-shadow-[0_1px_3px_rgba(255,255,255,0.95)]">
                   2026
                 </p>
               </div>
 
-              {/* Glowing Golden Medallion Portrait Ring (from Image 1 & 2) */}
-              <div className="relative w-24 h-24 md:w-28 md:h-28 mx-auto my-1">
-                <div className="w-full h-full rounded-full gold-halo-ring bg-gradient-to-br from-[#FAF5EB] to-[#EBE2D2] flex flex-col items-center justify-center shadow-lg overflow-hidden relative">
+              {/* Glowing Golden Medallion Portrait Ring */}
+              <div className="relative w-24 h-24 md:w-28 md:h-28 mx-auto my-0.5">
+                <div className="w-full h-full rounded-full gold-halo-ring bg-gradient-to-br from-[#FAF5EB] to-[#EBE2D2] flex flex-col items-center justify-center shadow-xl overflow-hidden relative border-2 border-[#D4AF37]">
                   {/* Graduate Cap Vector Icon */}
                   <CapIcon size={34} className="text-[#C59B27] filter drop-shadow-xs" />
                   <span className="text-[8px] font-mono font-bold text-[#8C6D1F] tracking-wider mt-1">
                     CỬ NHÂN IT
                   </span>
                 </div>
-                {/* 3D Floral cluster badge on bottom-right of medallion (as in Image 1) */}
-                <div className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-white shadow-md border border-[#D4AF37]/50 flex items-center justify-center text-[#C59B27]">
-                  <SparklesIcon size={14} className="text-[#C59B27]" />
-                </div>
               </div>
 
-              {/* Graduate Formal Name in Bold & Calligraphy */}
-              <div className="space-y-0.5 pt-1">
+              {/* Graduate Formal Name in Elegant Plaque */}
+              <div className="space-y-0.5 px-4 py-2 rounded-xl bg-white/85 border border-[#C59B27]/40 shadow-sm mx-auto max-w-[94%]">
                 <span className="text-[9px] uppercase font-mono tracking-[0.3em] text-[#8C7D6F] font-bold block">
                   TÂN KHOA
                 </span>
-                <h2 className="text-xl md:text-2xl font-grotesk-bold font-bold tracking-tight text-[#1E1A16] leading-tight">
+                <h2 className="text-xl md:text-2xl font-grotesk-bold font-black tracking-tight text-[#1E1A16] leading-tight">
                   QUÁCH HÙNG PHÚC LONG
                 </h2>
-                <p className="text-[11px] text-[#6A5E50] font-sans-modern font-medium">
+                <p className="text-[11px] text-[#6A5E50] font-sans-modern font-semibold">
                   {graduation.university}
                 </p>
               </div>
             </div>
 
             {/* Bottom details & Tactile Touch CTA */}
-            <div className="w-full space-y-3.5 pb-1">
-              <div className="flex items-center justify-center gap-3 text-xs font-mono font-bold text-[#8C6D1F]">
+            <div className="w-full space-y-2.5 pb-1">
+              <div className="inline-flex items-center justify-center gap-2.5 px-3.5 py-1 rounded-full bg-white/85 border border-[#C59B27]/40 shadow-xs text-xs font-mono font-bold text-[#8C6D1F]">
                 <span className="flex items-center gap-1.5">
                   <CalendarIcon size={14} className="text-[#C59B27]" />
                   <span>{graduation.displayDate}</span>

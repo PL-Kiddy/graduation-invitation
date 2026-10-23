@@ -60,9 +60,13 @@ export default function App() {
             className="w-full h-full flex flex-col items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 0.4 } }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <Book onRestart={handleRestart} />
+            <Book
+              onRestart={handleRestart}
+              onBackToCover={() => setAppState('CLOSED_BOOK')}
+            />
           </motion.div>
         )}
       </AnimatePresence>

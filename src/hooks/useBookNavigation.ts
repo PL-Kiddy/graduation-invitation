@@ -4,6 +4,7 @@ import { TOTAL_PAGES } from '@/data/pages';
 interface UseBookNavigationOptions {
   enabled?: boolean;
   initialPage?: number;
+  onPrevAtFirstPage?: () => void;
 }
 
 export interface BookNavigationReturn {
@@ -19,6 +20,7 @@ export interface BookNavigationReturn {
 export function useBookNavigation({
   enabled = true,
   initialPage = 0,
+  onPrevAtFirstPage,
 }: UseBookNavigationOptions = {}): BookNavigationReturn {
   const [currentPage, setCurrentPage] = useState<number>(initialPage);
   const [direction, setDirection] = useState<1 | -1>(1);
@@ -46,8 +48,10 @@ export function useBookNavigation({
   const prevPage = useCallback(() => {
     if (canGoPrev) {
       goToPage(currentPage - 1);
+    } else if (currentPage === 0 && onPrevAtFirstPage) {
+      onPrevAtFirstPage();
     }
-  }, [canGoPrev, currentPage, goToPage]);
+  }, [canGoPrev, currentPage, goToPage, onPrevAtFirstPage]);
 
   // Keyboard navigation: ArrowLeft / ArrowRight
   useEffect(() => {

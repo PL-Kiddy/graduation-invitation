@@ -19,6 +19,7 @@ import { FinalPage }        from '@/pages/FinalPage';
 
 interface BookProps {
   onRestart?: () => void;
+  onBackToCover?: () => void;
 }
 
 const pageVariants: Variants = {
@@ -41,7 +42,7 @@ const pageVariants: Variants = {
   }),
 };
 
-export const Book: React.FC<BookProps> = ({ onRestart }) => {
+export const Book: React.FC<BookProps> = ({ onRestart, onBackToCover }) => {
   const {
     currentPage,
     direction,
@@ -50,13 +51,16 @@ export const Book: React.FC<BookProps> = ({ onRestart }) => {
     nextPage,
     prevPage,
     goToPage,
-  } = useBookNavigation({ enabled: true });
+  } = useBookNavigation({
+    enabled: true,
+    onPrevAtFirstPage: onBackToCover,
+  });
 
   const { gestureState, gestureProps } = useSwipeGesture({
     onSwipeNext: nextPage,
     onSwipePrev: prevPage,
     canSwipeNext: canGoNext,
-    canSwipePrev: canGoPrev,
+    canSwipePrev: canGoPrev || (currentPage === 0 && !!onBackToCover),
     enabled: true,
   });
 
@@ -65,7 +69,7 @@ export const Book: React.FC<BookProps> = ({ onRestart }) => {
   // Render the appropriate component for a given page index (0-based, 10 pages)
   const renderPageComponent = (index: number) => {
     switch (index) {
-      case 0:  return <InvitationPage />;
+      case 0:  return <InvitationPage onBackToCover={onBackToCover} />;
       case 1:  return <IntroPage onNext={nextPage} />;
       case 2:  return <JourneyPage />;
       case 3:  return <GraduationDayPage />;

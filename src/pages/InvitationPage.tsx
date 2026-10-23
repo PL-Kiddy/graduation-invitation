@@ -3,9 +3,13 @@ import { motion } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { graduation } from '@/data/graduation';
 import { APP_CONFIG } from '@/lib/constants';
-import { CalendarIcon, MapPinIcon, ArrowRightIcon } from '@/components/ui/Icons';
+import { MapPinIcon, ArrowRightIcon } from '@/components/ui/Icons';
 
-export const InvitationPage: React.FC = () => {
+interface InvitationPageProps {
+  onBackToCover?: () => void;
+}
+
+export const InvitationPage: React.FC<InvitationPageProps> = ({ onBackToCover }) => {
   return (
     <PageSurface variant="light" className="p-5 md:p-6 flex flex-col justify-between overflow-hidden relative">
       {/* Double Gold Foil Border Frame (Matching Reference Image 1) */}
@@ -21,10 +25,23 @@ export const InvitationPage: React.FC = () => {
       {/* TOP HEADER */}
       <div className="relative z-20 flex items-center justify-between border-b border-[#C59B27]/20 pb-2.5 mx-2">
         <div className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-[#C59B27]" />
-          <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#8C6D1F] font-bold">
-            OFFICIAL INVITATION // THƯ MỜI
-          </span>
+          {onBackToCover ? (
+            <button
+              {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }}
+              onClick={onBackToCover}
+              className="flex items-center gap-1 text-[10px] uppercase font-mono tracking-[0.2em] text-[#8C6D1F] font-bold hover:text-[#C59B27] cursor-pointer transition-colors group"
+            >
+              <span className="text-xs transition-transform group-hover:-translate-x-0.5">‹</span>
+              <span>BÌA THIỆP</span>
+            </button>
+          ) : (
+            <>
+              <span className="w-2 h-2 rounded-full bg-[#C59B27]" />
+              <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#8C6D1F] font-bold">
+                OFFICIAL INVITATION // THƯ MỜI
+              </span>
+            </>
+          )}
         </div>
         <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
           01 / 10
@@ -86,21 +103,13 @@ export const InvitationPage: React.FC = () => {
           </div>
         </div>
 
-        {/* TACTILE CTAS in Bright Gold Theme */}
-        <div {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }} className="grid grid-cols-2 gap-2.5 pt-1">
+        {/* TACTILE CTA in Bright Gold Theme - Centered */}
+        <div {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }} className="pt-1 flex justify-center">
           <motion.button
             whileTap={{ scale: 0.97 }}
-            onClick={() => window.open(graduation.calendarUrl, '_blank')}
-            className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full bg-gradient-to-r from-[#FAF3E6] via-[#FFFDF8] to-[#FAF3E6] border border-[#C59B27] text-[#8C6D1F] text-xs font-grotesk-bold font-bold tracking-wider shadow-xs hover:shadow-md transition-all cursor-pointer"
-          >
-            <CalendarIcon size={14} className="text-[#8C6D1F]" />
-            <span>Thêm vào lịch</span>
-          </motion.button>
-
-          <motion.button
-            whileTap={{ scale: 0.97 }}
-            onClick={() => window.open(graduation.googleMapsUrl, '_blank')}
-            className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full bg-gradient-to-r from-[#C59B27] to-[#B8860B] text-white text-xs font-grotesk-bold font-bold tracking-wider shadow-sm hover:shadow-md transition-all cursor-pointer"
+            whileHover={{ scale: 1.02 }}
+            onClick={() => window.open('https://maps.app.goo.gl/rFv6JMXzwRuaM9oV7', '_blank')}
+            className="w-full max-w-[280px] flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-gradient-to-r from-[#C59B27] via-[#D4AF37] to-[#B8860B] text-white text-xs font-grotesk-bold font-bold tracking-wider shadow-sm hover:shadow-md transition-all cursor-pointer"
           >
             <MapPinIcon size={14} className="text-white" />
             <span>Xem địa điểm</span>
@@ -110,7 +119,18 @@ export const InvitationPage: React.FC = () => {
 
       {/* BOTTOM HINT */}
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
-        <span>QUÁCH HÙNG PHÚC LONG</span>
+        {onBackToCover ? (
+          <button
+            {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }}
+            onClick={onBackToCover}
+            className="font-semibold text-[#8C6D1F] flex items-center gap-1 hover:text-[#C59B27] cursor-pointer transition-colors"
+          >
+            <span>‹</span>
+            <span>Bìa thiệp</span>
+          </button>
+        ) : (
+          <span>QUÁCH HÙNG PHÚC LONG</span>
+        )}
         <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
           <span>Lời mở đầu</span>
           <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
