@@ -66,6 +66,11 @@
   letter-spacing: -0.04em;
 }
 
+.font-name-headline {
+  font-family: 'Montserrat', 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-weight: 800;
+}
+
 .font-mono-tech {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
