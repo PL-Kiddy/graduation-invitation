@@ -80,12 +80,27 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}
       >
-        {/* Soft Warm Depth Floor Shadow */}
+        {/* Dedicated Luminous Champagne Halo directly behind the card */}
+        <div
+          className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2 w-[130%] h-[115%] pointer-events-none -z-10 rounded-full"
+          style={{
+            background:
+              'radial-gradient(ellipse, rgba(210, 164, 61, 0.18) 0%, rgba(210, 164, 61, 0.07) 40%, transparent 72%)',
+            filter: 'blur(35px)',
+          }}
+        />
+
+        {/* Soft Warm Depth Floor Shadow in Warm Amber Bronze */}
         <motion.div
-          className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[92%] h-14 bg-[#B89B72]/30 blur-2xl rounded-full pointer-events-none"
+          className="absolute -bottom-9 left-1/2 -translate-x-1/2 w-[92%] h-14 pointer-events-none"
+          style={{
+            background:
+              'radial-gradient(ellipse at center, rgba(83, 61, 24, 0.20) 0%, rgba(120, 87, 28, 0.08) 50%, transparent 75%)',
+            filter: 'blur(18px)',
+          }}
           animate={{
             scale: isOpening ? 1.08 : isPressed ? 0.95 : [1, 1.03, 1],
-            opacity: isOpening ? 0.15 : isPressed ? 0.5 : 0.35,
+            opacity: isOpening ? 0.15 : isPressed ? 0.55 : 0.4,
           }}
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
         />
@@ -125,8 +140,8 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
           className="absolute inset-0 rounded-[8px] preserve-3d origin-left cursor-pointer overflow-hidden border border-[#C59B27]/70"
           style={{
             boxShadow: `
-              0 25px 60px -15px rgba(140, 110, 70, 0.35),
-              0 6px 18px rgba(140, 110, 70, 0.15),
+              0 28px 70px rgba(83, 61, 24, 0.16),
+              0 8px 24px rgba(120, 87, 28, 0.10),
               inset 0 0 0 1px rgba(255, 255, 255, 0.6)
             `,
           }}

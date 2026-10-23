@@ -27,7 +27,7 @@ export default function App() {
   };
 
   return (
-    <main className="relative w-full h-full min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#F6F2E9] text-[#1E1A16]">
+    <main className="relative w-full h-full min-h-[100dvh] flex items-center justify-center overflow-hidden text-[#1E1A16]">
       {/* Background cinematic lighting */}
       <AmbientBackground />
 
