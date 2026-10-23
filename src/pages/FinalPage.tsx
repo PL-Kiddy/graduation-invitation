@@ -53,7 +53,7 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
           </span>
         </div>
         <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-          11 / 11
+          10 / 10
         </span>
       </div>
 
@@ -182,7 +182,7 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
           <div className="grid grid-cols-2 gap-2">
             <motion.button
               whileTap={{ scale: 0.97 }}
-              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(graduation.campus)}`, '_blank')}
+              onClick={() => window.open(graduation.googleMapsUrl, '_blank')}
               className="flex items-center justify-center gap-1.5 py-1.5 rounded-[4px] bg-[#FAF5EB] hover:bg-[#F3E8D3] text-[#8C6D1F] border border-[#C59B27]/30 text-[10px] font-mono font-bold tracking-wider transition-colors cursor-pointer"
             >
               <MapPinIcon size={12} className="text-[#8C6D1F]" />
@@ -191,10 +191,7 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
 
             <motion.button
               whileTap={{ scale: 0.97 }}
-              onClick={() => {
-                const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Lễ Tốt Nghiệp — Quách Hùng Phúc Long')}&dates=20261107T010000Z/20261107T050000Z&details=${encodeURIComponent('Lễ tốt nghiệp của Quách Hùng Phúc Long tại Trường Đại học FPT TP.HCM')}&location=${encodeURIComponent(graduation.campus)}`;
-                window.open(url, '_blank');
-              }}
+              onClick={() => window.open(graduation.calendarUrl, '_blank')}
               className="flex items-center justify-center gap-1.5 py-1.5 rounded-[4px] bg-[#FAF5EB] hover:bg-[#F3E8D3] text-[#8C6D1F] border border-[#C59B27]/30 text-[10px] font-mono font-bold tracking-wider transition-colors cursor-pointer"
             >
               <CalendarIcon size={12} className="text-[#8C6D1F]" />

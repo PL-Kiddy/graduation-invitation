@@ -27,7 +27,7 @@ export const InvitationPage: React.FC = () => {
           </span>
         </div>
         <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-          04 / 11
+          01 / 10
         </span>
       </div>
 
@@ -77,7 +77,7 @@ export const InvitationPage: React.FC = () => {
           <div className="grid grid-cols-2 gap-2 pt-2 border-t border-[#C59B27]/25 text-left text-[11px] font-sans-modern">
             <div className="bg-white/80 p-2 rounded-[4px] border border-[#C59B27]/20">
               <span className="text-[9px] font-mono text-[#8C7D6F] block font-bold">GIỜ LỄ:</span>
-              <span className="font-bold text-[#1E1A16]">{graduation.timeNote}</span>
+              <span className="font-bold text-[#1E1A16]">06:00 – 18:00</span>
             </div>
             <div className="bg-white/80 p-2 rounded-[4px] border border-[#C59B27]/20">
               <span className="text-[9px] font-mono text-[#8C7D6F] block font-bold">ĐỊA ĐIỂM:</span>
@@ -90,10 +90,7 @@ export const InvitationPage: React.FC = () => {
         <div {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }} className="grid grid-cols-2 gap-2.5 pt-1">
           <motion.button
             whileTap={{ scale: 0.97 }}
-            onClick={() => {
-              const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Lễ Tốt Nghiệp — Quách Hùng Phúc Long')}&dates=20261107T010000Z/20261107T050000Z&details=${encodeURIComponent('Lễ tốt nghiệp của Quách Hùng Phúc Long tại Trường Đại học FPT TP.HCM')}&location=${encodeURIComponent(graduation.campus)}`;
-              window.open(url, '_blank');
-            }}
+            onClick={() => window.open(graduation.calendarUrl, '_blank')}
             className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full bg-gradient-to-r from-[#FAF3E6] via-[#FFFDF8] to-[#FAF3E6] border border-[#C59B27] text-[#8C6D1F] text-xs font-grotesk-bold font-bold tracking-wider shadow-xs hover:shadow-md transition-all cursor-pointer"
           >
             <CalendarIcon size={14} className="text-[#8C6D1F]" />
@@ -102,7 +99,7 @@ export const InvitationPage: React.FC = () => {
 
           <motion.button
             whileTap={{ scale: 0.97 }}
-            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(graduation.campus)}`, '_blank')}
+            onClick={() => window.open(graduation.googleMapsUrl, '_blank')}
             className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full bg-gradient-to-r from-[#C59B27] to-[#B8860B] text-white text-xs font-grotesk-bold font-bold tracking-wider shadow-sm hover:shadow-md transition-all cursor-pointer"
           >
             <MapPinIcon size={14} className="text-white" />
@@ -115,7 +112,7 @@ export const InvitationPage: React.FC = () => {
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
         <span>QUÁCH HÙNG PHÚC LONG</span>
         <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
-          <span>Vuốt để đếm ngược</span>
+          <span>Lời mở đầu</span>
           <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
         </span>
       </div>

@@ -26,7 +26,7 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onNext }) => {
             CHƯƠNG 01
           </span>
           <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-            02 / 11
+            02 / 10
           </span>
         </div>
       </div>

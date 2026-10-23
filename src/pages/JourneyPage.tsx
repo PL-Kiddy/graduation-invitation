@@ -2,38 +2,42 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { graduation } from '@/data/graduation';
-import { CapIcon, CheckIcon, UniversityIcon, ClockIcon, LightningIcon, AwardIcon } from '@/components/ui/Icons';
+import { CapIcon, CheckIcon, UniversityIcon, ClockIcon, LightningIcon, AwardIcon, ArrowRightIcon } from '@/components/ui/Icons';
 
 export const JourneyPage: React.FC = () => {
   const milestones = [
     {
+      year: '2022',
       num: '01',
-      title: 'NGÀY ĐẦU TIÊN',
-      desc: 'Bước chân vào Campus Q9, ngỡ ngàng và háo hức',
+      title: 'CHÀO SINH VIÊN FPT',
+      desc: 'Bước chân vào Campus Q9 — ngỡ ngàng, háo hức và không biết deadline là gì.',
       color: '#C59B27',
       icon: UniversityIcon,
       rot: '-1deg',
     },
     {
+      year: '2024',
       num: '02',
       title: 'DEADLINE & CÀ PHÊ',
-      desc: 'Những đêm thâu nộp bài lúc 23:59',
+      desc: 'Những đêm thâu fix bug, nộp bài lúc 23:59 và cày điểm cùng đồng bọn.',
       color: '#F27024',
       icon: ClockIcon,
       rot: '1.5deg',
     },
     {
+      year: '2025',
       num: '03',
       title: 'ĐỒ ÁN CAPSTONE',
-      desc: '“Ủa sao code chạy trên máy tao mà demo lại lỗi?”',
+      desc: '"Ủa sao code chạy trên máy tao mà demo lại lỗi?" — câu hỏi muôn thuở.',
       color: '#2E8B57',
       icon: LightningIcon,
       rot: '-1.5deg',
     },
     {
+      year: '2026',
       num: '04',
-      title: 'ĐỒNG BỌN ĐỒNG HÀNH',
-      desc: 'Những người bạn cùng cày điểm, chia nhau từng ổ bánh mì',
+      title: 'ĐIỂM KẾT — ĐỈNH CAO',
+      desc: 'Vượt qua mọi thử thách và đứng trước khoảnh khắc nhận tấm bằng xứng đáng.',
       color: '#C59B27',
       icon: AwardIcon,
       rot: '1deg',
@@ -42,7 +46,7 @@ export const JourneyPage: React.FC = () => {
 
   return (
     <PageSurface variant="light" className="p-5 md:p-6 flex flex-col justify-between overflow-hidden relative">
-      {/* Delicate Gold Border Accents */}
+      {/* Decorative frame */}
       <div className="absolute inset-3 rounded-[6px] border border-[#C59B27]/30 pointer-events-none" />
       <div className="absolute top-4 left-4 w-3 h-3 border-t-2 border-l-2 border-[#C59B27]/60 pointer-events-none" />
       <div className="absolute top-4 right-4 w-3 h-3 border-t-2 border-r-2 border-[#C59B27]/60 pointer-events-none" />
@@ -57,9 +61,7 @@ export const JourneyPage: React.FC = () => {
             TIMELINE ARCHIVE // 2022 - 2026
           </span>
         </div>
-        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-          03 / 11
-        </span>
+        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">03 / 10</span>
       </div>
 
       {/* ASYMMETRIC EDITORIAL HEADING */}
@@ -73,23 +75,24 @@ export const JourneyPage: React.FC = () => {
         </h2>
       </div>
 
-      {/* EXPERIMENTAL IRREGULAR PATH & COLLAGE MILESTONES */}
-      <div className="relative z-20 my-auto py-2 space-y-2.5 px-2">
+      {/* MILESTONES */}
+      <div className="relative z-20 my-auto py-2 space-y-2 px-2">
         {milestones.map((item, idx) => (
           <motion.div
             key={item.num}
             initial={{ opacity: 0, x: idx % 2 === 0 ? -15 : 15 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 + idx * 0.12 }}
+            transition={{ duration: 0.5, delay: 0.15 + idx * 0.1 }}
             style={{ transform: `rotate(${item.rot})` }}
             className="relative p-2.5 rounded-[5px] bg-white border border-[#C59B27]/25 shadow-xs flex items-start gap-3 hover:border-[#C59B27]/60 hover:shadow-md transition-all"
           >
-            {/* Icon + Number badge */}
+            {/* Year badge */}
             <div
-              className="w-8 h-8 rounded-[4px] text-white flex items-center justify-center shrink-0 shadow-xs"
+              className="w-8 h-8 rounded-[4px] text-white flex items-center justify-center shrink-0 shadow-xs flex-col"
               style={{ backgroundColor: item.color }}
             >
-              <item.icon size={16} className="text-white" />
+              <item.icon size={13} className="text-white" />
+              <span className="text-[7px] font-mono font-bold text-white/90 mt-0.5">{item.year}</span>
             </div>
 
             <div className="flex-1 min-w-0">
@@ -102,9 +105,7 @@ export const JourneyPage: React.FC = () => {
                   <CheckIcon size={10} className="text-[#2E8B57]" />
                 </span>
               </div>
-              <p className="text-[10px] text-[#52473D] leading-snug mt-0.5">
-                {item.desc}
-              </p>
+              <p className="text-[10px] text-[#52473D] leading-snug mt-0.5">{item.desc}</p>
             </div>
           </motion.div>
         ))}
@@ -113,8 +114,8 @@ export const JourneyPage: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="p-3.5 rounded-[6px] bg-gradient-to-r from-[#FAF5EB] via-[#FFFDF9] to-[#FAF5EB] text-[#1E1A16] flex items-center justify-between shadow-xs border border-[#C59B27]/60"
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="p-3 rounded-[6px] bg-gradient-to-r from-[#FAF5EB] via-[#FFFDF9] to-[#FAF5EB] text-[#1E1A16] flex items-center justify-between shadow-xs border border-[#C59B27]/60"
         >
           <div className="flex items-center gap-2.5">
             <span className="w-2.5 h-2.5 rounded-full bg-[#C59B27] animate-ping" />
@@ -137,7 +138,10 @@ export const JourneyPage: React.FC = () => {
       {/* BOTTOM HINT */}
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
         <span>FPTU // IT JOURNEY</span>
-        <span className="font-semibold text-[#8C6D1F]">Vuốt sang trái để xem thư mời →</span>
+        <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
+          <span>Ngày lễ</span>
+          <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
+        </span>
       </div>
     </PageSurface>
   );

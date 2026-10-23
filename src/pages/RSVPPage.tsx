@@ -2,12 +2,31 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { APP_CONFIG } from '@/lib/constants';
-import { CapIcon, ClockIcon, XCircleIcon, CheckIcon, RefreshIcon, ArrowRightIcon, ExternalLinkIcon } from '@/components/ui/Icons';
+import { CapIcon, ClockIcon, XCircleIcon, CheckIcon, RefreshIcon, ArrowRightIcon } from '@/components/ui/Icons';
+
+// ────────────────────────────────────────────────────────────
+// RSVP backend: posts to a Google Apps Script Web App endpoint
+// which appends the response to a Google Sheet.
+// Replace SHEET_ENDPOINT with your deployed Apps Script URL.
+// ────────────────────────────────────────────────────────────
+const SHEET_ENDPOINT =
+  'https://script.google.com/macros/s/AKfycbxPLACEHOLDER_REPLACE_WITH_YOUR_DEPLOYMENT_ID/exec';
+
+async function submitRsvp(payload: {
+  name: string;
+  status: string;
+  timestamp: string;
+}): Promise<void> {
+  const body = new URLSearchParams(payload as Record<string, string>);
+  await fetch(SHEET_ENDPOINT, { method: 'POST', body });
+}
 
 export const RSVPPage: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [name, setName] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const options = [
     {
@@ -36,17 +55,30 @@ export const RSVPPage: React.FC = () => {
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedOption) return;
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    setError(null);
+    try {
+      await submitRsvp({
+        name: name.trim() || 'Ẩn danh',
+        status: selectedOption,
+        timestamp: new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' }),
+      });
+      setIsSubmitted(true);
+    } catch {
+      setError('Gửi chưa thành công — kiểm tra kết nối và thử lại nhé!');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const currentOption = options.find((o) => o.id === selectedOption);
 
   return (
     <PageSurface variant="light" className="p-5 md:p-6 flex flex-col justify-between overflow-hidden relative">
-      {/* Delicate Gold Border Accents */}
+      {/* Decorative borders */}
       <div className="absolute inset-3 rounded-[6px] border border-[#C59B27]/30 pointer-events-none" />
       <div className="absolute top-4 left-4 w-3 h-3 border-t-2 border-l-2 border-[#C59B27]/60 pointer-events-none" />
       <div className="absolute top-4 right-4 w-3 h-3 border-t-2 border-r-2 border-[#C59B27]/60 pointer-events-none" />
@@ -61,9 +93,7 @@ export const RSVPPage: React.FC = () => {
             RSVP PROTOCOL // PHẢN HỒI
           </span>
         </div>
-        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-          10 / 11
-        </span>
+        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">09 / 10</span>
       </div>
 
       {/* MAIN INTERACTIVE BODY */}
@@ -85,22 +115,24 @@ export const RSVPPage: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             className="p-5 rounded-[6px] bg-white border-2 border-[#D4AF37] text-[#1E1A16] space-y-3 text-center shadow-xl relative overflow-hidden"
           >
-            {/* Soft Gold Background Shimmer */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EB] to-white pointer-events-none" />
 
-            <div className="relative z-10 w-12 h-12 rounded-full gold-halo-ring bg-gradient-to-tr from-[#D4AF37] to-[#F7E7A9] flex items-center justify-center text-xl text-white mx-auto shadow-md">
+            <div className="relative z-10 w-12 h-12 rounded-full gold-halo-ring bg-gradient-to-tr from-[#D4AF37] to-[#F7E7A9] flex items-center justify-center text-white mx-auto shadow-md">
               <CheckIcon size={22} className="text-white" />
             </div>
             <div className="relative z-10">
               <p className="font-grotesk-bold text-lg font-bold text-[#1E1A16]">
-                Cảm ơn {name || 'bạn'}!
+                Cảm ơn {name.trim() || 'bạn'}!
               </p>
               <p className="font-editorial-serif italic text-sm text-[#52473D] mt-1.5 leading-relaxed">
                 {currentOption?.message}
               </p>
+              <p className="text-[9px] font-mono text-[#8C7D6F] mt-2">
+                ✓ Phản hồi đã được ghi nhận thành công
+              </p>
             </div>
             <button
-              onClick={() => setIsSubmitted(false)}
+              onClick={() => { setIsSubmitted(false); setSelectedOption(null); setName(''); }}
               className="relative z-10 text-[10px] font-mono tracking-wider text-[#C59B27] hover:underline cursor-pointer uppercase font-bold pt-1 flex items-center justify-center gap-1 mx-auto"
             >
               <RefreshIcon size={11} className="text-[#C59B27]" />
@@ -113,7 +145,7 @@ export const RSVPPage: React.FC = () => {
             {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }}
             className="space-y-3"
           >
-            {/* Luxury Ticket Strips */}
+            {/* Options */}
             <div className="space-y-2">
               {options.map((opt) => {
                 const isSelected = selectedOption === opt.id;
@@ -130,35 +162,23 @@ export const RSVPPage: React.FC = () => {
                   >
                     <div className="space-y-0.5">
                       <div className="flex items-center gap-2">
-                        <opt.icon
-                          size={15}
-                          className={isSelected ? 'text-[#C59B27]' : 'text-[#8C6D1F]'}
-                        />
-                        <span className="font-grotesk-bold font-bold text-xs text-[#1E1A16]">
-                          {opt.label}
-                        </span>
-                        <span
-                          className={`text-[8px] font-mono px-1.5 py-0.5 rounded font-bold ${
-                            isSelected
-                              ? 'bg-[#FAF3E6] text-[#8C6D1F] border border-[#C59B27]/40'
-                              : 'bg-[#F5EFEB] text-[#8C7D6F]'
-                          }`}
-                        >
+                        <opt.icon size={15} className={isSelected ? 'text-[#C59B27]' : 'text-[#8C6D1F]'} />
+                        <span className="font-grotesk-bold font-bold text-xs text-[#1E1A16]">{opt.label}</span>
+                        <span className={`text-[8px] font-mono px-1.5 py-0.5 rounded font-bold ${
+                          isSelected
+                            ? 'bg-[#FAF3E6] text-[#8C6D1F] border border-[#C59B27]/40'
+                            : 'bg-[#F5EFEB] text-[#8C7D6F]'
+                        }`}>
                           {opt.badge}
                         </span>
                       </div>
-                      <p className="text-[10px] text-[#52473D]">
-                        {opt.desc}
-                      </p>
+                      <p className="text-[10px] text-[#52473D]">{opt.desc}</p>
                     </div>
-
-                    <div
-                      className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ${
-                        isSelected
-                          ? 'border-[#C59B27] bg-[#C59B27] text-white shadow-xs'
-                          : 'border-[#C59B27]/40 bg-white'
-                      }`}
-                    >
+                    <div className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ${
+                      isSelected
+                        ? 'border-[#C59B27] bg-[#C59B27] text-white shadow-xs'
+                        : 'border-[#C59B27]/40 bg-white'
+                    }`}>
                       {isSelected && <CheckIcon size={10} className="text-white" />}
                     </div>
                   </motion.div>
@@ -181,19 +201,27 @@ export const RSVPPage: React.FC = () => {
               />
             </div>
 
-            {/* Submit Action with Gold Gradient Button */}
+            {/* Error */}
+            {error && (
+              <p className="text-[10px] text-red-500 font-mono">{error}</p>
+            )}
+
+            {/* Submit */}
             <motion.button
               whileTap={{ scale: 0.98 }}
               type="submit"
-              disabled={!selectedOption}
+              disabled={!selectedOption || isSubmitting}
               className={`w-full py-2.5 rounded-[4px] text-xs font-grotesk-bold font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-1.5 ${
-                selectedOption
+                selectedOption && !isSubmitting
                   ? 'bg-gradient-to-r from-[#D4AF37] via-[#C59B27] to-[#997316] text-white hover:brightness-105 cursor-pointer shadow-[#C59B27]/25'
                   : 'bg-[#EAE4D9] text-[#8C7D6F] cursor-not-allowed'
               }`}
             >
-              <span>Gửi phản hồi cho Long</span>
-              <ExternalLinkIcon size={12} className="text-white" />
+              {isSubmitting ? (
+                <span>Đang gửi...</span>
+              ) : (
+                <span>Gửi phản hồi cho Long</span>
+              )}
             </motion.button>
           </form>
         )}

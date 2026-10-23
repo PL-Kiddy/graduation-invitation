@@ -5,18 +5,17 @@ import { useSwipeGesture } from '@/hooks/useSwipeGesture';
 import { PageIndicator } from '@/components/book/PageIndicator';
 import { transitions } from '@/lib/motion';
 
-// Pages
-import { CoverPage } from '@/pages/CoverPage';
-import { IntroPage } from '@/pages/IntroPage';
-import { JourneyPage } from '@/pages/JourneyPage';
-import { InvitationPage } from '@/pages/InvitationPage';
-import { CountdownPage } from '@/pages/CountdownPage';
-import { CampusPage } from '@/pages/CampusPage';
-import { LocationPage } from '@/pages/LocationPage';
-import { MemoriesPage } from '@/pages/MemoriesPage';
-import { MessagePage } from '@/pages/MessagePage';
-import { RSVPPage } from '@/pages/RSVPPage';
-import { FinalPage } from '@/pages/FinalPage';
+// Pages — NEW 10-page flow
+import { InvitationPage }   from '@/pages/InvitationPage';
+import { IntroPage }        from '@/pages/IntroPage';
+import { JourneyPage }      from '@/pages/JourneyPage';
+import { GraduationDayPage } from '@/pages/GraduationDayPage';
+import { VenuePage }        from '@/pages/VenuePage';
+import { CampusGuidePage }  from '@/pages/CampusGuidePage';
+import { MemoriesPage }     from '@/pages/MemoriesPage';
+import { MessagePage }      from '@/pages/MessagePage';
+import { RSVPPage }         from '@/pages/RSVPPage';
+import { FinalPage }        from '@/pages/FinalPage';
 
 interface BookProps {
   onRestart?: () => void;
@@ -63,40 +62,27 @@ export const Book: React.FC<BookProps> = ({ onRestart }) => {
 
   const { isDragging, dragProgress } = gestureState;
 
-  // Render the appropriate component for a given page index
+  // Render the appropriate component for a given page index (0-based, 10 pages)
   const renderPageComponent = (index: number) => {
     switch (index) {
-      case 0:
-        return <CoverPage onNext={nextPage} />;
-      case 1:
-        return <IntroPage onNext={nextPage} />;
-      case 2:
-        return <JourneyPage />;
-      case 3:
-        return <InvitationPage />;
-      case 4:
-        return <CountdownPage />;
-      case 5:
-        return <CampusPage />;
-      case 6:
-        return <LocationPage />;
-      case 7:
-        return <MemoriesPage />;
-      case 8:
-        return <MessagePage />;
-      case 9:
-        return <RSVPPage />;
-      case 10:
-        return (
-          <FinalPage
-            onRestart={() => {
-              goToPage(0);
-              onRestart?.();
-            }}
-          />
-        );
-      default:
-        return null;
+      case 0:  return <InvitationPage />;
+      case 1:  return <IntroPage onNext={nextPage} />;
+      case 2:  return <JourneyPage />;
+      case 3:  return <GraduationDayPage />;
+      case 4:  return <VenuePage />;
+      case 5:  return <CampusGuidePage />;
+      case 6:  return <MemoriesPage />;
+      case 7:  return <MessagePage />;
+      case 8:  return <RSVPPage />;
+      case 9:  return (
+        <FinalPage
+          onRestart={() => {
+            goToPage(0);
+            onRestart?.();
+          }}
+        />
+      );
+      default: return null;
     }
   };
 
