@@ -80,13 +80,20 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}
       >
-        {/* Dedicated Luminous Champagne Halo directly behind the card */}
+        {/* Dedicated Luminous Champagne Halo directly behind the card (2.3x width, 1.35x height, blur 45px) */}
         <div
-          className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2 w-[130%] h-[115%] pointer-events-none -z-10 rounded-full"
+          className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2 w-[230%] h-[135%] pointer-events-none -z-10 rounded-full"
           style={{
-            background:
-              'radial-gradient(ellipse, rgba(210, 164, 61, 0.18) 0%, rgba(210, 164, 61, 0.07) 40%, transparent 72%)',
-            filter: 'blur(35px)',
+            background: `
+              radial-gradient(
+                ellipse at center,
+                rgba(211, 165, 65, 0.18) 0%,
+                rgba(229, 198, 128, 0.10) 35%,
+                rgba(229, 198, 128, 0.035) 58%,
+                transparent 76%
+              )
+            `,
+            filter: 'blur(45px)',
           }}
         />
 

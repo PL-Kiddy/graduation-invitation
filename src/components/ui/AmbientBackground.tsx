@@ -9,36 +9,35 @@ export const AmbientBackground: React.FC = () => {
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
       {/* 
         Ivory Atmosphere + Champagne Gold + Sky Blue Ambient Glows:
-        - Central champagne radial glow directly behind the invitation book
-        - Soft sky-blue glow at top-right echoing the campus sky in the invitation
-        - Warm gold/beige glow at bottom-left for neoclassical warmth
-        - Warm ivory linear base (#F8F5ED to #F4EFE4)
+        - Champagne gold glow at bottom-left (circle at 18% 72%)
+        - Soft sky-blue glow at top-right (circle at 82% 25%) echoing the campus sky
+        - Subtle central warm glow (ellipse at 50% 52%)
+        - Base smooth ivory gradient (#f7f3e9 to #f3eee3)
       */}
       <div
         className="absolute inset-0"
         style={{
           background: `
             radial-gradient(
-              ellipse 44% 56% at 50% 50%,
-              rgba(221, 176, 73, 0.16) 0%,
-              rgba(221, 176, 73, 0.06) 38%,
-              transparent 72%
+              circle at 18% 72%,
+              rgba(224, 184, 96, 0.13) 0%,
+              transparent 34%
             ),
             radial-gradient(
-              circle at 72% 20%,
-              rgba(167, 207, 235, 0.15) 0%,
-              transparent 40%
+              circle at 82% 25%,
+              rgba(166, 207, 232, 0.13) 0%,
+              transparent 32%
             ),
             radial-gradient(
-              circle at 20% 82%,
-              rgba(201, 159, 77, 0.09) 0%,
-              transparent 36%
+              ellipse at 50% 52%,
+              rgba(219, 177, 82, 0.10) 0%,
+              transparent 42%
             ),
             linear-gradient(
               135deg,
-              #F8F5ED 0%,
-              #F4EFE4 48%,
-              #F7F3EA 100%
+              #f7f3e9 0%,
+              #faf8f2 48%,
+              #f3eee3 100%
             )
           `,
         }}
@@ -52,12 +51,18 @@ export const AmbientBackground: React.FC = () => {
         }}
       />
 
-      {/* Subtle Edge Vignette to softly frame the display stage */}
+      {/* Edge Vignette: resolves the empty side feeling while maintaining pure ambient focus on card */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-45"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          background:
-            'radial-gradient(ellipse at center, transparent 55%, rgba(83, 61, 24, 0.05) 100%)',
+          background: `
+            radial-gradient(
+              ellipse at center,
+              transparent 45%,
+              rgba(115, 88, 42, 0.035) 78%,
+              rgba(85, 64, 30, 0.065) 100%
+            )
+          `,
         }}
       />
     </div>
