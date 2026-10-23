@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { APP_CONFIG } from '@/lib/constants';
-import { ArrowRightIcon, MapPinIcon } from '@/components/ui/Icons';
+import { ArrowRightIcon, XCircleIcon } from '@/components/ui/Icons';
 
 interface FloorInfo {
   id: string;
   label: string;
-  emoji: string;
   title: string;
-  areas: string[];
+  image: string;
   highlight?: string;
 }
 
@@ -17,61 +16,55 @@ const FLOORS: FloorInfo[] = [
   {
     id: 'G',
     label: 'Tầng G',
-    emoji: '🏛️',
     title: 'Sảnh Chính & Lễ Tân',
-    areas: ['Cổng vào chính', 'Bảo vệ / Đăng ký', 'Sảnh chờ khách', 'Căng-tin tầng trệt'],
-    highlight: '← Cổng đón khách lễ tốt nghiệp',
+    image: '/image/tangGcampus.png',
+    highlight: 'Cổng đón khách lễ tốt nghiệp',
   },
   {
     id: '1',
     label: 'Tầng 1',
-    emoji: '📚',
     title: 'Thư Viện & Học Thuật',
-    areas: ['Thư viện trường', 'Phòng tự học', 'Phòng họp nhóm', 'Văn phòng hành chính'],
+    image: '/image/tang1campus.png',
   },
   {
     id: '2',
     label: 'Tầng 2',
-    emoji: '💻',
     title: 'Phòng Lab & CNTT',
-    areas: ['Lab lập trình', 'Phòng máy tính', 'Lab AI / IoT', 'Phòng thực hành thiết kế'],
+    image: '/image/tang2campus.png',
   },
   {
     id: '3',
     label: 'Tầng 3',
-    emoji: '🎓',
     title: 'Hội Trường Chính',
-    areas: ['Hội trường lớn', 'Phòng chiếu phim / Seminar', 'Ban tổ chức lễ tốt nghiệp'],
-    highlight: '★ Địa điểm tổ chức Lễ Tốt Nghiệp',
+    image: '/image/tang3campus.png',
+    highlight: 'Địa điểm tổ chức Lễ Tốt Nghiệp',
   },
   {
     id: '4',
     label: 'Tầng 4',
-    emoji: '🍽️',
     title: 'Ẩm Thực & Nghỉ Ngơi',
-    areas: ['Căng-tin tầng 4', 'Khu vực nghỉ giải lao', 'Máy bán hàng tự động'],
+    image: '/image/tang4campus.png',
   },
   {
     id: '5',
     label: 'Tầng 5',
-    emoji: '🏋️',
     title: 'Thể Thao & CLB',
-    areas: ['Phòng thể thao đa năng', 'Câu lạc bộ sinh viên', 'Phòng sinh hoạt chung'],
+    image: '/image/tang5campus.png',
   },
   {
     id: '6',
     label: 'Tầng 6',
-    emoji: '🌿',
     title: 'Sân Thượng & Không Gian Mở',
-    areas: ['Sân thượng view thoáng', 'Khu vực check-in ngoài trời', 'Không gian chụp ảnh'],
-    highlight: '📸 Điểm check-in cực đẹp!',
+    image: '/image/tang6campus.png',
+    highlight: 'Điểm check-in chụp ảnh kỷ niệm',
   },
 ];
 
 export const CampusGuidePage: React.FC = () => {
-  const [activeFloor, setActiveFloor] = useState<string>('3');
+  const [activeFloor, setActiveFloor] = useState<string>('G');
+  const [isZoomed, setIsZoomed] = useState<boolean>(false);
 
-  const floor = FLOORS.find((f) => f.id === activeFloor)!;
+  const floor = FLOORS.find((f) => f.id === activeFloor) || FLOORS[0];
 
   return (
     <PageSurface variant="light" className="p-5 md:p-6 flex flex-col justify-between overflow-hidden relative">
@@ -91,7 +84,7 @@ export const CampusGuidePage: React.FC = () => {
       </div>
 
       {/* MAIN BODY */}
-      <div className="relative z-20 my-auto py-1.5 space-y-3 mx-2">
+      <div className="relative z-20 my-auto py-1 space-y-2.5 mx-2">
         {/* Heading */}
         <div>
           <p className="font-editorial-serif italic text-sm text-[#8C6D1F] font-semibold">Khám phá trường</p>
@@ -112,7 +105,7 @@ export const CampusGuidePage: React.FC = () => {
               onClick={() => setActiveFloor(f.id)}
               className={`shrink-0 px-3 py-1.5 rounded-full text-[10px] font-grotesk-bold font-bold tracking-wider transition-all cursor-pointer ${
                 activeFloor === f.id
-                  ? 'bg-gradient-to-r from-[#C59B27] to-[#B8860B] text-white shadow-sm'
+                  ? 'bg-gradient-to-r from-[#C59B27] to-[#B8860B] text-white shadow-sm scale-[1.02]'
                   : 'bg-white border border-[#C59B27]/30 text-[#8C6D1F] hover:border-[#C59B27]/60'
               }`}
             >
@@ -121,40 +114,49 @@ export const CampusGuidePage: React.FC = () => {
           ))}
         </div>
 
-        {/* Floor Detail Card */}
+        {/* Floor Detail Card with Real Map Image */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeFloor}
-            initial={{ opacity: 0, x: 12 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -12 }}
-            transition={{ duration: 0.25 }}
-            className="p-3.5 rounded-[8px] bg-gradient-to-br from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFEB] border border-[#C59B27]/50 shadow-sm space-y-2"
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+            className="rounded-[8px] bg-gradient-to-br from-[#FFFDF9] to-[#FAF6ED] border border-[#C59B27]/40 shadow-sm overflow-hidden"
           >
-            {/* Floor Title */}
-            <div className="flex items-start justify-between">
-              <div>
-                <span className="text-[9px] font-mono text-[#8C7D6F] font-bold block">{floor.label}</span>
-                <p className="text-sm font-grotesk-bold font-bold text-[#1E1A16]">{floor.title}</p>
+            {/* Floor Map Header */}
+            <div className="px-3 py-1.5 border-b border-[#C59B27]/20 flex items-center justify-between bg-white/70">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-mono font-bold text-[#8C6D1F] uppercase tracking-wider">
+                  {floor.label}
+                </span>
+                <span className="text-[#C59B27]/40">·</span>
+                <span className="text-[11px] font-grotesk-bold font-bold text-[#1E1A16]">
+                  {floor.title}
+                </span>
               </div>
-              <span className="text-2xl">{floor.emoji}</span>
+              {floor.highlight && (
+                <span className="text-[9px] font-mono font-semibold text-[#8C6D1F] bg-[#FAF3E6] border border-[#C59B27]/40 px-1.5 py-0.5 rounded">
+                  {floor.highlight}
+                </span>
+              )}
             </div>
 
-            {/* Highlight badge */}
-            {floor.highlight && (
-              <div className="px-2.5 py-1.5 rounded-[4px] bg-[#FAF3E6] border border-[#C59B27]/50 text-[10px] font-mono font-bold text-[#8C6D1F]">
-                {floor.highlight}
+            {/* Real Map Image Container */}
+            <div
+              {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }}
+              onClick={() => setIsZoomed(true)}
+              className="relative cursor-pointer group bg-[#FAF6ED] flex items-center justify-center p-1.5"
+            >
+              <img
+                src={floor.image}
+                alt={`Sơ đồ ${floor.label} - FPT University HCM`}
+                className="w-full h-auto max-h-[220px] object-contain rounded-[4px] transition-transform duration-200 group-hover:scale-[1.01]"
+                loading="eager"
+              />
+              <div className="absolute bottom-2 right-2.5 bg-black/60 text-white text-[9px] font-mono px-2 py-0.5 rounded-full flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity backdrop-blur-xs">
+                <span>🔍 Chạm xem lớn</span>
               </div>
-            )}
-
-            {/* Areas list */}
-            <div className="space-y-1">
-              {floor.areas.map((area) => (
-                <div key={area} className="flex items-center gap-2">
-                  <MapPinIcon size={10} className="text-[#C59B27] shrink-0" />
-                  <span className="text-[11px] text-[#4A4036] font-sans-modern">{area}</span>
-                </div>
-              ))}
             </div>
           </motion.div>
         </AnimatePresence>
@@ -193,6 +195,53 @@ export const CampusGuidePage: React.FC = () => {
           <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
         </span>
       </div>
+
+      {/* Lightbox / Fullscreen Zoom Modal */}
+      <AnimatePresence>
+        {isZoomed && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsZoomed(false)}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex flex-col items-center justify-center p-4"
+          >
+            <div
+              {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-2xl w-full bg-[#FFFDF9] rounded-xl border border-[#C59B27] p-3 shadow-2xl space-y-2"
+            >
+              <div className="flex items-center justify-between border-b border-[#C59B27]/20 pb-2">
+                <div>
+                  <span className="text-[10px] font-mono font-bold text-[#8C6D1F] uppercase tracking-wider block">
+                    {floor.label}
+                  </span>
+                  <p className="text-sm font-grotesk-bold font-bold text-[#1E1A16]">{floor.title}</p>
+                </div>
+                <button
+                  onClick={() => setIsZoomed(false)}
+                  className="p-1 rounded-full text-[#8C7D6F] hover:text-[#1E1A16] hover:bg-[#FAF3E6] transition-colors cursor-pointer"
+                  aria-label="Đóng"
+                >
+                  <XCircleIcon size={22} className="text-[#8C6D1F]" />
+                </button>
+              </div>
+
+              <div className="overflow-auto max-h-[70vh] flex items-center justify-center bg-[#FAF6ED] rounded-lg p-2">
+                <img
+                  src={floor.image}
+                  alt={`Sơ đồ ${floor.label} - Chi tiết`}
+                  className="w-full h-auto object-contain rounded"
+                />
+              </div>
+
+              <div className="text-center pt-1">
+                <span className="text-[10px] font-mono text-[#8C7D6F]">Chạm vào ngoài hoặc nút đóng để quay lại</span>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </PageSurface>
   );
 };
