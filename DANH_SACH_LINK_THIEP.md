@@ -1,13 +1,15 @@
-# 💌 DANH SÁCH LINK THIỆP MỜI (100% KHÔNG DẤU — TỰ ĐỘNG ĐỔI XƯNG HÔ)
+# 💌 DANH SÁCH TOÀN BỘ LINK THIỆP MỜI TỐT NGHIỆP — QUÁCH HÙNG PHÚC LONG
 
-> **Link gốc deploy:** `https://graduation-invitation-sage-sigma.vercel.app/`  
-> *(Tất cả link đều dùng tiếng Anh / không dấu sạch đẹp 100%, khi người nhận mở ra web sẽ tự động chuyển thành **tiếng Việt có dấu trang trọng** và **tự động đổi cách xưng hô "anh", "em", "tôi"** tương ứng!)*
+> **🌐 Link gốc đã deploy:** `https://graduation-invitation-sage-sigma.vercel.app/`  
+> **📅 Thời gian:** 12:30 – 17:30 ngày 07 · 11 · 2026  
+> **📍 Địa điểm:** Đại học FPT HCM (Cổng 2, Khu Công Nghệ Cao, TP. Thủ Đức, TP.HCM)  
+> *(Tất cả link đều dùng mã không dấu sạch đẹp 100%, không bị lỗi font khi gửi qua Zalo/Messenger/SMS. Khi người nhận mở ra sẽ tự động hiển thị **tiếng Việt có dấu trang trọng** và **tự động đổi đại từ xưng hô "anh", "em", "tôi"** phù hợp từng người!)*
 
 ---
 
-## 🎯 1. Danh sách link chính thức cho 11 khách mời
+## 🎯 1. Danh sách link chính thức gửi cho từng người (Bản Deploy Vercel)
 
-| STT | Người nhận | Xưng hô Long dùng | Câu hiển thị ở Trang 1 | Link gửi Zalo / Messenger (100% không dấu) |
+| STT | Khách mời | Đại từ Long xưng | Câu hiển thị ở Trang 1 | 🔗 Link gửi Zalo / Messenger / Facebook |
 |:---:|:---|:---:|:---|:---|
 | 1 | **Bạn Thịnh** | **tôi** | *"...cuối cùng **tôi** cũng sắp được nhận bằng rồi..."* | `https://graduation-invitation-sage-sigma.vercel.app/?to=ban-thinh` |
 | 2 | **Bạn Trúc Anh** | **tôi** | *"...cuối cùng **tôi** cũng sắp được nhận bằng rồi..."* | `https://graduation-invitation-sage-sigma.vercel.app/?to=ban-truc-anh` |
@@ -20,43 +22,40 @@
 | 9 | **Em Linh** | **anh** | *"...cuối cùng **anh** cũng sắp được nhận bằng rồi..."* | `https://graduation-invitation-sage-sigma.vercel.app/?to=em-linh` |
 | 10 | **Anh 2 và Chị 2 và Bé Na** | **em** | *"...cuối cùng **em** cũng sắp được nhận bằng rồi..."* | `https://graduation-invitation-sage-sigma.vercel.app/?to=anh-2` |
 | 11 | **Vợ chồng bạn Phát** | **tôi** | *"...cuối cùng **tôi** cũng sắp được nhận bằng rồi..."* | `https://graduation-invitation-sage-sigma.vercel.app/?to=vo-chong-ban-phat` |
+| 12 | **Link Chung** *(Đăng Story/Group)* | **tôi** | *"...cuối cùng **tôi** cũng sắp được nhận bằng rồi..."* | `https://graduation-invitation-sage-sigma.vercel.app/` |
 
-*(Bạn cũng có thể dùng link ngắn hơn: `?to=thinh`, `?to=trucanh`, `?to=thu`, `?to=trinh`, `?to=dat`, `?to=thanh`, `?to=chun`, `?to=huyen`, `?to=linh`, `?to=anh-hai`, `?to=phat` đều chuẩn 100%)*.
-
----
-
-## 🧪 2. Link test trực tiếp trên Localhost (Máy tính của bạn)
-
-Bấm trực tiếp vào các link dưới đây để kiểm tra ngay trên máy bạn:
-
-| Người nhận | Xưng hô | Link test Localhost |
-|:---|:---:|:---|
-| 👦 **Bạn Thịnh** | tôi | [http://localhost:5174/?to=ban-thinh](http://localhost:5174/?to=ban-thinh) |
-| 👧 **Bạn Trúc Anh** | tôi | [http://localhost:5174/?to=ban-truc-anh](http://localhost:5174/?to=ban-truc-anh) |
-| 👧 **Bạn Thư** | tôi | [http://localhost:5174/?to=ban-thu](http://localhost:5174/?to=ban-thu) |
-| 👧 **Bạn Trinh** | tôi | [http://localhost:5174/?to=ban-trinh](http://localhost:5174/?to=ban-trinh) |
-| 👦 **Bạn Đạt** | tôi | [http://localhost:5174/?to=ban-dat](http://localhost:5174/?to=ban-dat) |
-| 👦 **Bạn Thành** | tôi | [http://localhost:5174/?to=ban-thanh](http://localhost:5174/?to=ban-thanh) |
-| 👩 **Chị Phương (Chun)** | **em** | [http://localhost:5174/?to=chi-phuong](http://localhost:5174/?to=chi-phuong) |
-| 👩 **Chị Huyền** | **em** | [http://localhost:5174/?to=chi-huyen](http://localhost:5174/?to=chi-huyen) |
-| 👧 **Em Linh** | **anh** | [http://localhost:5174/?to=em-linh](http://localhost:5174/?to=em-linh) |
-| 👨‍👩‍👧 **Anh 2 và Chị 2 và Bé Na** | **em** | [http://localhost:5174/?to=anh-2](http://localhost:5174/?to=anh-2) |
-| 👫 **Vợ chồng bạn Phát** | tôi | [http://localhost:5174/?to=vo-chong-ban-phat](http://localhost:5174/?to=vo-chong-ban-phat) |
-| 🌐 **Link chung (không tên)** | tôi | [http://localhost:5174/](http://localhost:5174/) |
+*(Mẹo: Bạn cũng có thể dùng link ngắn hơn: `?to=thinh`, `?to=trucanh`, `?to=thu`, `?to=trinh`, `?to=dat`, `?to=thanh`, `?to=chun`, `?to=huyen`, `?to=linh`, `?to=anhhai`, `?to=phat` đều tự động nhận diện đúng tên và xưng hô!)*
 
 ---
 
-## 🌐 3. Link chung (Đăng Story / Facebook / Nhóm bạn)
+## 🧪 2. Danh sách link Test trên máy Local (Localhost)
 
-Khi đăng lên trang cá nhân hoặc gửi vào group chat không kèm tên riêng:
-* **Link:** `https://graduation-invitation-sage-sigma.vercel.app/`
-* **Hiển thị:** Dùng mặc định *"Bạn"* và *"Sau bao mùa deadline, cuối cùng tôi cũng sắp được nhận bằng rồi. Hôm đó ghé chung vui nha!"*.
+Bấm trực tiếp vào các link dưới đây để kiểm tra ngay trên máy tính của bạn:
+
+* 👦 **Bạn Thịnh:** [http://localhost:5174/?to=ban-thinh](http://localhost:5174/?to=ban-thinh)
+* 👧 **Bạn Trúc Anh:** [http://localhost:5174/?to=ban-truc-anh](http://localhost:5174/?to=ban-truc-anh)
+* 👧 **Bạn Thư:** [http://localhost:5174/?to=ban-thu](http://localhost:5174/?to=ban-thu)
+* 👧 **Bạn Trinh:** [http://localhost:5174/?to=ban-trinh](http://localhost:5174/?to=ban-trinh)
+* 👦 **Bạn Đạt:** [http://localhost:5174/?to=ban-dat](http://localhost:5174/?to=ban-dat)
+* 👦 **Bạn Thành:** [http://localhost:5174/?to=ban-thanh](http://localhost:5174/?to=ban-thanh)
+* 👩 **Chị Phương (Chun):** [http://localhost:5174/?to=chi-phuong](http://localhost:5174/?to=chi-phuong) *(Tự đổi thành: "cuối cùng **em**...")*
+* 👩 **Chị Huyền:** [http://localhost:5174/?to=chi-huyen](http://localhost:5174/?to=chi-huyen) *(Tự đổi thành: "cuối cùng **em**...")*
+* 👧 **Em Linh:** [http://localhost:5174/?to=em-linh](http://localhost:5174/?to=em-linh) *(Tự đổi thành: "cuối cùng **anh**...")*
+* 👨‍👩‍👧 **Anh 2 và Chị 2 và Bé Na:** [http://localhost:5174/?to=anh-2](http://localhost:5174/?to=anh-2) *(Tự đổi thành: "cuối cùng **em**...")*
+* 👫 **Vợ chồng bạn Phát:** [http://localhost:5174/?to=vo-chong-ban-phat](http://localhost:5174/?to=vo-chong-ban-phat)
+* 🌐 **Link chung (không tên):** [http://localhost:5174/](http://localhost:5174/)
 
 ---
 
-## 🛠️ 4. Cơ chế thông minh tự nhận diện xưng hô
+## 💡 3. Giải thích tại sao gửi Messenger lúc đầu chưa hiện ảnh xem trước (Preview Card)?
 
-Hệ thống có hàm thông minh `inferPronoun`:
-- Bất kỳ link nào có tên bắt đầu bằng `Anh`, `Chị`, `Cô`, `Chú`, `Bác` -> tự động xưng **"em"**.
-- Bất kỳ link nào có tên bắt đầu bằng `Em` -> tự động xưng **"anh"**.
-- Các trường hợp còn lại (Bạn, Vợ chồng bạn...) -> tự động xưng **"tôi"**.
+1. **Do bộ nhớ đệm (Cache) của Messenger / Facebook:**  
+   Khi một trang web mới được cập nhật thẻ ảnh `og:image`, máy chủ của Facebook và Messenger thường **lưu bộ nhớ đệm cũ từ 1 - 2 tiếng** hoặc chưa kịp cào dữ liệu mới nếu chưa từng có ai chia sẻ trước đó.
+2. **Cách làm cho Messenger cập nhật ảnh ngay lập tức:**
+   * Bạn truy cập vào công cụ chính thức của Facebook:  
+     👉 [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/)
+   * Dán link: `https://graduation-invitation-sage-sigma.vercel.app/`
+   * Bấm nút **"Thu thập lại thông tin" (Scrape Again)** 1 - 2 lần.
+   * Ngay sau đó, Facebook / Messenger sẽ xóa cache cũ và lưu ngay ảnh bìa tốt nghiệp mới. Từ lúc đó gửi cho bất kỳ ai trên Messenger cũng sẽ hiện thẻ ảnh bìa to đẹp!
+3. **Mẹo khi dán link vào Zalo/Messenger:**  
+   Sau khi dán link vào ô chat, bạn hãy **chờ 1 – 2 giây** cho khung ảnh preview nhỏ hiện lên bên trên ô nhập tin nhắn rồi mới bấm nút **Gửi**.
