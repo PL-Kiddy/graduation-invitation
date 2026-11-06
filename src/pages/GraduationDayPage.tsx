@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { graduation } from '@/data/graduation';
-import { APP_CONFIG } from '@/lib/constants';
 import { CalendarIcon, ClockIcon, MapPinIcon, ArrowRightIcon } from '@/components/ui/Icons';
 
 export const GraduationDayPage: React.FC = () => {
@@ -130,32 +129,11 @@ export const GraduationDayPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Emotional note + Calendar CTA */}
-        <div className="p-2.5 rounded-[6px] bg-[#FAF3E6] border border-[#C59B27]/30">
-          <p className="font-editorial-serif italic text-[11px] text-[#3D352B] leading-relaxed mb-2">
+        {/* Emotional note */}
+        <div className="p-3 rounded-[6px] bg-[#FAF3E6] border border-[#C59B27]/30 text-center">
+          <p className="font-editorial-serif italic text-xs text-[#3D352B] leading-relaxed">
             "Cho đến ngày tôi chính thức khép laptop lại để đi nhận bằng."
           </p>
-          <div
-            {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }}
-            className="flex gap-2"
-          >
-            <motion.button
-              whileTap={{ scale: 0.96 }}
-              onClick={() => window.open(graduation.calendarUrl, '_blank')}
-              className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-full bg-gradient-to-r from-[#FAF3E6] via-[#FFFDF8] to-[#FAF3E6] border border-[#C59B27] text-[#8C6D1F] text-[10px] font-grotesk-bold font-bold tracking-wider shadow-xs hover:shadow-md transition-all cursor-pointer"
-            >
-              <CalendarIcon size={12} className="text-[#8C6D1F]" />
-              <span>Thêm vào lịch</span>
-            </motion.button>
-            <motion.button
-              whileTap={{ scale: 0.96 }}
-              onClick={() => window.open(graduation.googleMapsUrl, '_blank')}
-              className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-full bg-gradient-to-r from-[#C59B27] to-[#B8860B] text-white text-[10px] font-grotesk-bold font-bold tracking-wider shadow-sm hover:shadow-md transition-all cursor-pointer"
-            >
-              <MapPinIcon size={12} className="text-white" />
-              <span>Xem bản đồ</span>
-            </motion.button>
-          </div>
         </div>
       </div>
 

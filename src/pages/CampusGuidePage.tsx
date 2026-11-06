@@ -25,7 +25,6 @@ const FLOORS: FloorInfo[] = [
     label: 'Tầng G',
     title: 'Sảnh Chính & Lễ Tân',
     image: '/image/tangGcampus.png?v=2',
-    highlight: 'Cổng đón khách lễ tốt nghiệp',
   },
   {
     id: '1',
@@ -277,9 +276,6 @@ export const CampusGuidePage: React.FC = () => {
                 className="w-full h-auto max-h-[195px] object-contain rounded-[4px] transition-transform duration-200 group-hover:scale-[1.01]"
                 loading="eager"
               />
-              <div className="absolute bottom-2 right-2.5 bg-black/60 text-white text-[9px] font-mono px-2 py-0.5 rounded-full flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity backdrop-blur-xs">
-                <span>🔍 Chạm xem lớn</span>
-              </div>
             </div>
 
             {/* Action Bar: Zoom & Download */}

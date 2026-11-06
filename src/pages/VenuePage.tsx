@@ -1,19 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { graduation } from '@/data/graduation';
 import { APP_CONFIG } from '@/lib/constants';
-import { GlobeIcon, MapPinIcon, ExternalLinkIcon, CopyIcon, CheckIcon, ArrowRightIcon } from '@/components/ui/Icons';
+import { GlobeIcon, MapPinIcon, ExternalLinkIcon, ArrowRightIcon } from '@/components/ui/Icons';
 
 export const VenuePage: React.FC = () => {
-  const [copied, setCopied] = useState(false);
-  const fullAddress = 'Đường D1, Khu Công Nghệ Cao, P. Long Thạnh Mỹ, TP. Thủ Đức, TP. Hồ Chí Minh';
-
-  const handleCopy = () => {
-    navigator.clipboard?.writeText(fullAddress);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2200);
-  };
+  const fullAddress = 'LÔ E2A-7 Đường D1, Khu Công nghệ cao, Phường Tăng Nhơn Phú, Thành phố Hồ Chí Minh';
 
   return (
     <PageSurface variant="light" className="p-5 md:p-6 flex flex-col justify-between overflow-hidden relative">
@@ -112,21 +105,6 @@ export const VenuePage: React.FC = () => {
               </div>
             </div>
             <ExternalLinkIcon size={14} className="text-white group-hover:scale-110 transition-transform" />
-          </motion.button>
-        </div>
-
-        {/* Copy address */}
-        <div {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }}>
-          <motion.button
-            whileTap={{ scale: 0.97 }}
-            onClick={handleCopy}
-            className="w-full flex items-center justify-center gap-2 py-2 rounded-full border border-[#C59B27]/40 text-[#8C6D1F] text-[10px] font-mono font-bold tracking-wider hover:bg-[#FAF3E6] transition-colors cursor-pointer"
-          >
-            {copied ? (
-              <><CheckIcon size={12} className="text-[#2E8B57]" /><span>Đã sao chép địa chỉ</span></>
-            ) : (
-              <><CopyIcon size={12} className="text-[#8C6D1F]" /><span>Sao chép địa chỉ</span></>
-            )}
           </motion.button>
         </div>
       </div>

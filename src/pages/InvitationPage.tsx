@@ -1,9 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { graduation } from '@/data/graduation';
 import { APP_CONFIG } from '@/lib/constants';
-import { MapPinIcon, ArrowRightIcon } from '@/components/ui/Icons';
+import { ArrowRightIcon } from '@/components/ui/Icons';
 
 interface InvitationPageProps {
   onBackToCover?: () => void;
@@ -101,19 +100,6 @@ export const InvitationPage: React.FC<InvitationPageProps> = ({ onBackToCover })
               <span className="font-bold text-[#1E1A16] truncate block">{graduation.campus}</span>
             </div>
           </div>
-        </div>
-
-        {/* TACTILE CTA in Bright Gold Theme - Centered */}
-        <div {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }} className="pt-1 flex justify-center">
-          <motion.button
-            whileTap={{ scale: 0.97 }}
-            whileHover={{ scale: 1.02 }}
-            onClick={() => window.open('https://maps.app.goo.gl/rFv6JMXzwRuaM9oV7', '_blank')}
-            className="w-full max-w-[280px] flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-gradient-to-r from-[#C59B27] via-[#D4AF37] to-[#B8860B] text-white text-xs font-grotesk-bold font-bold tracking-wider shadow-sm hover:shadow-md transition-all cursor-pointer"
-          >
-            <MapPinIcon size={14} className="text-white" />
-            <span>Xem địa điểm</span>
-          </motion.button>
         </div>
       </div>
 
