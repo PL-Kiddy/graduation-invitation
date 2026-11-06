@@ -56,8 +56,8 @@ export const InvitationPage: React.FC<InvitationPageProps> = ({ onBackToCover })
           <h2 className="text-2xl md:text-3xl font-display-title font-black tracking-tight text-[#1E1A16] leading-snug">
             DỰ LỄ TỐT NGHIỆP CỦA LONG
           </h2>
-          <p className="text-xs text-[#6A5E50] max-w-[280px] mx-auto leading-relaxed pt-0.5 font-sans-modern">
-            Một ngày khá quan trọng với mình, và chắc chắn sẽ trọn vẹn hơn rất nhiều nếu hôm đó có sự hiện diện của {guestName || 'bạn'}.
+          <p className="text-xs text-[#6A5E50] max-w-[290px] mx-auto leading-relaxed pt-0.5 font-sans-modern">
+            Sau bao mùa deadline, cuối cùng tôi cũng sắp được nhận bằng rồi. Hôm đó ghé chung vui nha!
           </p>
         </div>
 
@@ -73,17 +73,17 @@ export const InvitationPage: React.FC<InvitationPageProps> = ({ onBackToCover })
           {/* Large Date Display: 07 / 11 / 2026 */}
           <div className="flex items-center justify-around py-1">
             <div className="text-center">
-              <span className="text-3xl md:text-4xl font-grotesk-bold font-black foil-gold-text block leading-none">07</span>
+              <span className="text-3xl md:text-4xl font-grotesk-bold font-black text-[#8C6D1F] block leading-none">07</span>
               <span className="text-[9px] font-mono text-[#8C7D6F] uppercase font-bold mt-1 block">NGÀY</span>
             </div>
             <span className="text-2xl text-[#C59B27]/40 font-light">/</span>
             <div className="text-center">
-              <span className="text-3xl md:text-4xl font-grotesk-bold font-black foil-gold-text block leading-none">11</span>
+              <span className="text-3xl md:text-4xl font-grotesk-bold font-black text-[#8C6D1F] block leading-none">11</span>
               <span className="text-[9px] font-mono text-[#8C7D6F] uppercase font-bold mt-1 block">THÁNG</span>
             </div>
             <span className="text-2xl text-[#C59B27]/40 font-light">/</span>
             <div className="text-center">
-              <span className="text-3xl md:text-4xl font-grotesk-bold font-black foil-gold-text block leading-none">2026</span>
+              <span className="text-3xl md:text-4xl font-grotesk-bold font-black text-[#8C6D1F] block leading-none">2026</span>
               <span className="text-[9px] font-mono text-[#8C7D6F] uppercase font-bold mt-1 block">NĂM</span>
             </div>
           </div>
