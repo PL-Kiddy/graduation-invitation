@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
-import { graduation } from '@/data/graduation';
 import { APP_CONFIG } from '@/lib/constants';
 import {
   CapIcon,
@@ -47,7 +46,7 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
           </span>
         </div>
         <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-          08 / 08
+          07 / 07
         </span>
       </div>
 
@@ -81,39 +80,28 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
           </div>
         </motion.div>
 
-        {/* Title & Name (Styled like Reference Image 1 & 2) */}
-        <div className="space-y-0.5">
-          <p className="font-editorial-serif italic text-sm md:text-base text-[#8C6D1F] font-semibold">
+        {/* Title & Name */}
+        <div className="space-y-1">
+          <p className="font-editorial-serif italic text-base md:text-lg text-[#8C6D1F] font-semibold">
             Lễ tốt nghiệp
           </p>
-          <motion.h2
-            initial={{ opacity: 0, y: 8 }}
+
+          {/* Handwritten Signature with Flowing Underline */}
+          <motion.div
+            initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35 }}
-            className="text-xl md:text-2xl font-grotesk-bold font-black text-[#1E1A16] tracking-tight uppercase"
+            className="pt-0.5 flex flex-col items-center"
           >
-            {graduation.graduateName}
-          </motion.h2>
-          <p className="text-[10px] font-mono tracking-[0.2em] foil-gold-text font-bold">
-            ĐÃ SẴN SÀNG • 07.11.2026
-          </p>
+            <span className="font-editorial-serif italic text-2xl md:text-3xl font-bold text-[#8C6D1F] leading-tight">
+              Quách Hùng Phúc Long
+            </span>
+            {/* Elegant signature stroke */}
+            <svg width="150" height="16" viewBox="0 0 120 14" fill="none" className="opacity-80 mt-0.5">
+              <path d="M5 8 C30 1, 60 14, 90 6 C105 2, 115 10, 118 7" stroke="#C59B27" strokeWidth="1.6" strokeLinecap="round" />
+            </svg>
+          </motion.div>
         </div>
-
-        {/* Handwritten Signature with Flowing Underline (from Reference Image 2) */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="pt-1 flex flex-col items-center"
-        >
-          <span className="font-editorial-serif italic text-lg font-bold text-[#8C6D1F]">
-            Quách Hùng Phúc Long
-          </span>
-          {/* Elegant signature stroke */}
-          <svg width="120" height="14" viewBox="0 0 120 14" fill="none" className="opacity-70">
-            <path d="M5 8 C30 1, 60 14, 90 6 C105 2, 115 10, 118 7" stroke="#C59B27" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-        </motion.div>
 
         {/* Speech Bubble "CONTACT WITH ME" */}
         <motion.div

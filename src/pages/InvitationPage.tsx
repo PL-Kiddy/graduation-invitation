@@ -24,26 +24,13 @@ export const InvitationPage: React.FC<InvitationPageProps> = ({ onBackToCover })
       {/* TOP HEADER */}
       <div className="relative z-20 flex items-center justify-between border-b border-[#C59B27]/20 pb-2.5 mx-2">
         <div className="flex items-center gap-1.5">
-          {onBackToCover ? (
-            <button
-              {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }}
-              onClick={onBackToCover}
-              className="flex items-center gap-1 text-[10px] uppercase font-mono tracking-[0.2em] text-[#8C6D1F] font-bold hover:text-[#C59B27] cursor-pointer transition-colors group"
-            >
-              <span className="text-xs transition-transform group-hover:-translate-x-0.5">‹</span>
-              <span>BÌA THIỆP</span>
-            </button>
-          ) : (
-            <>
-              <span className="w-2 h-2 rounded-full bg-[#C59B27]" />
-              <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#8C6D1F] font-bold">
-                OFFICIAL INVITATION // THƯ MỜI
-              </span>
-            </>
-          )}
+          <span className="w-2 h-2 rounded-full bg-[#C59B27]" />
+          <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#8C6D1F] font-bold">
+            THƯ MỜI
+          </span>
         </div>
         <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-          01 / 08
+          01 / 07
         </span>
       </div>
 
@@ -79,7 +66,7 @@ export const InvitationPage: React.FC<InvitationPageProps> = ({ onBackToCover })
             </div>
             <span className="text-2xl text-[#C59B27]/40 font-light">/</span>
             <div className="text-center">
-              <span className="text-3xl md:text-4xl font-grotesk-bold font-black text-[#F27024] block leading-none">11</span>
+              <span className="text-3xl md:text-4xl font-grotesk-bold font-black foil-gold-text block leading-none">11</span>
               <span className="text-[9px] font-mono text-[#8C7D6F] uppercase font-bold mt-1 block">THÁNG</span>
             </div>
             <span className="text-2xl text-[#C59B27]/40 font-light">/</span>

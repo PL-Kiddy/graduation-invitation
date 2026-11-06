@@ -23,7 +23,7 @@ export const MemoriesPage: React.FC = () => {
           </span>
         </div>
         <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-          06 / 08
+          05 / 07
         </span>
       </div>
 
