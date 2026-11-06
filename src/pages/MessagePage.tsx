@@ -33,11 +33,11 @@ export const MessagePage: React.FC = () => {
         <div className="flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-[#C59B27]" />
           <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#8C6D1F] font-bold">
-            EPILOGUE NOTE // TÂM SỰ
+            TÂM SỰ
           </span>
         </div>
         <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-          09 / 10
+          07 / 08
         </span>
       </div>
 
@@ -112,7 +112,7 @@ export const MessagePage: React.FC = () => {
 
       {/* BOTTOM HINT */}
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/25 mx-2">
-        <span>A PERSONAL NOTE</span>
+        <span />
         <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
           <span>Lời kết & Tri ân</span>
           <ArrowRightIcon size={11} className="text-[#8C6D1F]" />

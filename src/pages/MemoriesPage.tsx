@@ -19,19 +19,16 @@ export const MemoriesPage: React.FC = () => {
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#C59B27]" />
           <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#8C6D1F] font-bold">
-            PHOTO ESSAY // KỶ NIỆM
+            KỶ NIỆM
           </span>
         </div>
         <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-          08 / 10
+          06 / 08
         </span>
       </div>
 
       {/* EDITORIAL GOLD HEADING */}
       <div className="relative z-20 pt-2 px-2">
-        <span className="text-[9px] font-mono tracking-[0.25em] text-[#C59B27] uppercase font-bold block mb-1">
-          ARCHIVAL MEMORIES • 2022 – 2026
-        </span>
         <h2 className="text-2xl md:text-3xl font-grotesk-bold font-black text-[#1E1A16] tracking-tight leading-[0.95]">
           NHỮNG KHUNG HÌNH<br />
           <span className="font-editorial-serif italic font-normal foil-gold-text">đáng nhớ thời đại học.</span>
@@ -116,7 +113,7 @@ export const MemoriesPage: React.FC = () => {
 
       {/* BOTTOM HINT */}
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
-        <span>MEMORIES // STORED</span>
+        <span />
         <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
           <span>Lời nhắn riêng</span>
           <ArrowRightIcon size={11} className="text-[#8C6D1F]" />

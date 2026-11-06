@@ -43,7 +43,7 @@ export const InvitationPage: React.FC<InvitationPageProps> = ({ onBackToCover })
           )}
         </div>
         <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-          01 / 10
+          01 / 08
         </span>
       </div>
 

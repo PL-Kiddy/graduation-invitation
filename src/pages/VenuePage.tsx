@@ -19,20 +19,17 @@ export const VenuePage: React.FC = () => {
         <div className="flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-[#C59B27] animate-pulse" />
           <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#8C6D1F] font-bold">
-            VENUE &amp; MAP // ĐỊA ĐIỂM
+            ĐỊA ĐIỂM
           </span>
         </div>
-        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">03 / 10</span>
+        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">03 / 08</span>
       </div>
 
       {/* MAIN BODY */}
       <div className="relative z-20 my-auto py-1.5 space-y-3 mx-2">
         {/* Heading */}
         <div className="space-y-0.5">
-          <span className="text-[9px] font-mono tracking-[0.25em] text-[#C59B27] uppercase font-bold block">
-            DESTINATION POINT
-          </span>
-          <h2 className="text-2xl md:text-3xl font-grotesk-bold font-black text-[#1E1A16] tracking-tight leading-[0.95]">
+          <h2 className="text-3xl md:text-4xl font-grotesk-bold font-black text-[#1E1A16] tracking-tight leading-[0.98]">
             HẸN BẠN<br />
             <span className="foil-gold-text">Ở ĐÂY.</span>
           </h2>
@@ -46,20 +43,17 @@ export const VenuePage: React.FC = () => {
             <line x1="150" y1="30" x2="270" y2="60" stroke="#F27024" strokeWidth="2.5" />
           </svg>
 
-          <div className="relative z-10 flex items-start gap-3">
-            <div className="relative shrink-0">
-              <div className="w-9 h-9 rounded-full gold-halo-ring bg-white text-[#C59B27] flex items-center justify-center shadow-md">
-                <MapPinIcon size={18} className="text-[#C59B27]" />
+          <div className="relative z-10 flex items-start gap-3.5">
+            <div className="relative shrink-0 mt-0.5">
+              <div className="w-10 h-10 rounded-full gold-halo-ring bg-white text-[#C59B27] flex items-center justify-center shadow-md">
+                <MapPinIcon size={20} className="text-[#C59B27]" />
               </div>
               <span className="absolute inset-0 rounded-full bg-[#C59B27] animate-ping opacity-25" />
             </div>
 
             <div className="flex-1 min-w-0">
-              <span className="text-[8px] font-mono font-bold px-2 py-0.5 rounded-full bg-[#FAF3E6] border border-[#C59B27]/40 text-[#8C6D1F] mb-1 inline-block">
-                10.8411° N, 106.8099° E
-              </span>
-              <h3 className="text-sm font-grotesk-bold font-bold text-[#1E1A16] mt-1">{graduation.campus}</h3>
-              <p className="text-[11px] text-[#6A5E50] font-sans-modern leading-relaxed mt-0.5">{fullAddress}</p>
+              <h3 className="text-sm font-grotesk-bold font-bold text-[#1E1A16] leading-tight">{graduation.campus}</h3>
+              <p className="text-[11px] text-[#6A5E50] font-sans-modern leading-relaxed mt-1">{fullAddress}</p>
             </div>
           </div>
 
@@ -111,7 +105,7 @@ export const VenuePage: React.FC = () => {
 
       {/* BOTTOM HINT */}
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
-        <span>CAMPUS MAP</span>
+        <span />
         <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
           <span>Sơ đồ tầng</span>
           <ArrowRightIcon size={11} className="text-[#8C6D1F]" />

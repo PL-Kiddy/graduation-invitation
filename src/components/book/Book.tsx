@@ -5,16 +5,14 @@ import { useSwipeGesture } from '@/hooks/useSwipeGesture';
 import { PageIndicator } from '@/components/book/PageIndicator';
 import { transitions } from '@/lib/motion';
 
-// Pages — NEW 10-page flow
+// Pages — 8-page flow
 import { InvitationPage }   from '@/pages/InvitationPage';
-import { IntroPage }        from '@/pages/IntroPage';
-import { JourneyPage }      from '@/pages/JourneyPage';
 import { GraduationDayPage } from '@/pages/GraduationDayPage';
 import { VenuePage }        from '@/pages/VenuePage';
 import { CampusGuidePage }  from '@/pages/CampusGuidePage';
+import { RSVPPage }         from '@/pages/RSVPPage';
 import { MemoriesPage }     from '@/pages/MemoriesPage';
 import { MessagePage }      from '@/pages/MessagePage';
-import { RSVPPage }         from '@/pages/RSVPPage';
 import { FinalPage }        from '@/pages/FinalPage';
 
 interface BookProps {
@@ -66,7 +64,7 @@ export const Book: React.FC<BookProps> = ({ onRestart, onBackToCover }) => {
 
   const { isDragging, dragProgress } = gestureState;
 
-  // Render the appropriate component for a given page index (0-based, 10 pages)
+  // Render the appropriate component for a given page index (0-based, 8 pages)
   const renderPageComponent = (index: number) => {
     switch (index) {
       case 0:  return <InvitationPage onBackToCover={onBackToCover} />;
@@ -74,11 +72,9 @@ export const Book: React.FC<BookProps> = ({ onRestart, onBackToCover }) => {
       case 2:  return <VenuePage />;
       case 3:  return <CampusGuidePage />;
       case 4:  return <RSVPPage />;
-      case 5:  return <IntroPage onNext={nextPage} />;
-      case 6:  return <JourneyPage />;
-      case 7:  return <MemoriesPage />;
-      case 8:  return <MessagePage />;
-      case 9:  return (
+      case 5:  return <MemoriesPage />;
+      case 6:  return <MessagePage />;
+      case 7:  return (
         <FinalPage
           onRestart={() => {
             goToPage(0);

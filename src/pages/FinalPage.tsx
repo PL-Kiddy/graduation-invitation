@@ -6,13 +6,7 @@ import { APP_CONFIG } from '@/lib/constants';
 import {
   CapIcon,
   SparklesIcon,
-  CalendarIcon,
-  MapPinIcon,
   RefreshIcon,
-  FacebookIcon,
-  ZaloIcon,
-  TikTokIcon,
-  InstagramIcon,
   PhoneIcon,
 } from '@/components/ui/Icons';
 
@@ -49,11 +43,11 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
         <div className="flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-[#2E8B57]" />
           <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#8C6D1F] font-bold">
-            FINALE // LỜI KẾT
+            LỜI KẾT
           </span>
         </div>
         <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-          10 / 10
+          08 / 08
         </span>
       </div>
 
@@ -121,7 +115,7 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
           </svg>
         </motion.div>
 
-        {/* Speech Bubble "CONTACT WITH ME" (from Reference Image 2) */}
+        {/* Speech Bubble "CONTACT WITH ME" */}
         <motion.div
           initial={{ opacity: 0, y: 5 }}
           animate={{ opacity: 1, y: 0 }}
@@ -135,39 +129,22 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
           </div>
         </motion.div>
 
-        {/* Bronze / Gold Luxury Social Pill Bar (from Reference Image 2) */}
-        <motion.div
+        {/* Bronze / Gold Luxury Phone Pill */}
+        <motion.a
+          href="tel:0819404252"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.75 }}
-          className="w-full max-w-[300px] bg-gradient-to-r from-[#A67C1E] via-[#C59B27] to-[#8C6514] text-white py-1.5 px-3 rounded-full shadow-md flex items-center justify-between text-xs font-mono font-bold"
+          className="w-full max-w-[240px] bg-gradient-to-r from-[#A67C1E] via-[#C59B27] to-[#8C6514] text-white py-2 px-4 rounded-full shadow-md flex items-center justify-center gap-2.5 text-sm font-grotesk-bold font-bold tracking-wider hover:brightness-105 active:scale-98 transition-all cursor-pointer"
         >
-          <div className="flex items-center gap-1.5">
-            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
-              <FacebookIcon size={12} className="text-white" />
-            </span>
-            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
-              <ZaloIcon size={12} className="text-white" />
-            </span>
-            <span className="text-[10px] tracking-wider pl-1 flex items-center gap-1">
-              <PhoneIcon size={10} className="text-white/80" />
-              <span>07.11.2026</span>
-            </span>
-          </div>
-          <div className="h-3 w-px bg-white/30" />
-          <div className="flex items-center gap-1.5">
-            <span className="text-[9px] tracking-wide text-white/90">@phuclong</span>
-            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
-              <TikTokIcon size={11} className="text-white" />
-            </span>
-            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
-              <InstagramIcon size={11} className="text-white" />
-            </span>
-          </div>
-        </motion.div>
+          <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
+            <PhoneIcon size={14} className="text-white" />
+          </span>
+          <span>0819404252</span>
+        </motion.a>
 
-        {/* Action Buttons: Xem lại thiệp ↻, Bản đồ, Lịch hẹn */}
-        <div {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }} className="space-y-1.5 w-full max-w-[280px] pt-1">
+        {/* Action Button: Xem lại thiệp ↻ */}
+        <div {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }} className="w-full max-w-[240px] pt-1">
           {onRestart && (
             <motion.button
               whileTap={{ scale: 0.97 }}
@@ -178,26 +155,6 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
               <RefreshIcon size={13} className="text-[#8C6D1F]" />
             </motion.button>
           )}
-
-          <div className="grid grid-cols-2 gap-2">
-            <motion.button
-              whileTap={{ scale: 0.97 }}
-              onClick={() => window.open(graduation.googleMapsUrl, '_blank')}
-              className="flex items-center justify-center gap-1.5 py-1.5 rounded-[4px] bg-[#FAF5EB] hover:bg-[#F3E8D3] text-[#8C6D1F] border border-[#C59B27]/30 text-[10px] font-mono font-bold tracking-wider transition-colors cursor-pointer"
-            >
-              <MapPinIcon size={12} className="text-[#8C6D1F]" />
-              <span>Bản đồ</span>
-            </motion.button>
-
-            <motion.button
-              whileTap={{ scale: 0.97 }}
-              onClick={() => window.open(graduation.calendarUrl, '_blank')}
-              className="flex items-center justify-center gap-1.5 py-1.5 rounded-[4px] bg-[#FAF5EB] hover:bg-[#F3E8D3] text-[#8C6D1F] border border-[#C59B27]/30 text-[10px] font-mono font-bold tracking-wider transition-colors cursor-pointer"
-            >
-              <CalendarIcon size={12} className="text-[#8C6D1F]" />
-              <span>Lịch hẹn</span>
-            </motion.button>
-          </div>
         </div>
       </div>
 

@@ -93,7 +93,7 @@ export const RSVPPage: React.FC = () => {
             RSVP PROTOCOL // PHẢN HỒI
           </span>
         </div>
-        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">05 / 10</span>
+        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">05 / 08</span>
       </div>
 
       {/* MAIN INTERACTIVE BODY */}
@@ -231,7 +231,7 @@ export const RSVPPage: React.FC = () => {
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
         <span>GUEST PROTOCOL</span>
         <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
-          <span>Tâm sự 4 năm</span>
+          <span>Khung hình kỷ niệm</span>
           <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
         </span>
       </div>

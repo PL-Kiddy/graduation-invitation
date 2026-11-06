@@ -203,10 +203,10 @@ export const CampusGuidePage: React.FC = () => {
         <div className="flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-[#2E8B57]" />
           <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#8C6D1F] font-bold">
-            CAMPUS GUIDE // SƠ ĐỒ TẦNG
+            SƠ ĐỒ TẦNG
           </span>
         </div>
-        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">04 / 10</span>
+        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">04 / 08</span>
       </div>
 
       {/* MAIN BODY */}
