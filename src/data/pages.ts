@@ -18,16 +18,16 @@ export interface PageDefinition {
 }
 
 export const BOOK_PAGES: PageDefinition[] = [
-  { id: 'invitation',   index: 0,  label: 'Thư Mời',     chapterTitle: 'Lời Mời Chính Thức' },
-  { id: 'intro',        index: 1,  label: 'Lời Mở Đầu',  chapterTitle: 'Tâm Sự' },
-  { id: 'journey',      index: 2,  label: 'Hành Trình',   chapterTitle: 'FPT Years' },
-  { id: 'graduationday',index: 3,  label: 'Ngày Lễ',      chapterTitle: 'Graduation Day' },
-  { id: 'venue',        index: 4,  label: 'Địa Điểm',     chapterTitle: 'Venue & Map' },
-  { id: 'campusguide',  index: 5,  label: 'Sơ Đồ',        chapterTitle: 'Campus Guide' },
-  { id: 'memories',     index: 6,  label: 'Kỷ Niệm',      chapterTitle: 'Khoảnh Khắc' },
-  { id: 'message',      index: 7,  label: 'Nhắn Gửi',     chapterTitle: 'Tâm Sự Cuối' },
-  { id: 'rsvp',         index: 8,  label: 'Xác Nhận',     chapterTitle: 'RSVP' },
-  { id: 'final',        index: 9,  label: 'Lời Kết',      chapterTitle: 'Hẹn Gặp Bạn' },
+  { id: 'invitation',    index: 0, label: 'Thư Mời',      chapterTitle: 'Thư Mời Tham Gia' },
+  { id: 'graduationday', index: 1, label: 'Thời Gian',    chapterTitle: 'Thời Gian & Countdown' },
+  { id: 'venue',         index: 2, label: 'Địa Điểm',     chapterTitle: 'Địa Điểm & Bản Đồ' },
+  { id: 'campusguide',   index: 3, label: 'Sơ Đồ',        chapterTitle: 'Sơ Đồ Campus' },
+  { id: 'rsvp',          index: 4, label: 'Xác Nhận',     chapterTitle: 'Xác Nhận Tham Dự' },
+  { id: 'intro',         index: 5, label: 'Lời Mở Đầu',   chapterTitle: 'Tâm Sự 4 Năm' },
+  { id: 'journey',       index: 6, label: 'Hành Trình',   chapterTitle: 'Hành Trình FPT' },
+  { id: 'memories',      index: 7, label: 'Kỷ Niệm',      chapterTitle: 'Khung Hình Kỷ Niệm' },
+  { id: 'message',       index: 8, label: 'Nhắn Gửi',     chapterTitle: 'Lời Nhắn Riêng' },
+  { id: 'final',         index: 9, label: 'Lời Kết',      chapterTitle: 'Lời Kết & Tri Ân' },
 ];
 
 export const TOTAL_PAGES = BOOK_PAGES.length;

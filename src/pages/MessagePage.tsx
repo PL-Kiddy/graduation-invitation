@@ -37,7 +37,7 @@ export const MessagePage: React.FC = () => {
           </span>
         </div>
         <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-          09 / 11
+          09 / 10
         </span>
       </div>
 
@@ -114,7 +114,7 @@ export const MessagePage: React.FC = () => {
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/25 mx-2">
         <span>A PERSONAL NOTE</span>
         <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
-          <span>Gửi phản hồi cho Long</span>
+          <span>Lời kết & Tri ân</span>
           <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
         </span>
       </div>

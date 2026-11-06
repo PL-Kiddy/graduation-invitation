@@ -132,7 +132,7 @@ export const InvitationPage: React.FC<InvitationPageProps> = ({ onBackToCover })
           <span>QUÁCH HÙNG PHÚC LONG</span>
         )}
         <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
-          <span>Lời mở đầu</span>
+          <span>Thời gian & Đếm ngược</span>
           <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
         </span>
       </div>

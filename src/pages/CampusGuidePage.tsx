@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { APP_CONFIG } from '@/lib/constants';
-import { ArrowRightIcon, XCircleIcon } from '@/components/ui/Icons';
+import {
+  ArrowRightIcon,
+  XCircleIcon,
+  DownloadIcon,
+  ZoomInIcon,
+  ZoomOutIcon,
+  RefreshIcon,
+} from '@/components/ui/Icons';
 
 interface FloorInfo {
   id: string;
@@ -64,7 +71,127 @@ export const CampusGuidePage: React.FC = () => {
   const [activeFloor, setActiveFloor] = useState<string>('G');
   const [isZoomed, setIsZoomed] = useState<boolean>(false);
 
+  // Zoom & Pan state for interactive image viewing
+  const [scale, setScale] = useState<number>(1);
+  const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+
+  // Refs for tracking multi-touch gestures
+  const lastTouchDistance = useRef<number | null>(null);
+  const lastTouchPos = useRef<{ x: number; y: number } | null>(null);
+  const lastTapTime = useRef<number>(0);
+
   const floor = FLOORS.find((f) => f.id === activeFloor) || FLOORS[0];
+
+  // Reset zoom on open/close or floor switch
+  useEffect(() => {
+    setScale(1);
+    setPosition({ x: 0, y: 0 });
+  }, [isZoomed, activeFloor]);
+
+  // Download floor map image directly
+  const handleDownload = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    const cleanUrl = floor.image.split('?')[0];
+    const link = document.createElement('a');
+    link.href = cleanUrl;
+    link.download = `So_do_${floor.label.replace(/\s+/g, '_')}_FPT_University_HCM.png`;
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Zoom controls
+  const handleZoomIn = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setScale((prev) => Math.min(4, +(prev + 0.5).toFixed(1)));
+  };
+
+  const handleZoomOut = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setScale((prev) => {
+      const next = Math.max(1, +(prev - 0.5).toFixed(1));
+      if (next === 1) setPosition({ x: 0, y: 0 });
+      return next;
+    });
+  };
+
+  const handleResetZoom = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setScale(1);
+    setPosition({ x: 0, y: 0 });
+  };
+
+  // Touch Handlers for Pinch-to-zoom & Pan on mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.stopPropagation();
+    if (e.touches.length === 2) {
+      // 2 fingers: prepare for pinch
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      lastTouchDistance.current = dist;
+    } else if (e.touches.length === 1) {
+      // 1 finger: prepare for pan
+      lastTouchPos.current = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY,
+      };
+
+      // Check double-tap
+      const now = Date.now();
+      if (now - lastTapTime.current < 280) {
+        if (scale > 1.2) {
+          handleResetZoom();
+        } else {
+          setScale(2.5);
+        }
+        lastTapTime.current = 0;
+      } else {
+        lastTapTime.current = now;
+      }
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    e.stopPropagation();
+    if (e.touches.length === 2 && lastTouchDistance.current) {
+      // Pinch to zoom
+      const currentDist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      const factor = currentDist / lastTouchDistance.current;
+      setScale((prev) => Math.min(4.5, Math.max(1, +(prev * factor).toFixed(2))));
+      lastTouchDistance.current = currentDist;
+    } else if (e.touches.length === 1 && lastTouchPos.current && scale > 1) {
+      // Pan image
+      const dx = e.touches[0].clientX - lastTouchPos.current.x;
+      const dy = e.touches[0].clientY - lastTouchPos.current.y;
+      setPosition((prev) => ({
+        x: prev.x + dx,
+        y: prev.y + dy,
+      }));
+      lastTouchPos.current = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY,
+      };
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    e.stopPropagation();
+    if (e.touches.length < 2) {
+      lastTouchDistance.current = null;
+    }
+    if (e.touches.length === 0) {
+      lastTouchPos.current = null;
+      if (scale <= 1) {
+        setPosition({ x: 0, y: 0 });
+      }
+    }
+  };
 
   return (
     <PageSurface variant="light" className="p-5 md:p-6 flex flex-col justify-between overflow-hidden relative">
@@ -80,7 +207,7 @@ export const CampusGuidePage: React.FC = () => {
             CAMPUS GUIDE // SƠ ĐỒ TẦNG
           </span>
         </div>
-        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">06 / 10</span>
+        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">04 / 10</span>
       </div>
 
       {/* MAIN BODY */}
@@ -127,12 +254,8 @@ export const CampusGuidePage: React.FC = () => {
             {/* Floor Map Header */}
             <div className="px-3 py-1.5 border-b border-[#C59B27]/20 flex items-center justify-between bg-white/70">
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono font-bold text-[#8C6D1F] uppercase tracking-wider">
+                <span className="text-[11px] font-grotesk-bold font-bold text-[#8C6D1F] uppercase tracking-wider">
                   {floor.label}
-                </span>
-                <span className="text-[#C59B27]/40">·</span>
-                <span className="text-[11px] font-grotesk-bold font-bold text-[#1E1A16]">
-                  {floor.title}
                 </span>
               </div>
               {floor.highlight && (
@@ -151,12 +274,35 @@ export const CampusGuidePage: React.FC = () => {
               <img
                 src={floor.image}
                 alt={`Sơ đồ ${floor.label} - FPT University HCM`}
-                className="w-full h-auto max-h-[220px] object-contain rounded-[4px] transition-transform duration-200 group-hover:scale-[1.01]"
+                className="w-full h-auto max-h-[195px] object-contain rounded-[4px] transition-transform duration-200 group-hover:scale-[1.01]"
                 loading="eager"
               />
               <div className="absolute bottom-2 right-2.5 bg-black/60 text-white text-[9px] font-mono px-2 py-0.5 rounded-full flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity backdrop-blur-xs">
                 <span>🔍 Chạm xem lớn</span>
               </div>
+            </div>
+
+            {/* Action Bar: Zoom & Download */}
+            <div
+              {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }}
+              className="flex items-center gap-2 p-2 border-t border-[#C59B27]/20 bg-white/80"
+            >
+              <button
+                type="button"
+                onClick={() => setIsZoomed(true)}
+                className="flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2.5 rounded-full bg-gradient-to-r from-[#FAF3E6] via-[#FFFDF8] to-[#FAF3E6] border border-[#C59B27]/50 text-[#8C6D1F] text-[10px] font-grotesk-bold font-bold hover:shadow-xs transition-all cursor-pointer"
+              >
+                <ZoomInIcon size={12} className="text-[#C59B27]" />
+                <span>Chạm xem lớn</span>
+              </button>
+              <button
+                type="button"
+                onClick={handleDownload}
+                className="flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2.5 rounded-full bg-gradient-to-r from-[#C59B27] via-[#D4AF37] to-[#B8860B] text-white text-[10px] font-grotesk-bold font-bold shadow-xs hover:shadow-md transition-all cursor-pointer"
+              >
+                <DownloadIcon size={12} className="text-white" />
+                <span>Tải sơ đồ về máy</span>
+              </button>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -191,12 +337,12 @@ export const CampusGuidePage: React.FC = () => {
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
         <span>FPTU · Q9 · THỦ ĐỨC</span>
         <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
-          <span>Ảnh kỷ niệm</span>
+          <span>Xác nhận tham dự</span>
           <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
         </span>
       </div>
 
-      {/* Lightbox / Fullscreen Zoom Modal */}
+      {/* FULLSCREEN PINCH-TO-ZOOM & PAN LIGHTBOX MODAL */}
       <AnimatePresence>
         {isZoomed && (
           <motion.div
@@ -204,40 +350,132 @@ export const CampusGuidePage: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsZoomed(false)}
-            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex flex-col items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black/92 backdrop-blur-md flex flex-col justify-between overflow-hidden select-none"
+            style={{ touchAction: 'none' }}
           >
+            {/* Top Interactive Toolbar */}
             <div
               {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-2xl w-full bg-[#FFFDF9] rounded-xl border border-[#C59B27] p-3 shadow-2xl space-y-2"
+              className="relative z-20 flex items-center justify-between p-3 md:p-4 bg-gradient-to-b from-black/80 to-transparent border-b border-white/10"
             >
-              <div className="flex items-center justify-between border-b border-[#C59B27]/20 pb-2">
-                <div>
-                  <span className="text-[10px] font-mono font-bold text-[#8C6D1F] uppercase tracking-wider block">
+              {/* Floor Title */}
+              <div className="text-white">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-grotesk-bold font-bold text-[#D4AF37] uppercase tracking-wider">
                     {floor.label}
                   </span>
-                  <p className="text-sm font-grotesk-bold font-bold text-[#1E1A16]">{floor.title}</p>
+                  {floor.highlight && (
+                    <span className="text-[9px] font-mono text-[#D4AF37] bg-white/10 px-1.5 py-0.5 rounded">
+                      {floor.highlight}
+                    </span>
+                  )}
                 </div>
+                <span className="text-[10px] font-mono text-white/60 block">
+                  Độ thu phóng: {Math.round(scale * 100)}%
+                </span>
+              </div>
+
+              {/* Action Toolbar */}
+              <div className="flex items-center gap-1.5">
+                {/* Zoom Out */}
                 <button
+                  type="button"
+                  onClick={handleZoomOut}
+                  disabled={scale <= 1}
+                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed text-white flex items-center justify-center transition-all cursor-pointer"
+                  title="Thu nhỏ"
+                  aria-label="Thu nhỏ"
+                >
+                  <ZoomOutIcon size={16} />
+                </button>
+
+                {/* Reset 100% */}
+                <button
+                  type="button"
+                  onClick={handleResetZoom}
+                  className="px-2 h-8 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white text-[11px] font-mono font-bold flex items-center justify-center gap-1 transition-all cursor-pointer"
+                  title="Đặt lại 100%"
+                >
+                  <RefreshIcon size={12} />
+                  <span>1:1</span>
+                </button>
+
+                {/* Zoom In */}
+                <button
+                  type="button"
+                  onClick={handleZoomIn}
+                  disabled={scale >= 4}
+                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed text-white flex items-center justify-center transition-all cursor-pointer"
+                  title="Phóng to"
+                  aria-label="Phóng to"
+                >
+                  <ZoomInIcon size={16} />
+                </button>
+
+                {/* Download Button */}
+                <button
+                  type="button"
+                  onClick={handleDownload}
+                  className="flex items-center gap-1 px-3 h-8 rounded-full bg-gradient-to-r from-[#C59B27] to-[#B8860B] active:scale-95 text-white text-xs font-grotesk-bold font-bold shadow-md transition-all cursor-pointer ml-1"
+                  title="Tải ảnh sơ đồ về điện thoại"
+                >
+                  <DownloadIcon size={13} className="text-white" />
+                  <span className="hidden sm:inline">Tải về</span>
+                </button>
+
+                {/* Close Button */}
+                <button
+                  type="button"
                   onClick={() => setIsZoomed(false)}
-                  className="p-1 rounded-full text-[#8C7D6F] hover:text-[#1E1A16] hover:bg-[#FAF3E6] transition-colors cursor-pointer"
+                  className="w-8 h-8 rounded-full bg-white/15 hover:bg-red-500/80 active:scale-95 text-white flex items-center justify-center transition-all cursor-pointer ml-1"
+                  title="Đóng xem lớn"
                   aria-label="Đóng"
                 >
-                  <XCircleIcon size={22} className="text-[#8C6D1F]" />
+                  <XCircleIcon size={20} />
                 </button>
               </div>
+            </div>
 
-              <div className="overflow-auto max-h-[70vh] flex items-center justify-center bg-[#FAF6ED] rounded-lg p-2">
+            {/* Gesture-Enabled Viewport Area */}
+            <div
+              {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }}
+              onClick={(e) => e.stopPropagation()}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              className="relative flex-1 w-full h-full flex items-center justify-center overflow-hidden p-2"
+              style={{
+                cursor: scale > 1 ? 'grab' : 'zoom-in',
+                touchAction: 'none',
+              }}
+            >
+              <div
+                style={{
+                  transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+                  transformOrigin: 'center center',
+                  transition: lastTouchDistance.current ? 'none' : 'transform 0.15s ease-out',
+                }}
+                className="max-w-full max-h-full flex items-center justify-center"
+              >
                 <img
                   src={floor.image}
-                  alt={`Sơ đồ ${floor.label} - Chi tiết`}
-                  className="w-full h-auto object-contain rounded"
+                  alt={`Sơ đồ ${floor.label} - Phóng to`}
+                  className="max-w-[95vw] max-h-[75vh] object-contain rounded shadow-2xl pointer-events-none select-none"
+                  draggable={false}
                 />
               </div>
+            </div>
 
-              <div className="text-center pt-1">
-                <span className="text-[10px] font-mono text-[#8C7D6F]">Chạm vào ngoài hoặc nút đóng để quay lại</span>
-              </div>
+            {/* Bottom Guidance Hint */}
+            <div
+              {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative z-20 pb-safe pt-2 pb-3 px-4 bg-gradient-to-t from-black/80 to-transparent text-center"
+            >
+              <p className="text-[11px] font-mono text-white/80 tracking-wide">
+                👆 Dùng 2 ngón tay hoặc nhấn đúp để phóng to • Kéo để di chuyển chi tiết sơ đồ
+              </p>
             </div>
           </motion.div>
         )}

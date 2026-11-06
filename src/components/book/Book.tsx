@@ -70,14 +70,14 @@ export const Book: React.FC<BookProps> = ({ onRestart, onBackToCover }) => {
   const renderPageComponent = (index: number) => {
     switch (index) {
       case 0:  return <InvitationPage onBackToCover={onBackToCover} />;
-      case 1:  return <IntroPage onNext={nextPage} />;
-      case 2:  return <JourneyPage />;
-      case 3:  return <GraduationDayPage />;
-      case 4:  return <VenuePage />;
-      case 5:  return <CampusGuidePage />;
-      case 6:  return <MemoriesPage />;
-      case 7:  return <MessagePage />;
-      case 8:  return <RSVPPage />;
+      case 1:  return <GraduationDayPage />;
+      case 2:  return <VenuePage />;
+      case 3:  return <CampusGuidePage />;
+      case 4:  return <RSVPPage />;
+      case 5:  return <IntroPage onNext={nextPage} />;
+      case 6:  return <JourneyPage />;
+      case 7:  return <MemoriesPage />;
+      case 8:  return <MessagePage />;
       case 9:  return (
         <FinalPage
           onRestart={() => {

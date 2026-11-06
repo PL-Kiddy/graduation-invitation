@@ -51,7 +51,7 @@ export const GraduationDayPage: React.FC = () => {
             GRADUATION DAY // NGÀY LỄ
           </span>
         </div>
-        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">04 / 10</span>
+        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">02 / 10</span>
       </div>
 
       {/* MAIN BODY */}
@@ -161,9 +161,9 @@ export const GraduationDayPage: React.FC = () => {
 
       {/* BOTTOM HINT */}
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
-        <span>07.11.2026 · 06:00–18:00</span>
+        <span>07.11.2026 · 12:30–17:30</span>
         <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
-          <span>Địa điểm & Sơ đồ</span>
+          <span>Địa điểm & Bản đồ</span>
           <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
         </span>
       </div>

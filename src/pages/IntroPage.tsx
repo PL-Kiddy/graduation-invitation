@@ -23,10 +23,10 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onNext }) => {
         </div>
         <div className="flex items-center gap-2">
           <span className="px-2 py-0.5 rounded-full bg-[#FAF3E6] border border-[#C59B27]/40 text-[#8C6D1F] text-[9px] font-mono font-bold">
-            CHƯƠNG 01
+            CHƯƠNG 02
           </span>
           <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-            02 / 10
+            06 / 10
           </span>
         </div>
       </div>
@@ -86,8 +86,8 @@ export const IntroPage: React.FC<IntroPageProps> = ({ onNext }) => {
           onClick={onNext}
           className="w-full flex items-center justify-between px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FAF3E6] via-[#FFFFFF] to-[#FAF3E6] border border-[#C59B27]/50 text-[#8C6D1F] text-xs font-grotesk-bold font-bold tracking-wider hover:shadow-md transition-all cursor-pointer group shadow-xs"
         >
-          <span className="font-mono text-[10px] text-[#8C7D6F]">02 → 03</span>
-          <span className="tracking-widest">XEM HÀNH TRÌNH TIẾP THEO</span>
+          <span className="font-mono text-[10px] text-[#8C7D6F]">06 → 07</span>
+          <span className="tracking-widest">XEM HÀNH TRÌNH 4 NĂM</span>
           <span className="transform group-hover:translate-x-1 transition-transform">
             <ArrowRightIcon size={15} className="text-[#C59B27]" />
           </span>

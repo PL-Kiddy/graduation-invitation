@@ -23,7 +23,7 @@ export const MemoriesPage: React.FC = () => {
           </span>
         </div>
         <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-          08 / 11
+          08 / 10
         </span>
       </div>
 
@@ -118,7 +118,7 @@ export const MemoriesPage: React.FC = () => {
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
         <span>MEMORIES // STORED</span>
         <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
-          <span>Thông điệp gửi bạn</span>
+          <span>Lời nhắn riêng</span>
           <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
         </span>
       </div>
