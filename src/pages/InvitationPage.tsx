@@ -3,12 +3,15 @@ import { PageSurface } from '@/components/book/PageSurface';
 import { graduation } from '@/data/graduation';
 import { APP_CONFIG } from '@/lib/constants';
 import { ArrowRightIcon } from '@/components/ui/Icons';
+import { useGuestName } from '@/hooks/useGuestName';
 
 interface InvitationPageProps {
   onBackToCover?: () => void;
 }
 
 export const InvitationPage: React.FC<InvitationPageProps> = ({ onBackToCover }) => {
+  const guestName = useGuestName();
+
   return (
     <PageSurface variant="light" className="p-5 md:p-6 flex flex-col justify-between overflow-hidden relative">
       {/* Double Gold Foil Border Frame (Matching Reference Image 1) */}
@@ -35,17 +38,26 @@ export const InvitationPage: React.FC<InvitationPageProps> = ({ onBackToCover })
       </div>
 
       {/* MAIN INVITATION CARD (Matching Reference Image 1 & 2 Layout) */}
-      <div className="relative z-20 my-auto py-2 space-y-3.5 mx-2 text-center">
+      <div className="relative z-20 my-auto py-2 space-y-3 mx-2 text-center">
         {/* Calligraphy Header */}
-        <div className="space-y-0.5">
+        <div className="space-y-1">
           <p className="font-editorial-serif italic text-base md:text-lg text-[#8C6D1F] font-semibold">
             Trân trọng kính mời
           </p>
+
+          {guestName && (
+            <div className="py-0.5">
+              <span className="inline-block px-4 py-1 rounded-full bg-gradient-to-r from-[#FAF3E6] via-[#FFFDF8] to-[#FAF3E6] border border-[#C59B27]/50 shadow-xs font-editorial-serif italic text-lg md:text-xl font-bold text-[#8C6D1F] tracking-wide">
+                {guestName}
+              </span>
+            </div>
+          )}
+
           <h2 className="text-2xl md:text-3xl font-display-title font-black tracking-tight text-[#1E1A16] leading-snug">
             DỰ LỄ TỐT NGHIỆP CỦA LONG
           </h2>
           <p className="text-xs text-[#6A5E50] max-w-[280px] mx-auto leading-relaxed pt-0.5 font-sans-modern">
-            Một ngày khá quan trọng với mình, và chắc chắn sẽ trọn vẹn hơn rất nhiều nếu hôm đó có sự hiện diện của bạn.
+            Một ngày khá quan trọng với mình, và chắc chắn sẽ trọn vẹn hơn rất nhiều nếu hôm đó có sự hiện diện của {guestName || 'bạn'}.
           </p>
         </div>
 
