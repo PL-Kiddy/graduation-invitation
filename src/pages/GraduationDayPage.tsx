@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
-import { graduation } from '@/data/graduation';
-import { CalendarIcon, ClockIcon, MapPinIcon, ArrowRightIcon } from '@/components/ui/Icons';
+import {
+  CalendarIcon,
+  MapPinIcon,
+  ArrowRightIcon,
+  CapIcon,
+  CameraIcon,
+} from '@/components/ui/Icons';
 
 export const GraduationDayPage: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -44,13 +49,13 @@ export const GraduationDayPage: React.FC = () => {
 
       {/* TOP HEADER */}
       <div className="relative z-20 flex items-center justify-between border-b border-[#C59B27]/20 pb-2.5 mx-2">
+        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">02 / 07</span>
         <div className="flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-[#F27024] animate-pulse" />
           <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#8C6D1F] font-bold">
-            GRADUATION DAY // NGÀY LỄ
+            GRADUATION DAY
           </span>
         </div>
-        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">02 / 07</span>
       </div>
 
       {/* MAIN BODY */}
@@ -58,7 +63,7 @@ export const GraduationDayPage: React.FC = () => {
         {/* Heading */}
         <div className="text-center space-y-0.5">
           <p className="font-editorial-serif italic text-sm text-[#8C6D1F] font-semibold">
-            Cột mốc chính thức
+            Khoảnh khắc đang đến gần
           </p>
           <h2 className="text-2xl md:text-3xl font-display-title font-black text-[#1E1A16] tracking-tight leading-snug uppercase">
             CHỈ CÒN…
@@ -89,41 +94,49 @@ export const GraduationDayPage: React.FC = () => {
           ))}
         </div>
 
-        {/* Key Info Card */}
+        {/* Lịch Hẹn Ngày Tốt Nghiệp Card */}
         <div className="p-3.5 rounded-[6px] bg-gradient-to-br from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFEB] border border-[#C59B27]/50 shadow-xs space-y-2.5">
           <div className="flex items-center justify-between border-b border-[#C59B27]/20 pb-2">
-            <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-[#8C6D1F] font-bold">THÔNG TIN LỄ TỐT NGHIỆP</span>
-            <span className="text-[9px] font-mono font-bold text-[#C59B27]">CHÍNH THỨC</span>
+            <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-[#8C6D1F] font-bold">
+              LỊCH HẸN NGÀY TỐT NGHIỆP
+            </span>
+            <CalendarIcon size={14} className="text-[#C59B27]" />
           </div>
 
-          <div className="space-y-1.5 text-left">
-            <div className="flex items-center gap-2.5">
-              <div className="w-5 h-5 rounded-[3px] bg-[#FAF3E6] flex items-center justify-center border border-[#C59B27]/30 shrink-0">
-                <CalendarIcon size={12} className="text-[#C59B27]" />
+          <div className="space-y-2.5 text-left">
+            {/* Event 1 */}
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-[6px] bg-[#FAF3E6] border border-[#C59B27]/30 flex items-center justify-center shrink-0 shadow-xs">
+                <CapIcon size={18} className="text-[#C59B27]" />
               </div>
-              <div>
-                <span className="text-[9px] font-mono text-[#8C7D6F] font-bold block">NGÀY</span>
-                <span className="text-xs font-grotesk-bold font-bold text-[#1E1A16]">{graduation.displayDateWords}</span>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2.5">
-              <div className="w-5 h-5 rounded-[3px] bg-[#FAF3E6] flex items-center justify-center border border-[#C59B27]/30 shrink-0">
-                <ClockIcon size={12} className="text-[#F27024]" />
-              </div>
-              <div>
-                <span className="text-[9px] font-mono text-[#8C7D6F] font-bold block">GIỜ LỄ</span>
-                <span className="text-xs font-grotesk-bold font-bold text-[#1E1A16]">{graduation.timeNote}</span>
+              <div className="flex-1 min-w-0">
+                <span className="text-[10px] font-mono text-[#8C7D6F] font-bold block">14:00 – 16:30</span>
+                <h3 className="text-sm font-grotesk-bold font-bold text-[#1E1A16] leading-tight">Lễ trao bằng tốt nghiệp</h3>
+                <p className="text-[11px] text-[#6A5E50] mt-0.5">Hội trường chính</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-2.5">
-              <div className="w-5 h-5 rounded-[3px] bg-[#FAF3E6] flex items-center justify-center border border-[#C59B27]/30 shrink-0">
-                <MapPinIcon size={12} className="text-[#2E8B57]" />
+            {/* Event 2 */}
+            <div className="flex items-center gap-3 pt-2 border-t border-[#C59B27]/20">
+              <div className="w-9 h-9 rounded-[6px] bg-[#FAF3E6] border border-[#C59B27]/30 flex items-center justify-center shrink-0 shadow-xs">
+                <CameraIcon size={18} className="text-[#F27024]" />
               </div>
-              <div>
-                <span className="text-[9px] font-mono text-[#8C7D6F] font-bold block">ĐỊA ĐIỂM</span>
-                <span className="text-xs font-grotesk-bold font-bold text-[#1E1A16] leading-snug block">{graduation.campus}</span>
+              <div className="flex-1 min-w-0">
+                <span className="text-[10px] font-mono text-[#8C7D6F] font-bold block">TỪ 16:30</span>
+                <h3 className="text-sm font-grotesk-bold font-bold text-[#1E1A16] leading-tight">Gặp gỡ &amp; chụp ảnh cùng Long</h3>
+                <p className="text-[11px] text-[#6A5E50] mt-0.5">Khuôn viên trường FPT</p>
+              </div>
+            </div>
+
+            {/* Event 3 */}
+            <div className="flex items-center gap-3 pt-2 border-t border-[#C59B27]/20">
+              <div className="w-9 h-9 rounded-[6px] bg-[#FAF3E6] border border-[#C59B27]/30 flex items-center justify-center shrink-0 shadow-xs">
+                <MapPinIcon size={18} className="text-[#2E8B57]" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <span className="text-[10px] font-mono text-[#8C7D6F] font-bold block">TRONG THỜI GIAN DIỄN RA LỄ</span>
+                <h3 className="text-sm font-grotesk-bold font-bold text-[#1E1A16] leading-tight">Khu vực chờ dành cho bạn bè</h3>
+                <p className="text-[11px] text-[#6A5E50] mt-0.5">Hội trường phụ A &amp; B</p>
               </div>
             </div>
           </div>
@@ -132,7 +145,7 @@ export const GraduationDayPage: React.FC = () => {
         {/* Emotional note */}
         <div className="p-3 rounded-[6px] bg-[#FAF3E6] border border-[#C59B27]/30 text-center">
           <p className="font-editorial-serif italic text-xs text-[#3D352B] leading-relaxed">
-            "Cho đến ngày tôi chính thức khép laptop lại để đi nhận bằng."
+            "Hẹn gặp bạn để cùng lưu giữ khoảnh khắc đáng nhớ này!"
           </p>
         </div>
       </div>

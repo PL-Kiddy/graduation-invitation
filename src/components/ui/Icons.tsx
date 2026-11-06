@@ -24,6 +24,7 @@ import {
   ZoomIn,
   ZoomOut,
   Maximize2,
+  Camera,
 } from 'lucide-react';
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
@@ -193,4 +194,8 @@ export const ZoomOutIcon: React.FC<IconProps> = ({ size = 18, className = '', co
 
 export const MaximizeIcon: React.FC<IconProps> = ({ size = 18, className = '', color = 'currentColor', ...props }) => (
   <Maximize2 size={size} strokeWidth={1.8} className={className} color={color} {...props} />
+);
+
+export const CameraIcon: React.FC<IconProps> = ({ size = 18, className = '', color = 'currentColor', ...props }) => (
+  <Camera size={size} strokeWidth={1.8} className={className} color={color} {...props} />
 );
