@@ -166,20 +166,28 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
               }
           }
         >
-          {/* Campus Background Image (khuonvien.png) - Shifted slightly left to move bottom-left leaves outward by 35-50% */}
+          {/* Portrait Background Image (IMG_8939.jpg) */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <img
-              src="/image/khuonvien.png?v=3"
-              alt="FPT Campus"
-              className="w-[107%] h-full max-w-none object-cover -translate-x-[4.5%] object-center"
+              src="/image/IMG_8939.jpg"
+              alt="Quách Hùng Phúc Long - Graduation"
+              className="w-full h-full object-cover object-center"
             />
           </div>
 
-          {/* Soft warm contrast equalizer: softens glare behind name by ~18% so text and university info stay crisp */}
+          {/* Top soft contrast overlay for header typography readability */}
           <div
-            className="absolute bottom-0 left-0 right-0 h-[52%] pointer-events-none"
+            className="absolute top-0 left-0 right-0 h-[36%] pointer-events-none"
             style={{
-              background: 'linear-gradient(to top, rgba(247, 241, 230, 0.6) 0%, rgba(247, 241, 230, 0.38) 65%, transparent 100%)',
+              background: 'linear-gradient(to bottom, rgba(247, 241, 230, 0.72) 0%, rgba(247, 241, 230, 0.35) 65%, transparent 100%)',
+            }}
+          />
+
+          {/* Bottom soft warm contrast overlay so name and buttons stay crisp */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-[48%] pointer-events-none"
+            style={{
+              background: 'linear-gradient(to top, rgba(247, 241, 230, 0.82) 0%, rgba(247, 241, 230, 0.48) 65%, transparent 100%)',
             }}
           />
 
@@ -211,103 +219,115 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
           </div>
 
           {/* MAIN COVER CONTENT */}
-          <div className="relative z-10 w-full h-full flex flex-col justify-between items-center text-center p-4 sm:p-5 pb-5">
-            {/* Top Section: Header & Graduation Title in Sky */}
-            <div className="w-full space-y-1 pt-1">
-              {/* Top Subtitle: Solid Elegant Gold */}
-              <div className="inline-flex flex-col items-center">
-                <div className="flex items-center justify-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#8C6D1F]" />
-                  <span className="text-[10px] md:text-[11px] uppercase tracking-[0.35em] text-[#8C6D1F] font-name-headline font-bold drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]">
-                    THƯ MỜI THAM GIA
-                  </span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#8C6D1F]" />
-                </div>
-                <div className="w-12 h-[1px] bg-[#C59B27]/60 mt-1" />
+          <div className="relative z-10 w-full h-full flex flex-col justify-between p-4 sm:p-5 pb-5">
+            {/* Top Section: Header & Graduation Title with Laurel Leaves */}
+            <div className="w-full space-y-1 pt-1 text-center">
+              {/* Top Subtitle: ● THƯ MỜI THAM GIA ● */}
+              <div className="flex items-center justify-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#8C6D1F]" />
+                <span className="text-[10px] md:text-[11px] uppercase tracking-[0.35em] text-[#8C6D1F] font-name-headline font-bold drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
+                  THƯ MỜI THAM GIA
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#8C6D1F]" />
               </div>
 
               {/* Calligraphy Headline */}
-              <div className="space-y-0 pt-0.5">
-                <p className="font-editorial-serif italic text-base md:text-lg text-[#8C6D1F] font-bold drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]">
-                  Lễ tốt nghiệp
-                </p>
-                <h1 className="text-3xl md:text-4xl font-display-title font-black tracking-wider foil-gold-text leading-none uppercase drop-shadow-[0_2px_6px_rgba(255,255,255,0.9)]">
+              <p className="font-editorial-serif italic text-base md:text-lg text-[#8C6D1F] font-bold drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] pt-0.5">
+                Lễ tốt nghiệp
+              </p>
+
+              {/* GRADUATION Title with Golden Laurel Branches */}
+              <div className="flex items-center justify-center gap-1.5 sm:gap-2">
+                {/* Left Laurel Branch */}
+                <svg width="22" height="30" viewBox="0 0 24 32" fill="none" className="text-[#C59B27] shrink-0 drop-shadow-xs">
+                  <path d="M19 4 C14 9, 11 16, 13 28" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                  <path d="M13 6 C8 5, 4 8, 6 11 C8 11, 11 9, 14 8 Z" fill="currentColor" />
+                  <path d="M11 13 C6 12, 2 15, 4 18 C6 18, 9 16, 12 15 Z" fill="currentColor" />
+                  <path d="M11 20 C6 20, 3 23, 5 26 C7 26, 9 24, 12 22 Z" fill="currentColor" />
+                </svg>
+
+                <h1 className="text-[28px] sm:text-3xl md:text-[34px] font-display-title font-black tracking-wider foil-gold-text leading-none uppercase drop-shadow-[0_2px_6px_rgba(255,255,255,0.95)]">
                   GRADUATION
                 </h1>
-                <p className="text-base md:text-lg font-mono tracking-[0.3em] text-[#C59B27] font-bold drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
+
+                {/* Right Laurel Branch */}
+                <svg width="22" height="30" viewBox="0 0 24 32" fill="none" className="text-[#C59B27] shrink-0 drop-shadow-xs scale-x-[-1]">
+                  <path d="M19 4 C14 9, 11 16, 13 28" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                  <path d="M13 6 C8 5, 4 8, 6 11 C8 11, 11 9, 14 8 Z" fill="currentColor" />
+                  <path d="M11 13 C6 12, 2 15, 4 18 C6 18, 9 16, 12 15 Z" fill="currentColor" />
+                  <path d="M11 20 C6 20, 3 23, 5 26 C7 26, 9 24, 12 22 Z" fill="currentColor" />
+                </svg>
+              </div>
+
+              {/* Year with stylish horizontal bars: —— 2026 —— */}
+              <div className="flex items-center justify-center gap-2 pt-0.5">
+                <div className="w-8 sm:w-10 h-[1.5px] bg-[#C59B27]/70" />
+                <span className="text-base sm:text-lg font-grotesk-bold tracking-[0.25em] text-[#8C6D1F] font-black drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
                   2026
-                </p>
+                </span>
+                <div className="w-8 sm:w-10 h-[1.5px] bg-[#C59B27]/70" />
               </div>
             </div>
 
-            {/* Middle Zone: Avatar Medallion - Reduced ~10%, lifted up ~20px so Campus architecture breathes */}
-            <div className="mt-auto mb-3.5 sm:mb-4">
-              <div className="relative w-28 h-28 sm:w-[122px] sm:h-[122px] mx-auto">
-                {/* Double Gold Ring Frame */}
-                <div className="w-full h-full rounded-full overflow-hidden shadow-xl relative border-[3px] border-[#D4AF37] bg-[#FAF6ED] ring-2 ring-white/95 ring-offset-2 ring-offset-[#C59B27]/70">
-                  <img
-                    src="/image/dantranh.png"
-                    alt="Quách Hùng Phúc Long"
-                    className="w-full h-full object-cover object-[center_30%] scale-135"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Section: TÂN CỬ NHÂN has 14-16px breathing room below avatar, followed by Name, Pill, CTA */}
-            <div className="w-full flex flex-col items-center space-y-2.5">
-              {/* Graduate Formal Name directly on the flowing ribbon */}
-              <div className="space-y-1">
-                <span className="text-[11px] sm:text-[11.5px] uppercase font-name-headline tracking-[0.35em] text-[#5F4318] font-extrabold block drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] whitespace-nowrap">
+            {/* Middle Section: Left-aligned Graduate Info (Asymmetrical Layout matching reference image) */}
+            <div className="w-full flex-1 flex flex-col justify-end pb-3 text-left pl-1 sm:pl-2">
+              <div className="space-y-1 max-w-[210px] sm:max-w-[230px]">
+                <span className="text-[10.5px] sm:text-[11px] uppercase font-name-headline tracking-[0.3em] text-[#7A561E] font-extrabold block drop-shadow-[0_1px_3px_rgba(255,255,255,1)]">
                   TÂN CỬ NHÂN
                 </span>
+
                 <h2
-                  className="text-[20px] sm:text-[21.5px] md:text-[23px] font-name-headline font-black tracking-normal leading-tight whitespace-nowrap px-1"
+                  className="text-[22px] sm:text-[25px] md:text-[27px] font-name-headline font-black tracking-tight leading-[1.05] drop-shadow-[0_1px_4px_rgba(255,255,255,0.9)]"
                   style={{
-                    background: 'linear-gradient(180deg, #5E3205 0%, #3B1B02 100%)',
+                    background: 'linear-gradient(180deg, #4A2803 0%, #291201 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                   }}
                 >
-                  QUÁCH HÙNG PHÚC LONG
+                  QUÁCH HÙNG<br />
+                  PHÚC LONG
                 </h2>
-                <p className="text-[12px] sm:text-[12.5px] text-[#63574A] font-medium">
-                  Trường Đại học FPT TP. Hồ Chí Minh
-                </p>
-              </div>
 
-              {/* Date & Campus Pill with Vertical Divider: Height increased 6-8%, icons larger (16px) */}
-              <div className="inline-flex items-center justify-center gap-3 px-5 sm:px-6 py-2.5 rounded-full bg-white/90 backdrop-blur-xs border-[1.5px] border-[#C59B27]/70 shadow-xs text-[11.5px] sm:text-[12px] font-name-headline font-bold max-w-[94%]">
-                <div className="flex items-center gap-2 whitespace-nowrap text-[#8C6D1F]">
+                <div className="text-[11px] sm:text-[12px] text-[#4A3E31] font-semibold leading-snug pt-0.5 drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
+                  <p>Trường Đại học FPT</p>
+                  <p>TP. Hồ Chí Minh</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Section: Flowing Date/Venue Pill & Rich Gold CTA Button */}
+            <div className="w-full flex flex-col items-center space-y-2.5">
+              {/* Date & Campus Pill with Vertical Divider */}
+              <div className="w-full max-w-[320px] inline-flex items-center justify-center gap-3 px-4 sm:px-5 py-2.5 rounded-full bg-white/95 backdrop-blur-xs border-[1.5px] border-[#C59B27]/60 shadow-md text-[11.5px] sm:text-[12px] font-name-headline font-bold">
+                <div className="flex items-center gap-1.5 whitespace-nowrap text-[#8C6D1F]">
                   <CalendarIcon size={16} className="text-[#B8860B]" />
                   <span>07 • 11 • 2026</span>
                 </div>
-                <span className="text-[#C59B27]/50 font-light">|</span>
-                <div className="flex items-center gap-2 whitespace-nowrap text-[#8C6D1F]">
+                <span className="text-[#C59B27]/60 font-light">|</span>
+                <div className="flex items-center gap-1.5 whitespace-nowrap text-[#8C6D1F]">
                   <MapPinIcon size={16} className="text-[#B8860B]" />
                   <span>ĐẠI HỌC FPT HCM</span>
                 </div>
               </div>
 
-              {/* Touch to Open CTA Button: Solid rich gold text and arrow */}
+              {/* Rich Gold Foil CTA Button: "CHẠM ĐỂ MỞ THIỆP →" */}
               <motion.div
                 {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }}
-                className="w-full max-w-[310px] mx-auto flex items-center justify-between px-6 py-2.5 sm:py-3 rounded-full bg-white/85 hover:bg-white/95 backdrop-blur-xs border-[1.5px] border-[#C59B27]/70 shadow-sm hover:shadow-md transition-all cursor-pointer group"
+                className="w-full max-w-[320px] mx-auto flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#C59B27] text-white shadow-lg hover:shadow-xl transition-all cursor-pointer group border border-white/40"
                 animate={{
                   y: [0, -2, 0],
                   boxShadow: [
-                    '0 2px 8px rgba(184, 134, 11, 0.15)',
-                    '0 4px 14px rgba(184, 134, 11, 0.25)',
-                    '0 2px 8px rgba(184, 134, 11, 0.15)',
+                    '0 4px 14px rgba(184, 134, 11, 0.35)',
+                    '0 6px 20px rgba(184, 134, 11, 0.5)',
+                    '0 4px 14px rgba(184, 134, 11, 0.35)',
                   ],
                 }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <div className="w-3" />
-                <span className="uppercase text-center text-[11.5px] sm:text-[12px] font-name-headline font-bold tracking-[0.14em] text-[#8C6D1F]">
+                <span className="uppercase text-center text-[12px] sm:text-[12.5px] font-name-headline font-bold tracking-[0.16em] text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
                   CHẠM ĐỂ MỞ THIỆP
                 </span>
-                <span className="text-[#B8860B] text-base font-bold transform group-hover:translate-x-1 transition-transform">
+                <span className="text-white text-base font-bold transform group-hover:translate-x-1 transition-transform drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
                   →
                 </span>
               </motion.div>
