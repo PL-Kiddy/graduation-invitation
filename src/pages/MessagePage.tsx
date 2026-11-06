@@ -37,7 +37,7 @@ export const MessagePage: React.FC = () => {
           </span>
         </div>
         <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-          06 / 07
+          05 / 06
         </span>
       </div>
 

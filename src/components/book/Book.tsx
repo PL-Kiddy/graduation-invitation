@@ -5,12 +5,11 @@ import { useSwipeGesture } from '@/hooks/useSwipeGesture';
 import { PageIndicator } from '@/components/book/PageIndicator';
 import { transitions } from '@/lib/motion';
 
-// Pages — 7-page flow
+// Pages — 6-page flow
 import { InvitationPage }   from '@/pages/InvitationPage';
 import { GraduationDayPage } from '@/pages/GraduationDayPage';
 import { VenuePage }        from '@/pages/VenuePage';
 import { CampusGuidePage }  from '@/pages/CampusGuidePage';
-import { MemoriesPage }     from '@/pages/MemoriesPage';
 import { MessagePage }      from '@/pages/MessagePage';
 import { FinalPage }        from '@/pages/FinalPage';
 
@@ -63,16 +62,15 @@ export const Book: React.FC<BookProps> = ({ onRestart, onBackToCover }) => {
 
   const { isDragging, dragProgress } = gestureState;
 
-  // Render the appropriate component for a given page index (0-based, 7 pages)
+  // Render the appropriate component for a given page index (0-based, 6 pages)
   const renderPageComponent = (index: number) => {
     switch (index) {
       case 0:  return <InvitationPage onBackToCover={onBackToCover} />;
       case 1:  return <GraduationDayPage />;
       case 2:  return <VenuePage />;
       case 3:  return <CampusGuidePage />;
-      case 4:  return <MemoriesPage />;
-      case 5:  return <MessagePage />;
-      case 6:  return (
+      case 4:  return <MessagePage />;
+      case 5:  return (
         <FinalPage
           onRestart={() => {
             goToPage(0);

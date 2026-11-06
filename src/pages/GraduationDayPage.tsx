@@ -55,7 +55,7 @@ export const GraduationDayPage: React.FC = () => {
             GRADUATION DAY
           </span>
         </div>
-        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">02 / 07</span>
+        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">02 / 06</span>
       </div>
 
       {/* MAIN BODY */}

@@ -22,7 +22,7 @@ export const VenuePage: React.FC = () => {
             ĐỊA ĐIỂM
           </span>
         </div>
-        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">03 / 07</span>
+        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">03 / 06</span>
       </div>
 
       {/* MAIN BODY */}

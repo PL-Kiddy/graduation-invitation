@@ -1,6 +1,5 @@
 import React from 'react';
 import { PageSurface } from '@/components/book/PageSurface';
-import { graduation } from '@/data/graduation';
 import { APP_CONFIG } from '@/lib/constants';
 import { ArrowRightIcon } from '@/components/ui/Icons';
 import { useGuestName } from '@/hooks/useGuestName';
@@ -33,7 +32,7 @@ export const InvitationPage: React.FC<InvitationPageProps> = ({ onBackToCover })
           </span>
         </div>
         <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-          01 / 07
+          01 / 06
         </span>
       </div>
 
@@ -96,7 +95,7 @@ export const InvitationPage: React.FC<InvitationPageProps> = ({ onBackToCover })
             </div>
             <div className="bg-white/80 p-2 rounded-[4px] border border-[#C59B27]/20">
               <span className="text-[9px] font-mono text-[#8C7D6F] block font-bold">ĐỊA ĐIỂM:</span>
-              <span className="font-bold text-[#1E1A16] truncate block">{graduation.campus}</span>
+              <span className="font-bold text-[#1E1A16] truncate block">Đại học FPT HCM</span>
             </div>
           </div>
         </div>

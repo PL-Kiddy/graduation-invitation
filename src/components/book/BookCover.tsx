@@ -126,7 +126,7 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
               FPT UNIVERSITY // 2026
             </span>
             <span className="text-[10px] font-mono font-bold text-[#C59B27] px-2 py-0.5 bg-[#FAF3E6] rounded border border-[#C59B27]/30">
-              01 / 11
+              01 / 06
             </span>
           </div>
           <div className="space-y-1">

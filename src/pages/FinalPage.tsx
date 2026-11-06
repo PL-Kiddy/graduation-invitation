@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
 import { APP_CONFIG } from '@/lib/constants';
 import {
-  CapIcon,
   SparklesIcon,
   RefreshIcon,
   PhoneIcon,
@@ -46,7 +45,7 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
           </span>
         </div>
         <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
-          07 / 07
+          06 / 06
         </span>
       </div>
 
@@ -59,14 +58,12 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="relative w-28 h-28 md:w-32 md:h-32 my-1"
         >
-          <div className="w-full h-full rounded-full gold-halo-ring bg-gradient-to-br from-[#FFFDF9] via-[#FAF5EB] to-[#EDE2D0] p-1.5 shadow-xl flex flex-col items-center justify-center overflow-hidden relative">
-            <CapIcon size={36} className="text-[#C59B27] filter drop-shadow-xs" />
-            <span className="font-grotesk-bold text-base font-bold text-[#8C6D1F] tracking-wider mt-1">
-              PHÚC LONG
-            </span>
-            <span className="text-[8px] font-mono font-bold tracking-widest text-[#C59B27] uppercase">
-              CLASS OF 2026
-            </span>
+          <div className="w-full h-full rounded-full gold-halo-ring bg-gradient-to-br from-[#FFFDF9] via-[#FAF5EB] to-[#EDE2D0] p-1 shadow-xl flex items-center justify-center overflow-hidden relative">
+            <img
+              src="/image/IMG_8825tachnen.png"
+              alt="Quách Hùng Phúc Long"
+              className="w-full h-full object-cover object-top scale-110"
+            />
           </div>
 
           {/* Mini 3D Floral Pin on Halo (from Image 1) */}

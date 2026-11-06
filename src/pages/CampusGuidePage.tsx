@@ -206,7 +206,7 @@ export const CampusGuidePage: React.FC = () => {
             SƠ ĐỒ TẦNG
           </span>
         </div>
-        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">04 / 07</span>
+        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">04 / 06</span>
       </div>
 
       {/* MAIN BODY */}
@@ -333,7 +333,7 @@ export const CampusGuidePage: React.FC = () => {
       <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
         <span>FPTU · Q9 · THỦ ĐỨC</span>
         <span className="font-semibold text-[#8C6D1F] flex items-center gap-1">
-          <span>Khung hình kỷ niệm</span>
+          <span>Lời nhắn gửi</span>
           <ArrowRightIcon size={11} className="text-[#8C6D1F]" />
         </span>
       </div>
