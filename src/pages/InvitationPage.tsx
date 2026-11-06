@@ -93,8 +93,8 @@ export const InvitationPage: React.FC<InvitationPageProps> = ({ onBackToCover })
           {/* Time & Venue Information */}
           <div className="grid grid-cols-2 gap-2 pt-2 border-t border-[#C59B27]/25 text-left text-[11px] font-sans-modern">
             <div className="bg-white/80 p-2 rounded-[4px] border border-[#C59B27]/20">
-              <span className="text-[9px] font-mono text-[#8C7D6F] block font-bold">GIỜ LỄ:</span>
-              <span className="font-bold text-[#1E1A16]">06:00 – 18:00</span>
+              <span className="text-[9px] font-mono text-[#8C7D6F] block font-bold">THỜI GIAN THAM GIA:</span>
+              <span className="font-bold text-[#1E1A16]">12:30 – 17:30</span>
             </div>
             <div className="bg-white/80 p-2 rounded-[4px] border border-[#C59B27]/20">
               <span className="text-[9px] font-mono text-[#8C7D6F] block font-bold">ĐỊA ĐIỂM:</span>

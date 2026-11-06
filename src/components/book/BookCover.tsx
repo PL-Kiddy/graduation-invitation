@@ -219,7 +219,7 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
                 <div className="flex items-center justify-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#8C6D1F]" />
                   <span className="text-[10px] md:text-[11px] uppercase tracking-[0.35em] text-[#8C6D1F] font-name-headline font-bold drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]">
-                    THƯ MỜI CHÍNH THỨC
+                    THƯ MỜI THAM GIA
                   </span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#8C6D1F]" />
                 </div>
@@ -254,12 +254,12 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
               </div>
             </div>
 
-            {/* Bottom Section: TÂN KHOA has 14-16px breathing room below avatar, followed by Name, Pill, CTA */}
+            {/* Bottom Section: TÂN CỬ NHÂN has 14-16px breathing room below avatar, followed by Name, Pill, CTA */}
             <div className="w-full flex flex-col items-center space-y-2.5">
               {/* Graduate Formal Name directly on the flowing ribbon */}
               <div className="space-y-1">
-                <span className="text-[11px] sm:text-[11.5px] uppercase font-name-headline tracking-[0.45em] text-[#5F4318] font-extrabold block drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]">
-                  T Â N   K H O A
+                <span className="text-[11px] sm:text-[11.5px] uppercase font-name-headline tracking-[0.35em] text-[#5F4318] font-extrabold block drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] whitespace-nowrap">
+                  TÂN CỬ NHÂN
                 </span>
                 <h2
                   className="text-[20px] sm:text-[21.5px] md:text-[23px] font-name-headline font-black tracking-normal leading-tight whitespace-nowrap px-1"

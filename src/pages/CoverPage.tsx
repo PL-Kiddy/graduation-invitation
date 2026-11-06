@@ -52,7 +52,7 @@ export const CoverPage: React.FC<CoverPageProps> = ({ onNext }) => {
         </div>
         <div className="flex items-center gap-2">
           <span className="px-2 py-0.5 rounded-full bg-[#FAF3E6] border border-[#C59B27]/40 text-[#8C6D1F] text-[9px] font-mono font-bold">
-            TÂN KHOA
+            TÂN CỬ NHÂN
           </span>
           <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">
             01 / 11
@@ -87,7 +87,7 @@ export const CoverPage: React.FC<CoverPageProps> = ({ onNext }) => {
             <div className="w-full h-full rounded-full bg-gradient-to-b from-[#FDFBF7] to-[#EBE2D2] flex flex-col items-center justify-center shadow-inner">
               <CapIcon size={42} className="text-[#C59B27] filter drop-shadow-xs" />
               <span className="text-[9px] font-mono font-bold text-[#8C6D1F] tracking-wider mt-1 uppercase">
-                TÂN KHOA IT
+                TÂN CỬ NHÂN IT
               </span>
             </div>
           </div>
