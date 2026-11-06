@@ -49,13 +49,13 @@ export const GraduationDayPage: React.FC = () => {
 
       {/* TOP HEADER */}
       <div className="relative z-20 flex items-center justify-between border-b border-[#C59B27]/20 pb-2.5 mx-2">
-        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">02 / 07</span>
         <div className="flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-[#F27024] animate-pulse" />
           <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#8C6D1F] font-bold">
             GRADUATION DAY
           </span>
         </div>
+        <span className="text-[11px] font-mono font-bold text-[#8C7D6F]">02 / 07</span>
       </div>
 
       {/* MAIN BODY */}
@@ -98,7 +98,7 @@ export const GraduationDayPage: React.FC = () => {
         <div className="p-3.5 rounded-[6px] bg-gradient-to-br from-[#FFFDF9] via-[#FAF6ED] to-[#F5EFEB] border border-[#C59B27]/50 shadow-xs space-y-2.5">
           <div className="flex items-center justify-between border-b border-[#C59B27]/20 pb-2">
             <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-[#8C6D1F] font-bold">
-              LỊCH HẸN NGÀY TỐT NGHIỆP
+              LỊCH TRÌNH BUỔI LỄ
             </span>
             <CalendarIcon size={14} className="text-[#C59B27]" />
           </div>
@@ -122,7 +122,7 @@ export const GraduationDayPage: React.FC = () => {
                 <CameraIcon size={18} className="text-[#F27024]" />
               </div>
               <div className="flex-1 min-w-0">
-                <span className="text-[10px] font-mono text-[#8C7D6F] font-bold block">TỪ 16:30</span>
+                <span className="text-[10px] font-mono text-[#8C7D6F] font-bold block">16:30 – 17:30</span>
                 <h3 className="text-sm font-grotesk-bold font-bold text-[#1E1A16] leading-tight">Gặp gỡ &amp; chụp ảnh cùng Long</h3>
                 <p className="text-[11px] text-[#6A5E50] mt-0.5">Khuôn viên trường FPT</p>
               </div>
@@ -135,8 +135,8 @@ export const GraduationDayPage: React.FC = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <span className="text-[10px] font-mono text-[#8C7D6F] font-bold block">TRONG THỜI GIAN DIỄN RA LỄ</span>
-                <h3 className="text-sm font-grotesk-bold font-bold text-[#1E1A16] leading-tight">Khu vực chờ dành cho bạn bè</h3>
-                <p className="text-[11px] text-[#6A5E50] mt-0.5">Hội trường phụ A &amp; B</p>
+                <h3 className="text-sm font-grotesk-bold font-bold text-[#1E1A16] leading-tight">Bạn có thể đi tham quan hoặc đến khu vực chờ để nghỉ ngơi</h3>
+                <p className="text-[11px] text-[#6A5E50] mt-0.5">Hội trường A &amp; B</p>
               </div>
             </div>
           </div>
@@ -145,7 +145,7 @@ export const GraduationDayPage: React.FC = () => {
         {/* Emotional note */}
         <div className="p-3 rounded-[6px] bg-[#FAF3E6] border border-[#C59B27]/30 text-center">
           <p className="font-editorial-serif italic text-xs text-[#3D352B] leading-relaxed">
-            "Hẹn gặp bạn để cùng lưu giữ khoảnh khắc đáng nhớ này!"
+            "Một ngày đặc biệt, thêm vui khi có bạn."
           </p>
         </div>
       </div>
