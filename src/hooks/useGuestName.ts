@@ -117,22 +117,8 @@ export function useGuestInfo(): GuestInfo {
 
   useEffect(() => {
     try {
-      // 1. Check query params (?to=... or ?name=...)
       const params = new URLSearchParams(window.location.search);
-      let rawParam = params.get('to') || params.get('name') || params.get('u');
-
-      // 2. Check hash fragment (#to=... or #ban-thinh)
-      // Hash is 100% ignored by Facebook/Zalo crawler so Messenger ALWAYS shows the root preview card!
-      if (!rawParam && window.location.hash) {
-        const hash = window.location.hash.replace(/^#/, '');
-        if (hash.startsWith('to=')) {
-          rawParam = hash.replace(/^to=/, '');
-        } else if (hash.startsWith('name=')) {
-          rawParam = hash.replace(/^name=/, '');
-        } else if (hash.trim()) {
-          rawParam = hash.trim();
-        }
-      }
+      const rawParam = params.get('to') || params.get('name') || params.get('u');
 
       if (rawParam && rawParam.trim()) {
         const decoded = decodeURIComponent(rawParam.trim());
