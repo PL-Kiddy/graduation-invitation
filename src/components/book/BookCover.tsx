@@ -262,38 +262,35 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
               {/* Year with stylish horizontal bars: —— 2026 —— */}
               <div className="flex items-center justify-center gap-2 pt-0.5">
                 <div className="w-8 sm:w-10 h-[1.5px] bg-[#C59B27]/70" />
-                <span className="text-base sm:text-lg font-grotesk-bold tracking-[0.25em] text-[#8C6D1F] font-black drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
+                <span className="text-sm sm:text-base font-grotesk-bold tracking-[0.25em] text-[#8C6D1F] font-black drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
                   2026
                 </span>
                 <div className="w-8 sm:w-10 h-[1.5px] bg-[#C59B27]/70" />
               </div>
-            </div>
 
-            {/* Middle Section: Left-aligned Graduate Info (Asymmetrical Layout matching reference image) */}
-            <div className="w-full flex-1 flex flex-col justify-end pb-3 text-left pl-1 sm:pl-2">
-              <div className="space-y-1 max-w-[210px] sm:max-w-[230px]">
-                <span className="text-[10.5px] sm:text-[11px] uppercase font-name-headline tracking-[0.3em] text-[#7A561E] font-extrabold block drop-shadow-[0_1px_3px_rgba(255,255,255,1)]">
+              {/* Graduate Name & Title (Placed cleanly in the Sky Zone — 100% Above Face & Cap) */}
+              <div className="pt-1.5 space-y-0.5">
+                <span className="text-[10px] uppercase font-name-headline tracking-[0.25em] text-[#7A561E] font-extrabold block drop-shadow-[0_1px_3px_rgba(255,255,255,1)]">
                   TÂN CỬ NHÂN
                 </span>
-
                 <h2
-                  className="text-[22px] sm:text-[25px] md:text-[27px] font-name-headline font-black tracking-tight leading-[1.05] drop-shadow-[0_1px_4px_rgba(255,255,255,0.9)]"
+                  className="text-xl sm:text-[23px] font-name-headline font-black tracking-tight leading-tight drop-shadow-[0_1px_4px_rgba(255,255,255,0.95)]"
                   style={{
                     background: 'linear-gradient(180deg, #4A2803 0%, #291201 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                   }}
                 >
-                  QUÁCH HÙNG<br />
-                  PHÚC LONG
+                  QUÁCH HÙNG PHÚC LONG
                 </h2>
-
-                <div className="text-[11px] sm:text-[12px] text-[#4A3E31] font-semibold leading-snug pt-0.5 drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
-                  <p>Trường Đại học FPT</p>
-                  <p>TP. Hồ Chí Minh</p>
-                </div>
+                <p className="text-[10.5px] sm:text-[11px] text-[#4A3E31] font-semibold drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
+                  Trường Đại học FPT TP. Hồ Chí Minh
+                </p>
               </div>
             </div>
+
+            {/* Middle Spacer: Completely Open to let Face, Cap & Diploma Album Shine */}
+            <div className="w-full flex-1 pointer-events-none" />
 
             {/* Bottom Section: Flowing Date/Venue Pill & Rich Gold CTA Button */}
             <div className="w-full flex flex-col items-center space-y-2.5">
