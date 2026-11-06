@@ -2,14 +2,14 @@ import React from 'react';
 import { PageSurface } from '@/components/book/PageSurface';
 import { APP_CONFIG } from '@/lib/constants';
 import { ArrowRightIcon } from '@/components/ui/Icons';
-import { useGuestName } from '@/hooks/useGuestName';
+import { useGuestInfo } from '@/hooks/useGuestName';
 
 interface InvitationPageProps {
   onBackToCover?: () => void;
 }
 
 export const InvitationPage: React.FC<InvitationPageProps> = ({ onBackToCover }) => {
-  const guestName = useGuestName();
+  const { guestName, pronoun } = useGuestInfo();
 
   return (
     <PageSurface variant="light" className="p-5 md:p-6 flex flex-col justify-between overflow-hidden relative">
@@ -56,7 +56,7 @@ export const InvitationPage: React.FC<InvitationPageProps> = ({ onBackToCover })
             DỰ LỄ TỐT NGHIỆP CỦA LONG
           </h2>
           <p className="text-xs text-[#6A5E50] max-w-[290px] mx-auto leading-relaxed pt-0.5 font-sans-modern">
-            Sau bao mùa deadline, cuối cùng tôi cũng sắp được nhận bằng rồi. Hôm đó ghé chung vui nha!
+            Sau bao mùa deadline, cuối cùng {pronoun} cũng sắp được nhận bằng rồi. Hôm đó ghé chung vui nha!
           </p>
         </div>
 
