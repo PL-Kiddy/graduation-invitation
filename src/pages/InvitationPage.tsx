@@ -73,17 +73,17 @@ export const InvitationPage: React.FC<InvitationPageProps> = ({ onBackToCover })
           {/* Large Date Display: 07 / 11 / 2026 */}
           <div className="flex items-center justify-around py-1">
             <div className="text-center">
-              <span className="text-3xl md:text-4xl font-grotesk-bold font-black text-[#8C6D1F] block leading-none">07</span>
+              <span className="text-3xl md:text-4xl font-grotesk-bold font-black foil-gold-text block leading-none">07</span>
               <span className="text-[9px] font-mono text-[#8C7D6F] uppercase font-bold mt-1 block">NGÀY</span>
             </div>
             <span className="text-2xl text-[#C59B27]/40 font-light">/</span>
             <div className="text-center">
-              <span className="text-3xl md:text-4xl font-grotesk-bold font-black text-[#8C6D1F] block leading-none">11</span>
+              <span className="text-3xl md:text-4xl font-grotesk-bold font-black foil-gold-text block leading-none">11</span>
               <span className="text-[9px] font-mono text-[#8C7D6F] uppercase font-bold mt-1 block">THÁNG</span>
             </div>
             <span className="text-2xl text-[#C59B27]/40 font-light">/</span>
             <div className="text-center">
-              <span className="text-3xl md:text-4xl font-grotesk-bold font-black text-[#8C6D1F] block leading-none">2026</span>
+              <span className="text-3xl md:text-4xl font-grotesk-bold font-black foil-gold-text block leading-none">2026</span>
               <span className="text-[9px] font-mono text-[#8C7D6F] uppercase font-bold mt-1 block">NĂM</span>
             </div>
           </div>
