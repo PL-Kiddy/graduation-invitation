@@ -166,7 +166,7 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
               }
           }
         >
-          {/* Portrait Background Image (Backgroundtrangbia.jpg) */}
+          {/* Portrait Background Image (Backgroundtrangbia.jpg) - Crisp & Vibrant */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <img
               src="/image/Backgroundtrangbia.jpg"
@@ -174,22 +174,6 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
               className="w-full h-full object-cover object-center"
             />
           </div>
-
-          {/* Top soft contrast overlay for header typography readability */}
-          <div
-            className="absolute top-0 left-0 right-0 h-[36%] pointer-events-none"
-            style={{
-              background: 'linear-gradient(to bottom, rgba(247, 241, 230, 0.72) 0%, rgba(247, 241, 230, 0.35) 65%, transparent 100%)',
-            }}
-          />
-
-          {/* Bottom soft warm contrast overlay so name and buttons stay crisp */}
-          <div
-            className="absolute bottom-0 left-0 right-0 h-[48%] pointer-events-none"
-            style={{
-              background: 'linear-gradient(to top, rgba(247, 241, 230, 0.82) 0%, rgba(247, 241, 230, 0.48) 65%, transparent 100%)',
-            }}
-          />
 
           {/* Spine Binding and Emboss Crease on the left */}
           <div className="absolute top-0 bottom-0 left-0 w-8 bg-gradient-to-r from-black/20 via-black/5 to-transparent pointer-events-none z-20" />
@@ -283,9 +267,6 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
                 >
                   QUÁCH HÙNG PHÚC LONG
                 </h2>
-                <p className="text-[10.5px] sm:text-[11px] text-[#4A3E31] font-semibold drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
-                  Trường Đại học FPT TP. Hồ Chí Minh
-                </p>
               </div>
             </div>
 
