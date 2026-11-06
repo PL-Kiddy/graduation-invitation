@@ -1,18 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PageSurface } from '@/components/book/PageSurface';
-import { APP_CONFIG } from '@/lib/constants';
-import {
-  SparklesIcon,
-  RefreshIcon,
-  PhoneIcon,
-} from '@/components/ui/Icons';
+import { PhoneIcon } from '@/components/ui/Icons';
 
 interface FinalPageProps {
   onRestart?: () => void;
 }
 
-export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
+export const FinalPage: React.FC<FinalPageProps> = () => {
   return (
     <PageSurface variant="gold" className="p-5 md:p-6 flex flex-col justify-between overflow-hidden relative">
       {/* Double Gold Foil Border Frame (as in Reference Image 1) */}
@@ -128,25 +123,21 @@ export const FinalPage: React.FC<FinalPageProps> = ({ onRestart }) => {
           <span>0819404252</span>
         </motion.a>
 
-        {/* Action Button: Xem lại thiệp ↻ */}
-        <div {...{ [APP_CONFIG.INTERACTIVE_ATTR]: 'true' }} className="w-full max-w-[240px] pt-1">
-          {onRestart && (
-            <motion.button
-              whileTap={{ scale: 0.97 }}
-              onClick={onRestart}
-              className="w-full flex items-center justify-center gap-2 py-2 rounded-[4px] bg-white text-[#8C6D1F] border border-[#C59B27]/50 text-xs font-grotesk-bold font-bold tracking-wider hover:bg-[#FAF3E6] transition-colors cursor-pointer shadow-sm"
-            >
-              <span>Xem lại thiệp</span>
-              <RefreshIcon size={13} className="text-[#8C6D1F]" />
-            </motion.button>
-          )}
-        </div>
+        {/* Closing Appreciation Note */}
+        <motion.p
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.85 }}
+          className="font-editorial-serif italic text-xs md:text-sm text-[#7A6452] max-w-[280px] mx-auto pt-2 leading-relaxed"
+        >
+          Trân trọng cảm ơn sự hiện diện và đồng hành của bạn
+        </motion.p>
       </div>
 
       {/* BOTTOM HINT */}
-      <div className="relative z-20 text-center text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2 flex items-center justify-center gap-1.5">
-        <span>Trân trọng cảm ơn sự hiện diện và đồng hành của bạn</span>
-        <SparklesIcon size={12} className="text-[#C59B27]" />
+      <div className="relative z-20 flex items-center justify-between text-[10px] font-mono text-[#8C7D6F] pt-2 border-t border-[#C59B27]/20 mx-2">
+        <span>QUÁCH HÙNG PHÚC LONG</span>
+        <span>FPT UNIVERSITY // 2026</span>
       </div>
     </PageSurface>
   );

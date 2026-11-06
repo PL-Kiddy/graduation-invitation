@@ -58,7 +58,7 @@ export const VenuePage: React.FC = () => {
           </div>
 
           <div className="relative z-10 mt-2.5 pt-2 border-t border-[#C59B27]/25 flex items-center justify-between text-[9px] font-mono text-[#8C7D6F]">
-            <span>GỬI XE: CỔNG 1 // MIỄN PHÍ</span>
+            <span>GỬI XE: CỔNG 2 // MIỄN PHÍ</span>
             <span className="text-[#C59B27] font-bold">KHU CÔNG NGHỆ CAO</span>
           </div>
         </div>
