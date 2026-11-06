@@ -166,11 +166,13 @@ export const BookCover: React.FC<BookCoverProps> = ({ isOpening, onOpen }) => {
               }
           }
         >
-          {/* Portrait Background Image (backgroundtrangbia.jpg) - Crisp & Vibrant */}
+          {/* Portrait Background Image (backgroundtrangbia.jpg) - Optimized & Instant Loading */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <img
-              src="/image/Backgroundtrangbia.jpg?v=2"
+              src="/image/Backgroundtrangbia.jpg?v=3"
               alt="Quách Hùng Phúc Long - Graduation"
+              loading="eager"
+              decoding="async"
               className="w-full h-full object-cover object-center"
             />
           </div>
